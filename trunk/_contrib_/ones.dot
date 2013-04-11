@@ -12,24 +12,29 @@ graph DasArchive {
     /* AttrGroup.Mselect */
     {
       node  	[fillcolor="lightgreen"];
-      os	[label="ОС"];
     }
     /* AttrGroup.Sselect */
     {
       node  	[fillcolor="lightyellow"];
       onesver	[label="Версия"];
       v7part	[label="Тип"];
+      v7cfgtype	[label="Тип"];
       v8part	[label="Тип"];
       year	[label="Год"];
       quarter	[label="Квартал"];
+      os	[label="ОС"];
     }
   }
   /* AttrItem */
   {
     node  	[shape="rectangle", style="rounded, filled", fillcolor="white"];
-    ones	[label="1С"];
     v7		[label="7.7"];
     v7cfg	[label="Конфигурация"];
+    v7A		[label="Бухгалтерия"];
+    v7E		[label="Предприниматель"];
+    v7S		[label="ЗиК"];
+    v7T		[label="ТиС"];
+    v7U		[label="УСН"];
     v7rpt	[label="Отчетность"];
     v8		[label="8.x"];
     v8platf	[label="Платформа"];
@@ -47,9 +52,9 @@ graph DasArchive {
   }
   /* go */
   /* 1. AttrGroup definitions */
-  n0		-- { ftype; };
   onesver	-- { v7; v8; }
   v7part	-- { v7cfg; v7rpt; }
+  v7cfgtype	-- { v7A; v7E; v7S; v7T; v7U; };
   v8part	-- { v8platf; v8cfg; }
   year		-- { year2010; year2011; year2012; year2013; };
   quarter	-- { quarter1; quarter2; quarter3; quarter4; };
@@ -57,29 +62,12 @@ graph DasArchive {
   /* 2. AttrItem's groups */
   {
     edge	[style="dashed"];
-    ones	-- { onesver; };
+    n0		-- { onesver; };
     v7		-- { v7part; };
+    v7cfg	-- { v7cfgtype; };
+    v7rpt	-- { v7cfgtype; year; quarter; };
     v8		-- { v8part; };
+    v8platf	-- { os; };
   }
   /* 3. AttrItem Hierarchy */
-  ftype		-- { ones; };
 }
-/*
-Complex hw:
-- MB
-- Notebook
-- MFU
-HW Vendor
-
-= App type: =
-web-browser
-mailer
-archiver
-antivirus
-editor
-filemanager
-imageviewer
-office suite
-ocr
-sysutil (undelete; registry; partition; sysinfo)
-*/
