@@ -1,0 +1,94 @@
+graph DasArchive {
+  overlap="false";
+  rankdir="LR";
+  /* defaults */
+  {
+    node  	[shape="circle", style="filled", fillcolor="grey"];
+    n0		[label="ftp"];
+  }
+  /* AttrGroup */
+  {
+    node  	[shape="ellipse", style="filled"];
+    /* AttrGroup.Mselect */
+    {
+      node  	[fillcolor="lightgreen"];
+      os	[label="ОС"];
+      hwtype	[label="HW type"];
+      artist	[label="Исполнитель"];
+      genre	[label="Жанр"];
+    }
+    /* AttrGroup.Sselect */
+    {
+      node  	[fillcolor="lightyellow"];
+      ftype	[label="Тип"];
+      vendor	[label="Vendor"];
+      hwmodel	[label="HW model"];
+      mediatype	[label="Тип"];
+    }
+  }
+  /* AttrItem */
+  {
+    node  	[shape="rectangle", style="rounded, filled", fillcolor="white"];
+    app		[label="Программа"];
+    windows	[label="Windows"];
+    linux	[label="Linux"];
+    driver	[label="Driver"];
+    hwchipset	[label="Chipset"];
+    hwnic	[label="NIC"];
+    hwvideo	[label="Video"];
+    hwaudio	[label="Audio"];
+    hwprinter	[label="Printer"];
+    hwscanner	[label="Scanner"];
+    hwups	[label="UPS"];
+    hwmodem	[label="Modem"];
+    hwtoken	[label="Токен"];
+    vendor1	[label="Intel"];
+    vendor2	[label="AMD"];
+    vendor3	[label="VIA"];
+    vendor4	[label="Nvidia"];
+    vendor5	[label="SiS"];
+    vendor6	[label="S3"];
+    book	[label="Книга"];
+    media	[label="Media"];
+    image	[label="Image"];
+    video	[label="Video"];
+    audio	[label="Audio"];
+  }
+  /* go */
+  /* 1. AttrGroup definitions */
+  n0		-- { ftype; };
+  mediatype	-- { image; video; audio; };
+  os		-- { windows; linux; };
+  vendor	-- { vendor1; vendor2; vendor3; vendor4; vendor5; vendor6; };
+  hwtype	-- { hwchipset; hwnic; hwvideo; hwaudio; hwprinter; hwscanner; hwups; hwmodem; hwtoken; };
+  /* 2. AttrItem's groups */
+  {
+    edge	[style="dashed"];
+    media	-- { mediatype; };
+    audio	-- { artist; genre; };
+    app		-- { os; vendor; };
+    driver	-- { hwtype; hwmodel; };
+  }
+  /* 3. AttrItem Hierarchy */
+  ftype		-- { app; book; media; };
+  app		-- { driver; };
+}
+/*
+Complex hw:
+- MB
+- Notebook
+- MFU
+HW Vendor
+
+= App type: =
+web-browser
+mailer
+archiver
+antivirus
+editor
+filemanager
+imageviewer
+office suite
+ocr
+sysutil (undelete; registry; partition; sysinfo)
+*/
