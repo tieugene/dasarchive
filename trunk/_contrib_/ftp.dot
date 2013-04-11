@@ -1,4 +1,4 @@
-graph DasArchive {
+graph ftp {
   overlap="false";
   rankdir="LR";
   /* defaults */
@@ -75,9 +75,10 @@ graph DasArchive {
 }
 /*
 Complex hw:
-- MB
+- desktop
 - Notebook
 - MFU
+- MB
 HW Vendor
 
 = App type: =

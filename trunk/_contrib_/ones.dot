@@ -1,4 +1,4 @@
-graph DasArchive {
+graph ones {
   overlap="false";
   rankdir="LR";
   /* defaults */
