@@ -1,0 +1,289 @@
+PROPFIND /trash HTTP/1.1
+Depth: 0
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+
+HTTP/1.1 301 Moved Permanently
+Date: Tue, 28 Aug 2012 09:37:23 GMT
+Server: Apache/2.2.22 (Fedora)
+Location: http://192.168.0.38/trash/
+Content-Length: 312
+Connection: close
+Content-Type: text/html; charset=iso-8859-1
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://192.168.0.38/trash/">here</a>.</p>
+<hr>
+<address>Apache/2.2.22 (Fedora) Server at 192.168.0.38 Port 80</address>
+</body></html>
+
+PROPFIND /trash/ HTTP/1.1
+Depth: 0
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+
+HTTP/1.1 207 Multi-Status
+Date: Tue, 28 Aug 2012 09:37:23 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 843
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version="1.0" encoding="utf-8"?>
+<D:multistatus xmlns:D="DAV:">
+<D:response xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+<D:href>/trash/</D:href>
+<D:propstat>
+<D:prop>
+<lp1:resourcetype><D:collection/></lp1:resourcetype>
+<lp1:creationdate>2012-08-28T07:08:28Z</lp1:creationdate>
+<lp1:getlastmodified>Tue, 28 Aug 2012 07:08:28 GMT</lp1:getlastmodified>
+<lp1:getetag>"3f401-1000-4c84e1bedfd45"</lp1:getetag>
+<D:supportedlock>
+<D:lockentry>
+<D:lockscope><D:exclusive/></D:lockscope>
+<D:locktype><D:write/></D:locktype>
+</D:lockentry>
+<D:lockentry>
+<D:lockscope><D:shared/></D:lockscope>
+<D:locktype><D:write/></D:locktype>
+</D:lockentry>
+</D:supportedlock>
+<D:lockdiscovery/>
+<D:getcontenttype>httpd/unix-directory</D:getcontenttype>
+</D:prop>
+<D:status>HTTP/1.1 200 OK</D:status>
+</D:propstat>
+</D:response>
+</D:multistatus>
+
+PROPFIND /trash HTTP/1.1
+Depth: 0
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+
+HTTP/1.1 301 Moved Permanently
+Date: Tue, 28 Aug 2012 09:37:23 GMT
+Server: Apache/2.2.22 (Fedora)
+Location: http://192.168.0.38/trash/
+Content-Length: 312
+Connection: close
+Content-Type: text/html; charset=iso-8859-1
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://192.168.0.38/trash/">here</a>.</p>
+<hr>
+<address>Apache/2.2.22 (Fedora) Server at 192.168.0.38 Port 80</address>
+</body></html>
+
+PROPFIND /trash/ HTTP/1.1
+Depth: 0
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+
+HTTP/1.1 207 Multi-Status
+Date: Tue, 28 Aug 2012 09:37:23 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 843
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version="1.0" encoding="utf-8"?>
+<D:multistatus xmlns:D="DAV:">
+<D:response xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+<D:href>/trash/</D:href>
+<D:propstat>
+<D:prop>
+<lp1:resourcetype><D:collection/></lp1:resourcetype>
+<lp1:creationdate>2012-08-28T07:08:28Z</lp1:creationdate>
+<lp1:getlastmodified>Tue, 28 Aug 2012 07:08:28 GMT</lp1:getlastmodified>
+<lp1:getetag>"3f401-1000-4c84e1bedfd45"</lp1:getetag>
+<D:supportedlock>
+<D:lockentry>
+<D:lockscope><D:exclusive/></D:lockscope>
+<D:locktype><D:write/></D:locktype>
+</D:lockentry>
+<D:lockentry>
+<D:lockscope><D:shared/></D:lockscope>
+<D:locktype><D:write/></D:locktype>
+</D:lockentry>
+</D:supportedlock>
+<D:lockdiscovery/>
+<D:getcontenttype>httpd/unix-directory</D:getcontenttype>
+</D:prop>
+<D:status>HTTP/1.1 200 OK</D:status>
+</D:propstat>
+</D:response>
+</D:multistatus>
+
+PROPFIND /trash HTTP/1.1
+Depth: 1
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 301 Moved Permanently
+Date: Tue, 28 Aug 2012 09:37:23 GMT
+Server: Apache/2.2.22 (Fedora)
+Location: http://192.168.0.38/trash/
+Content-Length: 312
+Connection: close
+Content-Type: text/html; charset=iso-8859-1
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://192.168.0.38/trash/">here</a>.</p>
+<hr>
+<address>Apache/2.2.22 (Fedora) Server at 192.168.0.38 Port 80</address>
+</body></html>
+
+PROPFIND /trash/ HTTP/1.1
+Depth: 1
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 207 Multi-Status
+Date: Tue, 28 Aug 2012 09:37:23 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 2829
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version="1.0" encoding="utf-8"?>
+<D:multistatus xmlns:D="DAV:">
+<D:response xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+<D:href>/trash/</D:href>
+<D:propstat>
+<D:prop>
+<lp1:resourcetype><D:collection/></lp1:resourcetype>
+<lp1:creationdate>2012-08-28T07:08:28Z</lp1:creationdate>
+<lp1:getlastmodified>Tue, 28 Aug 2012 07:08:28 GMT</lp1:getlastmodified>
+<lp1:getetag>"3f401-1000-4c84e1bedfd45"</lp1:getetag>
+<D:supportedlock>
+<D:lockentry>
+<D:lockscope><D:exclusive/></D:lockscope>
+<D:locktype><D:write/></D:locktype>
+</D:lockentry>
+<D:lockentry>
+<D:lockscope><D:shared/></D:lockscope>
+<D:locktype><D:write/></D:locktype>
+</D:lockentry>
+</D:supportedlock>
+<D:lockdiscovery/>
+<D:getcontenttype>httpd/unix-directory</D:getcontenttype>
+</D:prop>
+<D:status>HTTP/1.1 200 OK</D:status>
+</D:propstat>
+</D:response>
+<D:response xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:" xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+<D:href>/trash/borsch.txt</D:href>
+<D:propstat>
+<D:prop>
+<ns1:Win32CreationTime>Mon, 27 Aug 2012 18:34:14 GMT</ns1:Win32CreationTime>
+<ns1:Win32LastAccessTime>Tue, 28 Aug 2012 07:08:28 GMT</ns1:Win32LastAccessTime>
+<ns1:Win32LastModifiedTime>Mon, 27 Aug 2012 18:34:14 GMT</ns1:Win32LastModifiedTime>
+<ns1:Win32FileAttributes>00000020</ns1:Win32FileAttributes>
+<lp1:resourcetype/>
+<lp1:creationdate>2012-08-28T07:08:28Z</lp1:creationdate>
+<lp1:getcontentlength>453</lp1:getcontentlength>
+<lp1:getlastmodified>Tue, 28 Aug 2012 07:08:28 GMT</lp1:getlastmodified>
+<lp1:getetag>"3f2ef-1c5-4c84e1bee10cd"</lp1:getetag>
+<lp2:executable>F</lp2:executable>
+<D:supportedlock>
+<D:lockentry>
+<D:lockscope><D:exclusive/></D:lockscope>
+<D:locktype><D:write/></D:locktype>
+</D:lockentry>
+<D:lockentry>
+<D:lockscope><D:shared/></D:lockscope>
+<D:locktype><D:write/></D:locktype>
+</D:lockentry>
+</D:supportedlock>
+<D:lockdiscovery/>
+<D:getcontenttype>text/plain</D:getcontenttype>
+</D:prop>
+<D:status>HTTP/1.1 200 OK</D:status>
+</D:propstat>
+</D:response>
+<D:response xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+<D:href>/trash/Canon_Scanner.pdf</D:href>
+<D:propstat>
+<D:prop>
+<lp1:resourcetype/>
+<lp1:creationdate>2012-08-27T18:34:20Z</lp1:creationdate>
+<lp1:getcontentlength>65079</lp1:getcontentlength>
+<lp1:getlastmodified>Mon, 27 Aug 2012 18:34:20 GMT</lp1:getlastmodified>
+<lp1:getetag>"3f61f-fe37-4c84392f3a350"</lp1:getetag>
+<lp2:executable>F</lp2:executable>
+<D:supportedlock>
+<D:lockentry>
+<D:lockscope><D:exclusive/></D:lockscope>
+<D:locktype><D:write/></D:locktype>
+</D:lockentry>
+<D:lockentry>
+<D:lockscope><D:shared/></D:lockscope>
+<D:locktype><D:write/></D:locktype>
+</D:lockentry>
+</D:supportedlock>
+<D:lockdiscovery/>
+<D:getcontenttype>application/pdf</D:getcontenttype>
+</D:prop>
+<D:status>HTTP/1.1 200 OK</D:status>
+</D:propstat>
+</D:response>
+</D:multistatus>
+
+PROPFIND /trash/desktop.ini HTTP/1.1
+Depth: 0
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+
+HTTP/1.1 404 Not Found
+Date: Tue, 28 Aug 2012 09:37:23 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 293
+Connection: close
+Content-Type: text/html; charset=iso-8859-1
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL /trash/desktop.ini was not found on this server.</p>
+<hr>
+<address>Apache/2.2.22 (Fedora) Server at 192.168.0.38 Port 80</address>
+</body></html>

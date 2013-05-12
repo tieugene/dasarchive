@@ -1,0 +1,15 @@
+= py binds =
+
+== neo4j-embedded ==
+too old (1.6 vs 1.9-M04) and unsupportable (last commit 23.01.2012); github is 404.
+Resume: RIP
+
+== neo4j-rest-client ==
+rpm build ok but need lucene to work.
+Resume: RIP
+
+== py2neo ==
+rpm ok. test ok
+
+== bulbflow ==
+rpm ok. test ok

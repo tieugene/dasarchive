@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block main %}
+<h1> <a href="{% url index %}"> WebDAV demo </a> </h1>
+<h2> Index of /{{ path }}: </h2>
+{% if path %}
+<p> <a href=".."> .. </a> </p>
+{% endif %}
+<table border="1">
+<tr>
+	<th/>
+	<th> Name </th>
+	<th> Size </th>
+	<th> Links </th>
+	<th> Comment </th>
+</tr>
+{% for i in data %}
+<tr>
+{% if i.isdir %}
+	<td> D </td>
+	<td> <a href="{% url listdir i.path %}/"> {{ i.name }} </a> </td>
+	<td/>
+	<td/>
+{% else %}
+	<td> F </td>
+	<td> <a href="{% url edit i.path %}"> {{ i.name }} </a> </td>
+	<td align="right"> {{ i.stat.st_size }} </td>
+	<td>
+		[<a href="webdav://{{ i.dav }}" title="KDE Konqueror"> K </a>]
+		[<a href="dav://{{ i.dav }}" title="El"> G </a>]
+		[<a href="file://///{{ i.dav }}" title="Windows"> W </a>]
+	</td>
+	<td> {{ i.comment }} </td>
+{% endif %}
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

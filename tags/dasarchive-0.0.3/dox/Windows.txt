@@ -1,0 +1,28 @@
+win xp pro sp2
+product key: D9M4K-VF6GM-TCG3M-C9YM3-G2M28
+№00044-073-495-767
+(неведомая фигня) 9PF-00084
+сейчас у бухов уточню кто покупал
+[10:45:57] <bagkib@gmail.com> 11,04,08 Центргазсервис-СПб, полное название: "Windows XP Professional Версия для лицензирования установленной операционной системы"
+
+= Slow WebFolder =
+== Handmade ==
+* Add http://server:80/trash/ - read only
+* Master browser on: X
+* NetBIOS on: X
+* Open by Word as WebFolder - ошибка записи, создает еще один ярлык
+== Bad ==
+* http://support.microsoft.com/kb/287402/en-us - хрень какая-то... в основном - об MSO2000
+* http://www.pcreview.co.uk/forums/slug-slow-xp-network-response-solution-t233613p3.html - 2004, for server
+* http://support.microsoft.com/kb/328890/en-us - см. пред.
+* http://social.technet.microsoft.com/Forums/en-US/sharepointgeneral/thread/57916b27-149a-470a-a5c9-c57baf1e75ed/ - not solved
+* http://dotkoyi.blogspot.com/2006/10/setting-up-windows-xp-sp2-as-webdav.html - .../~ etc - включает старый webfolder
+* http://www.microsoft.com/en-us/download/details.aspx?id=15123 - 2007 год, old webfolder
+* http://greenbytes.de/tech/webdav/webfolder-client-list.html - old style webfolder; hotfix works; nobody but MSO can use webfolder
+* http://www.microsoft.com/en-us/download/details.aspx?id=15123 - webfolder fix
+* http://greenbytes.de/tech/webdav/webdav-redirector-list.html - new miniredir
+* http://code.google.com/p/sabredav/wiki/Windows - start
+
+Вывод:
+    * монтировать вебдрайвом на диск
+    * file:///Z:...

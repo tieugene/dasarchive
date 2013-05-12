@@ -1,0 +1,11 @@
+$def with(nodes)
+
+$var title: Person list
+$var jsready: $$('#tm_core').addClass('active');
+
+<center> <a href="/core/"> Core </a> </center>
+<p> <a href="/person_add/"> Add </a> </p>
+<ul>
+$for node in nodes:
+	<li> $node[0].id </li>
+</ul>

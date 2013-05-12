@@ -1,0 +1,16 @@
+<!-- File -->
+{% extends "base.html" %}
+{% block body_main %}
+<form action="" method="POST">
+	{% csrf_token %}
+	{% if path %} <p> Path: <input type="text" name="path" readonly="readonly" value="{{ path }}"/> </p> {% endif %}
+	<table>
+		<caption>
+			<p> {% if mode %} Новый файл {% else %} Редактировать Файл {% endif %} </p>
+		</caption>
+		{{ form.as_table }}
+	</table>
+	<button type="submit"> Записать </button>
+	<a href="{% if path %}{% url views.inbox '' %}{% else %}{% url file_detail object.pk %}{% endif %}"> <button type="button"> Отказаться </button> </a>
+</form>
+{% endblock %}

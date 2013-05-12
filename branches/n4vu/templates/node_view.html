@@ -1,0 +1,62 @@
+$def with(node, pform, rform)
+$def field_td(v):
+	<td> $:v.render() <br/> $:v.note </td>
+
+<p> Node #$node.id: (<a href="/node/$node.id/del/"> <button type="button" title="Delete this node"> - </button> </a>) </p>
+<table>
+<caption> Properties: </caption>
+<tr>
+	<td>
+		<table>
+		<tr> <th> Name </th> <th> Type </th> <th> Value </th> <th/> </tr>
+		<tr> <td> id </td> <td> int </td> <td> $node.id </td> <td/> </tr>
+		<tr> <td> url </td> <td> str </td> <td> <a href="$node.url"> url </a> </td> <td/> </tr>
+		$for p in node.properties:
+			<tr>
+				<td> $p </td>
+				<td> ? </td>
+				<td> $node.properties[p] </td>
+				<td> <a href="/node/$node.id/pdel/$p"> <button type="button" title="Delete this property"> - </button> </a> </td>
+			</tr>
+		</table>
+	</td>
+	<td>
+		<form method="post" action="/node/$node.id/padd/">
+		$:pform.render()
+		<button type="submit"> + </button>
+		</form>
+	</td>
+</tr>
+</table>
+
+<table>
+<caption> Relation: </caption>
+<tr>
+	<td>
+		<table>
+		<tr> <th> Dir </th> <th> Relation </th> <th> Sibling </th> <th/> </tr>
+		$for r in node.relationships.incoming():
+			<tr>
+				<td align="center"> &lt; </td>
+				<td> <a href="/rel/$r.id/"> $r.type </a> </td>
+				<td align="center"> <a href="/node/$r.start.id/"> $r.start.id </a> </td>
+				<td> <a href="/node/$node.id/rdel/$r.id/"> <button type="button" title="Delete this relation"> - </button> </a> </td>
+			</tr>
+		$for r in node.relationships.outgoing():
+			<tr>
+				<td align="center"> &gt; </td>
+				<td> <a href="/rel/$r.id/"> $r.type </a> </td>
+				<td align="center"> <a href="/node/$r.end.id/"> $r.end.id </a> </td>
+				<td> <a href="/node/$node.id/rdel/$r.id/"> <button type="button" title="Delete this relation"> - </button> </a> </td>
+			</tr>
+		<tr>
+		</table>
+	</td>
+	<td>
+		<form method="post" action="/node/$node.id/radd/">
+		$:rform.render()
+		<button type="submit"> + </button>
+		</form>
+	</td>
+</tr>
+</table>

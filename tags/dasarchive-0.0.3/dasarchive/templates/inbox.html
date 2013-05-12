@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %} Входящие {% endblock %}
+{% block jsready %}
+$("#tm_inbox").addClass("active");
+{% endblock %}
+{% block body_main %}
+<p> <em> Для перехода в верхний уровень нажмите педаль "домик". <br/> На уровень выше текущего - на педаль соответствующей папки. </em> </p>
+<p>
+{% if path %}
+	<a href="{% url views.inbox '' %}"> <button type="button"> <img src="{{ STATIC_URL }}img/go-home.png" alt="Home"/> </button> </a>
+	{% for p in pathurls %}
+		/ {{ p|safe }}
+	{% endfor %}
+{% else %}
+&nbsp;
+{% endif %}
+</p>
+{% if data %}
+<table class="bt bl" style="border-collapse: collapse">
+ <tr class="bold center bb">
+  <td class="bold center bb"> &nbsp; </td>
+  <td class="bold center bb"> Name </td>
+  <td class="bold center bb"> Size </td>
+  <!--td class="bold center bb"> Mtime </td>
+  <td class="bold center bb"> Ctime </td-->
+ </tr>
+{% for k, v in data.iteritems %}
+ <tr class="{% cycle 'even' 'odd' %}">
+{% if v.isdir %}
+  <td class="bb br"> <img src="{{ STATIC_URL }}img/folder.png" alt="folder" title="Папка"/> </td>
+  <td class="bb br" colspan="2"> <a href="{% url views.inbox v.path %}"> {{ k }} </a> </td>
+{% else %}
+  <td class="bb br"> <a href="{% url views.file_add v.path %}" title="Add to archive"> <img src="{{ STATIC_URL }}img/list-add.png" alt="folder" title="Папка"/> </td>
+  <td class="bb br"> <a href="{% url views.inbox v.path %}"> {{ k }} </a> </td>
+  <td class="bb br right"> {{ v.size }} </td>
+{% endif %}
+  <!--td class="bb br"> {{ v.mtime|date:"Y-m-d H:i:s" }} </td>
+  <td class="bb br"> {{ v.ctime|date:"Y-m-d H:i:s" }} </td-->
+ </tr>
+{% endfor %}
+</table>
+{% else %}
+<p> Нет ништо </p>
+{% endif %}
+{% endblock %}

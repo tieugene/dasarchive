@@ -1,0 +1,168 @@
+PROPFIND /ftp/folder1 HTTP/1.1
+Content-Language: en-us
+Accept-Language: ru, en-us;q=0.2
+Content-Type: text/xml
+Translate: f
+Depth: 0
+Content-Length: 0
+User-Agent: Microsoft Data Access Internet Publishing Provider DAV
+Host: 192.168.0.2
+Connection: Keep-Alive
+
+
+HTTP/1.1 207 Multi-Status
+Date: Fri, 03 Aug 2012 06:21:35 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 850
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:multistatus xmlns:D="DAV:">
+        <D:response xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/ftp/folder1/</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <lp1:resourcetype>
+                                        <D:collection/>
+                                </lp1:resourcetype>
+                                <lp1:creationdate>2012-08-03T06:07:57Z</lp1:creationdate>
+                                <lp1:getlastmodified>Fri, 03 Aug 2012 06:07:57 GMT</lp1:getlastmodified>
+                                <lp1:getetag>"4627cc-1000-4c6565976ed50"</lp1:getetag>
+                                <D:supportedlock>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:exclusive/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:shared/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                </D:supportedlock>
+                                <D:lockdiscovery/>
+                                <D:getcontenttype>httpd/unix-directory</D:getcontenttype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+</D:multistatus>
+
+
+PROPFIND /ftp/folder1 HTTP/1.1
+Content-Language: en-us
+Accept-Language: ru, en-us;q=0.2
+Content-Type: text/xml
+Translate: f
+Depth: 1
+Content-Length: 489
+User-Agent: Microsoft Data Access Internet Publishing Provider DAV
+Host: 192.168.0.2
+Connection: Keep-Alive
+
+<?xml version='1.0' encoding='UTF-8'?>
+<a:propfind xmlns:a="DAV:" xmlns:b="urn:schemas-microsoft-com:datatypes">
+        <a:prop>
+                <a:name/>
+                <a:parentname/>
+                <a:href/>
+                <a:ishidden/>
+                <a:isreadonly/>
+                <a:getcontenttype/>
+                <a:contentclass/>
+                <a:getcontentlanguage/>
+                <a:creationdate/>
+                <a:lastaccessed/>
+                <a:getlastmodified/>
+                <a:getcontentlength/>
+                <a:iscollection/>
+                <a:isstructureddocument/>
+                <a:defaultdocument/>
+                <a:displayname/>
+                <a:isroot/>
+                <a:resourcetype/>
+        </a:prop>
+</a:propfind>
+
+HTTP/1.1 207 Multi-Status
+Date: Fri, 03 Aug 2012 06:21:35 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 1751
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:multistatus xmlns:D="DAV:" xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:datatypes">
+        <D:response xmlns:g0="DAV:" xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/ftp/folder1/</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <D:getcontenttype>httpd/unix-directory</D:getcontenttype>
+                                <lp1:creationdate>2012-08-03T06:07:57Z</lp1:creationdate>
+                                <lp1:getlastmodified>Fri, 03 Aug 2012 06:07:57 GMT</lp1:getlastmodified>
+                                <lp1:resourcetype>
+                                        <D:collection/>
+                                </lp1:resourcetype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+                <D:propstat>
+                        <D:prop>
+                                <g0:name/>
+                                <g0:parentname/>
+                                <g0:href/>
+                                <g0:ishidden/>
+                                <g0:isreadonly/>
+                                <g0:contentclass/>
+                                <g0:getcontentlanguage/>
+                                <g0:lastaccessed/>
+                                <g0:getcontentlength/>
+                                <g0:iscollection/>
+                                <g0:isstructureddocument/>
+                                <g0:defaultdocument/>
+                                <g0:displayname/>
+                                <g0:isroot/>
+                        </D:prop>
+                        <D:status>HTTP/1.1 404 Not Found</D:status>
+                </D:propstat>
+        </D:response>
+        <D:response xmlns:g0="DAV:" xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/ftp/folder1/test.txt</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <D:getcontenttype>text/plain</D:getcontenttype>
+                                <lp1:creationdate>2012-08-03T06:07:57Z</lp1:creationdate>
+                                <lp1:getlastmodified>Thu, 15 Sep 2011 17:36:51 GMT</lp1:getlastmodified>
+                                <lp1:getcontentlength>50928</lp1:getcontentlength>
+                                <lp1:resourcetype/>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+                <D:propstat>
+                        <D:prop>
+                                <g0:name/>
+                                <g0:parentname/>
+                                <g0:href/>
+                                <g0:ishidden/>
+                                <g0:isreadonly/>
+                                <g0:contentclass/>
+                                <g0:getcontentlanguage/>
+                                <g0:lastaccessed/>
+                                <g0:iscollection/>
+                                <g0:isstructureddocument/>
+                                <g0:defaultdocument/>
+                                <g0:displayname/>
+                                <g0:isroot/>
+                        </D:prop>
+                        <D:status>HTTP/1.1 404 Not Found</D:status>
+                </D:propstat>
+        </D:response>
+</D:multistatus>
+

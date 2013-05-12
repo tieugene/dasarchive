@@ -1,0 +1,9 @@
+0. create database: sqlite3 solo.db < _contrib_/okved.sql
+1. add deps:
+	* python-webpy
+	* python-requests
+	* pyPdf
+2. sudo cp * /usr/share/solo/
+3. sudo ln -s /usr/share/solo/solo.conf /etc/httpd/conf.d/solo.conf
+4. sudo service httpd restart
+5. http://localhost/solo/

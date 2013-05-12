@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block main %}
+<h1 align="center"> DAV demo </h1>
+<p> Демонстрация совмещения web-ui и прямого доступа к файлам по протоколу WebDAV. </p>
+<p> Порядок действий: </p>
+<ol>
+	<li> Windows: <ul>
+		<li> Добавить <a href="http://{{ dav }}"> этот </a> ресурс в сетевое окружение (Сетевое окружение - Добавить новое место - вставить ссылку - Ok, Ok) </li>
+		<li> <a href="http://www.websina.com/bugzero/kb/browser-file-url.html"> Уговорить </a> (может и <a href="http://kb.mozillazine.org/Security.fileuri.strict_origin_policy"> этим </a>) браузер открывать ссылки file:// </li>
+	</ul> </li>
+	<li> Заходим файлменеджером в WebDAV-ресурс:
+		<a href="webdav://{{ dav }}"> KDE Dolphin </a>,
+		<a href="dav://{{ dav }}"> GNOME Nautilus </a>,
+		<a href="file://///{{ dav }}"> Windows &reg; Explorer </a>
+	</li>
+	<li> Копируем туда файлы со своего компьютера. </li>
+	<li> Открываем <a href="{% url listdir '' %}"> ссылку </a> в Konqueror (KDE), Epifany (GNOME) или Firefox (Microsoft &reg; Windows &reg;) соответственно. </li>
+	<li> Добавляем/изменяем/удаляем "comment". </li>
+	<li> Открываем файлы по прямой WebDAV-ссылке. </li>
+</ol>
+{% endblock %}

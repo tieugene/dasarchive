@@ -1,0 +1,16 @@
+OPTIONS /inbox/ HTTP/1.1
+Keep-Alive: 
+Connection: TE, Keep-Alive
+TE: trailers
+Host: localhost
+
+HTTP/1.1 200 OK
+Date: Tue, 14 Aug 2012 08:44:03 GMT
+Server: Apache/2.2.22 (Fedora)
+DAV: 1,2
+DAV: <http://apache.org/dav/propset/fs/1>
+MS-Author-Via: DAV
+Allow: OPTIONS,GET,HEAD,POST,DELETE,TRACE,PROPFIND,PROPPATCH,COPY,MOVE,LOCK,UNLOCK
+Content-Length: 0
+Connection: close
+Content-Type: httpd/unix-directory

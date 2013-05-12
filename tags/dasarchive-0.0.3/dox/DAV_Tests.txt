@@ -1,0 +1,43 @@
+= How =
+tcpdump -i lo -n -nn -vvv -w - 'host 127.0.0.1 and port 80'
+tcpdump -i eth0 -n -nn -vvv -w - 'port 80'
+= Who =
+* Dolphin: Mozilla/5.0 (X11) KHTML/4.8.4 (like Gecko) Konqueror/4.8 Fedora/4.8.4-8.fc17
+* Nautilus: gvfs/1.12.3
+* Windows: Microsoft Data Access Internet Publishing Provider DAV
+	(tcpdump -i eth0 -n -nn -vvv -w windows_root.txt '(src host 192.168.0.3 and dst port 80) or (dst host 192.168.0.3 and src port 80)')
+= What =
+1. ls / (empty) - *_root.*
+	Dolphin: 1 PROPFIND
+	Nautilus: 8 x PROFIND
+	Windows: 1 x PROFIND
+
+2. ls /subfolder (w/ test.txt - 50928 bytes)
+webdav://localhost/ftp/folder1/
+
+3. get test.txt
+Dolphin:
+	* 1. добавляет / в конец файла => надо открывать folder, а не файл
+	* 2. Juffed редактирует, но не записывает
+http://welinux.ru/post/2573/
+Вывод:
+	* во всех случаях - монтировать: linux - fuse, windows - netdrive? (свой miniredir глючит)
+4. put test.txt
+====
+afuse
+wdfs http://localhost/ftp/ ~/FUSE/DAV
+! Но juffed создает откаты; LO - тоже
+
+So - oriented on:
+	* Linux: wdfs (wdfs http://localhost/ftp/ ~/FUSE/DAV => fusermount -u /mnt/shares/home/eugene/FUSE/DAV)
+	* Windows XP: net use / Подключить сетевой диск
+	* MacOS: Connect... (http://)
+= Tests =
+* Для Epiphany нужно хотя бы раз хоть одну dav-ссылку открыть в наутилусе. Дальше всё будет автоматом
+* Konqueror - работает только kde-based приложения; Nautilus - тоже
+* opera - ёк
+* chromium - ёк
+* Windows (встроенное) не может подключить диск к ресурсу НЕ из корня
+* firefox: webdav - использовать konqueror или dolphin (только папки); dav - прямая ссылка работает как кривая
+
+* если мапить на локальный ресурс (wdfs, Windows) - многие приложения работают по-другому (создают откатные копии, локи etc)

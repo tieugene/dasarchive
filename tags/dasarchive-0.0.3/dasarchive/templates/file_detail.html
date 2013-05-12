@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %} {{ object.name }} {% endblock %}
+{% block jsready %}
+$("#tm_files").addClass("active");
+{% endblock %}
+{% block css %}
+    .grey {background-color: #F0F0F0;}
+{% endblock %}
+{% block body_main %}
+<a href="{% url file_edit object.pk %}?next={% url file_detail object.pk %}"> <img src="{{ STATIC_URL }}img/document-edit.png" alt="edit" title="Редактировать" style="border: 1px solid silver"/> </a>
+{% if object.deleted %}
+ <a href="{% url file_undelete object.pk %}"> <img src="{{ STATIC_URL }}img/edit-undo.png" alt="restore" title="Восстановить" style="border: 1px solid silver"/> </a>
+{% else %}
+ <a href="{% url file_delete object.pk %}"> <img src="{{ STATIC_URL }}img/edit-clear.png" alt="hide" title="Скрыть" style="border: 1px solid silver"/> </a>
+{% endif %}
+{% if user.is_authenticated %}
+ <a href="{% url file_remove object.pk %}"> <img src="{{ STATIC_URL }}img/edit-delete.png" alt="delete" title="Удалить" style="border: 1px solid silver"/> </a>
+{% endif %}
+<a href="{% url file_download object.pk %}"> <img src="{{ STATIC_URL }}img/download.png" alt="download" title="Скачать" style="border: 1px solid silver"/> </a>
+{% if dav_url %}
+ <a href="{{ dav_url }}"> <img src="{{ STATIC_URL }}img/document-open.png" alt="open" title="Открыть" style="border: 1px solid silver"/> </a>
+{% endif %}
+{% if not dav_url %}
+<i> <font size="-1">
+{% if os == 'Windows' %} (Вам лучше воспользоваться Mozilla FireFox или Microsoft&reg; Internet Explorer&reg;.)
+{% elif os == 'Linux' %} (Вам лучше воспользоваться Konqueror или Epyphany)
+{% else %} (Вам лучше воспользоваться ОС GNU/Linux или Microsoft&reg; Windows&reg;.)
+{% endif %}
+</font> </i>
+{% endif %}
+<div>
+<fieldset>
+ <legend> Основные данные </legend>
+ <table>
+  <tr class="grey"> <td> Наименование: </td> <td> {{ object.name }} </td> </tr>
+  <tr> <td> Коментарий: </td> <td> {{ object.comment }} </td> </tr>
+  <tr class="grey"> <td> Теги: </td> <td>
+  {% for tag in object.tags.all %}
+   <p style="color: {{ tag.get_fgcolor_html }};background-color: {{ tag.get_bgcolor_html }};"> {{ tag.name }} {% if tag.comment %} <i> ({{ tag.comment }})</i> {% endif %} </p>
+  {% endfor %}
+  </td> </tr>
+  <tr> <td> Файл: </td> <td> {{ object.fname }} </td> </tr>
+  <tr> <td> Размер: </td> <td title="байт"> {{ object.size }} </td> </tr>
+  <tr> <td> Удален: </td> <td> {% if object.deleted %} + {% else %} - {% endif %} </td> </tr>
+  </table>
+</fieldset>
+</div>
+<div>
+<fieldset>
+ <legend> Техническая информация </legend>
+ <table>
+  <tr> <td> Создан </td> <td> {{ object.ctime|date:"Y-m-d H:i:s" }} </td> </tr>
+  <tr> <td> Изменен </td> <td> {{ object.mtime|date:"Y-m-d H:i:s" }} </td> </tr>
+  <tr> <td> Изменена запись </td> <td> {{ object.updated|date:"Y-m-d H:i:s" }} </td> </tr>
+  <tr> <td> Тип </td> <td> {{ object.mime }} </td> </tr>
+  <tr> <td> MD5 </td> <td> {{ object.md5 }} </td> </tr>
+ </table>
+</fieldset>
+</div>
+{% endblock %}

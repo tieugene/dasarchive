@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block jsready %}
+$("#tm_index").addClass("active");
+{% endblock %}
+{% block body_main %}
+<h1> DasArchive </h1>
+<dl>
+	<dt> Описание </dt>
+		<dd> Система управления файлопомойкой </dd>
+	<dt> Назначение:  </dt>
+		<dd> Долговременное хранилище большого количества важных файлов </dd>
+	<dt> А именно:  </dt>
+		<dd> + быстро залить </dd>
+		<dd> - медленно рассортировать </dd>
+		<dd> + быстро найти </dd>
+		<dd> + быстро открыть </dd>
+		<dd> + быстро записать </dd>
+</dl>
+<p> Порядок действий: </p>
+<ol>
+<li> Заходим файлменеджером в WebDAV-ресурс для входящих файлов:
+	<a href="webdav://dox.eap.su/inbox/"> KDE Dolphin </a>,
+	<a href="dav://dox.eap.su/inbox/"> GNOME Nautilus </a>,
+	<a href="http://dox.eap.su/inbox/"> Windows </a> (Сетевое окружение - Добавить новое место - вставить эту ссылку - Ok, Ok)
+</li>
+<li> Мышкой оптом копируем/переносим туда файлы со своего компьютера. </li>
+<li> Идем в <a href="{% url views.inbox '' %}"> Inbox </a> - здесь видны наши залитые файлы. Добавляем их в хранилище, расставляя <em> Теги </em>. </li>
+<li> Идем в <a href="{% url file_list %}"> Файлы </a> - это файлы уже в хранилище. Фильтруем, редактируем, удаляем. У каждого файла будут ссылки для <u> прямого </u> доступа по протоколу WebDAV. </li>
+</ol>
+
+Примечания:
+<ul>
+<li> Linux: <ul>
+	<li> С Kоnqueror файлы надо открывать приложениями KDE, с Epiphany - приложениями GNOME </li>
+	<li> Epiphany работает нормально, но надо хотя бы один раз открыть dav-ссылку (папка любого файла) в Nautilus </li>
+	<li> FireFox можно научить перенаправлять webdav:// на dolphin или dav:// на nautilus (только папки файлов): <ul>
+		<li> about:config </li>
+		<li> "Я обещаю" </li>
+		<li> Правая педаль - Создать - Логическое - network.protocol-handler.expose.webdav - false </li>
+		<li> При первом же выборе ссылки webdav://... выбрать /usr/bin/dolphin (или konqueror) </li>
+		<li> Аналогично - dav и nautilus </li>
+	</ul> </li>
+</ul> </li>
+<li> Windows (доступ к файлам): <ul>
+	<li> Добавить <a href="{% url index %}"> эту </a> ссылку в Сетевое окружение (Сетвое окружение - новое место в сетевом окружении - ). </li>
+	<li> <a href="http://www.websina.com/bugzero/kb/browser-file-url.html"> Уговорить </a> браузер открывать ссылки file://. </li>
+	<li> Opera и Chrome не открывают, IE8 и FireFox - работают.  </li>
+</ul>
+
+{% endblock %}

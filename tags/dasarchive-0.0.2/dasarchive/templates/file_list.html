@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %} Файлы {% endblock %}
+{% block jsready %}
+$("#tm_files").addClass("active");
+{% endblock %}
+{% block js %}
+	<script type="text/javascript">
+		function selectAll() {
+			$("#filterForm input:checkbox").attr("checked","checked");
+		}
+		function deselectAll() {
+			$("#filterForm input:checkbox").removeAttr("checked");
+		}
+	</script>
+{% endblock %}
+{% block body_main %}
+<p> <i> Note: если не отмечены теги, то показаны файлы без тегов. Чтобы увидеть все файлы - установите OR и отметьте все теги (педаль +). Далее - по вкусу. </i> </p>
+<div class="table box">
+<div class="cell br">
+<div class="table">
+ <div class="row bold center">
+  <div class="cell br bb"> X </div>
+  <div class="cell br bb"> Name </div>
+  <div class="cell br bb"> Size </div>
+  <div class="cell br bb"> Mtime </div>
+  <div class="cell br bb"> Ctime </div>
+  <div class="cell bb"> Tags </div>
+ </div>
+{% for object in object_list %}
+ <div class="row bb {% cycle 'even' 'odd' %}">
+  <div class="cell br bb right"> {% if object.deleted %} X {% else %} &nbsp; {% endif %} </div>
+  <div class="cell br bb"> <a href="{% url file_detail object.pk %}" title="{{ object.comment }}"> {{ object }} </a> </div>
+  <div class="cell br bb right"> {{ object.size }} </div>
+  <div class="cell br bb"> {{ object.mtime|date:"Y-m-d H:i:s" }} </div>
+  <div class="cell br bb"> {{ object.ctime|date:"Y-m-d H:i:s" }} </div>
+  <div class="cell bb">
+	{% for tag in object.tags.all %}
+	<p style="color: {{ tag.get_fgcolor_html }};background-color: {{ tag.get_bgcolor_html }};"> {{ tag }} </p>
+	{% endfor %}
+  </div>
+ </div>
+{% endfor %}
+</div>
+</div>
+<div class="cell">
+<form id="filterForm" method="post" action=".">
+	{% csrf_token %}
+	<button type="submit" title="по ИЛИ"> Фильтровать </button>
+	<button type="button" onClick="selectAll()" title="Выделить все"> + </button>
+	<button type="button" onClick="deselectAll()" title="Снять все"> - </button>
+	{{ form.as_p }}
+</form>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load templatetags %}
+{% block title %} Файлы {% endblock %}
+{% block jsready %}
+    $("#tm_files").addClass("active");
+{% endblock %}
+{% block body_main %}
+<table> <tr>
+<td valign="top">
+<table class="bl br bt" style="border-collapse: collapse">
+ <tr class="bold center">
+  <td class="br bb"> № </td>
+  <td class="br bb"> X </td>
+  <td class="br bb"> Name </td>
+  <td class="br bb"> Size </td>
+  <td class="bb"> Tags </td>
+ </tr>
+{% for object in object_list %}
+ <tr class="bb {% cycle 'even' 'odd' %}">
+  <td class="br bb right"> {{ forloop.counter }} </td>
+  <td class="br bb right"> {% if object.deleted %} X {% else %} &nbsp; {% endif %} </td>
+  <td class="br bb"> <a href="{% url file_detail object.pk %}" title="{{ object.comment }}"> {{ object.name }} </a> </td>
+  <td class="br bb right"> {{ object.size }} </td>
+  <td class="bb">
+	{% for tag in object.tags.all %}
+	<p style="color: {{ tag.get_fgcolor_html }}; background-color: {{ tag.get_bgcolor_html }};"> {{ tag }} </p>
+	{% endfor %}
+  </td>
+ </tr>
+{% endfor %}
+{% endblock %}

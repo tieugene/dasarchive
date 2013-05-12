@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block main %}
+<form action="" method="POST">
+	{% csrf_token %}
+	<p> <input type="text" name="path" readonly="readonly" value="{{ path }}"/> </p>
+	{{ form.as_p }}
+	<button type="submit"> Записать </button>
+	<a href="{% url listdir path %}"> <button type="button"> Отказаться </button> </a>
+</form>
+{% endblock %}

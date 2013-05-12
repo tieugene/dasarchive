@@ -1,0 +1,23 @@
+$def with(rel, pform)
+
+<p> Relation #$rel.id: (<a href="/rel/$rel.id/del/"> <button type="button" title="Delete this relation"> x </button> </a>) </p>
+<table>
+<caption> Properties: </caption>
+<tr> <th> Name </th> <th> Type </th> <th> Value </th> <th/> </tr>
+<tr> <td> id </td> <td> int </td> <td> $rel.id </td> <th/> </tr>
+<tr> <td> type </td> <td> str </td> <td> $rel.type </td> <th/> </tr>
+<tr> <td> start </td> <td> Node </td> <td align="center"> <a href="/node/$rel.start.id/"> $rel.start.id </a> </td> <th/> </tr>
+<tr> <td> end   </td> <td> Node </td> <td align="center"> <a href="/node/$rel.end.id/"> $rel.end.id </a> </td> <th/> </tr>
+$for p in rel.properties:
+	<tr>
+		<td> $p </td>
+		<td> ? </td>
+		<td> $rel.properties[p] </td>
+		<td> <a href="/rel/$rel.id/pdel/$p"> <button type="button" title="Delete this property"> - </button> </a> </td>
+	</tr>
+</table>
+<table>
+<form method="post" action="/rel/$rel.id/padd/">
+$:pform.render()
+<button type="submit"> + </button>
+</form>

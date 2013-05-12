@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load templatetags %}
+{% block title %} Файлы {% endblock %}
+{% block jsready %}
+$("#tm_files").addClass("active");
+$('#filter input:checkbox').not(':checked').parent().parent().hide();
+$('#filter button').click(toggle_children);
+{% endblock %}
+{% block js %}
+	<script type="text/javascript">
+		function selectAll() {
+			$("#filterForm input:checkbox").attr("checked","checked");
+		}
+		function deselectAll() {
+			$("#filterForm input:checkbox").removeAttr("checked");
+		}
+		function toggle_children() {
+            // toggle children LIs: if hidden - show all; if all - hide unchecked
+            if ($(this).attr('value') == "0") { // if hidden - show all
+                $('td input:checkbox', $(this).parent().parent()).not(':checked').parent().parent().show();
+                $(this).text('-');
+                $(this).attr('value', '1');
+            } else {
+                $('td input:checkbox', $(this).parent().parent()).not(':checked').parent().parent().hide();
+                $(this).text('+');
+                $(this).attr('value', '0');
+            };
+            return false;
+		}
+	</script>
+{% endblock %}
+{% block css %}
+{# http://www.w3schools.com/cssref/css_selectors.asp #}
+{% for taggroup in taggroup_list %}
+    {% if taggroup.bgcolor %}
+        #filter_tags-tag{{ taggroup.pk }} { background-color: {{ taggroup.bgcolor|color }}; }
+    {% endif %}
+{% endfor %}
+{% endblock %}
+{% block body_main %}
+<p>
+    <a href="?page=1"> <img src="{{ STATIC_URL }}img/go-first.png" title="Начало" style="border: 1px solid silver"/> </a>
+    <a href="?page={{ object_list.previous_page_number }}"> <img src="{{ STATIC_URL }}img/go-previous.png" title="Назад" style="border: 1px solid silver"/> </a>
+    Page {{ object_list.number }}/{{ object_list.paginator.num_pages }}
+    <a href="?page={{ object_list.next_page_number }}"> <img src="{{ STATIC_URL }}img/go-next.png" title="Вперед" style="border: 1px solid silver"/> </a>
+    <a href="?page={{ object_list.paginator.num_pages }}"> <img src="{{ STATIC_URL }}img/go-last.png" title="Конец" style="border: 1px solid silver"/> </a>
+    Файлов по фильтру: {{ object_list.paginator.count }}
+</p>
+<table width="100%"> <tr>
+<td valign="top">
+<table class="bl br bt" style="border-collapse: collapse">
+ <tr class="bold center">
+  <td class="br bb"> № </td>
+  <td class="br bb"> X </td>
+  <td class="br bb"> Name </td>
+  <td class="br bb"> Size </td>
+  <!--td class="br bb"> Mtime </td>
+  <td class="br bb"> Ctime </td-->
+  <td class="bb"> Tags </td>
+ </tr>
+{% for object in object_list %}
+ <tr class="bb {% cycle 'even' 'odd' %}">
+  <td class="br bb right"> {{ forloop.counter|add:page_start }} </td>
+  <td class="br bb right"> {% if object.deleted %} X {% else %} &nbsp; {% endif %} </td>
+  <td class="br bb"> <a href="{% url file_detail object.pk %}" title="{{ object.comment }}"> {{ object.name }} </a> </td>
+  <td class="br bb right"> {{ object.size }} </td>
+  <!--td class="br bb"> {{ object.mtime|date:"Y-m-d H:i:s" }} </td>
+  <td class="br bb"> {{ object.ctime|date:"Y-m-d H:i:s" }} </td-->
+  <td class="bb">
+	{% for tag in object.tags.all %}
+	<p style="color: {{ tag.get_fgcolor_html }}; background-color: {{ tag.get_bgcolor_html }};"> {{ tag }} </p>
+	{% endfor %}
+  </td>
+ </tr>
+{% endfor %}
+</table>
+</td>
+<td class="box">
+<form id="filterForm" method="post" action="{% url file_filter %}">
+	{# csrf_token #}
+	<button type="submit" title="если не отмечены теги, то показаны файлы без тегов. Чтобы увидеть все файлы - установите OR и отметьте все теги (педаль +). Далее - по вкусу."> Фильтровать </button>
+	<button type="button" onClick="selectAll()" title="Выделить все"> + </button>
+	<button type="button" onClick="deselectAll()" title="Снять все"> - </button>
+    {{ form_main.as_p }}
+    <table id="filter" style="table-collapse: collapse">
+    {% for field in form_tags %}
+        <tr id="filter_{{ field.html_name }}">
+            <td valign="top" class="filter_label bt br">
+                <button type="button" value="0"> + </button>
+                {{ field.errors }}
+                {{ field.label_tag }}
+            </td>
+            <td id="filter_value_{{ field.html_name}}" class="filter_value bt"> {{ field }} </td>
+        <tr>
+    {% endfor %}
+    </table>
+</form>
+</td> </tr>
+</table>
+{% endblock %}

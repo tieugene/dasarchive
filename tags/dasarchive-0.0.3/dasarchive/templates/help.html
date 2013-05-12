@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %} Справка {% endblock %}
+{% block jsready %}
+$("#tm_help").addClass("active");
+{% endblock %}
+{% block body_main %}
+<h1> Порядок действий: </h1>
+<ol>
+{% if os == 'Linux' %}
+    {% if browser == 'Konqueror' %}
+        <li> Откройте <a href="webdav://{{ server }}{{ inbox_url }}"> эту </a> ссылку. </li>
+    {% elif browser == 'Epiphany' %}
+        <li> Добавьте <a href="dav://{{ server }}{{ dav_url }}"> эту </a> ссылку в Закладки Nautilus. </li>
+        <li> Откройте <a href="dav://{{ server }}{{ inbox_url }}"> эту </a> ссылку <em>в Nautilus.</em> </li>
+    {% else %}
+        <li> Если у Вас Gnome - добавьте <a href="dav://{{ server }}{{ dav_url }}"> эту </a> ссылку в Закладки Nautilus. </li>
+        <li> Откройте одну из следующих ссылок в <a href="webdav://{{ server }}{{ inbox_url }}"> Dolphin </a> или <a href="dav://{{ server }}{{ inbox_url }}"> Nautilus. </a> </li>
+    {% endif %}
+{% elif os == 'OS X' %}
+    <li> <a href="https://www.liferay.com/community/wiki/-/wiki/Main/WebDAV#section-WebDAV-Mac+OS+X"> Добавьте </a> в Finder <a href="http://{{ server }}{{ dav_url }}"> эту </a> ссылку.
+    <li> Добавьте в Finder <a href="http://{{ server }}{{ inbox_url }}"> эту </a> ссылку - и откройте.
+{% elif os == 'Windows' %}
+{% block windows %}
+    <li> Скачайте, установите и запустите <a href="http://www.netdrive.net/download.html"> NetDrive. </a> </li>
+    <li> Добавьте <a href="http://{{ server }}{{ dav_url }}"> эту </a> ссылку как диск <em> {{ dav_drive }}: </em> (кодировка сервера - UTF-8). </li>
+    <li> Добавить <a href="http://{{ server }}{{ inbox_url }}"> эту </a> ссылку как любой другой диск - и откройте его. </li>
+{% endblock %}
+{% else %}
+    <li> Установите ОС GNU/Linux или Microsoft&reg; Windows&reg; или Apple&reg; Mac OS&reg; и читайте этот хелп дальше. </li>
+{% endif %}
+    <li> Мышкой оптом копируйте/переносите сюда файлы со своего компьютера (или откуда-то еще). </li>
+    <li> Перейдите во <a href="{% url inbox '' %}"> Входящие </a> - здесь видны эти самые файлы. Добавьте их в Архив (плюсик), расставляя <em> Теги </em> и давая человеческие <em> Наименования </em> (не путать с "Имя файла"). </li>
+    <li> Перейдите в <a href="{% url file_list %}"> Архив </a> - это файлы уже в хранилище. Фильтруйте, открывайте страничку нужного файла. </li>
+    <li> На страничке файла можно его удалить, скрыть, изменить данные <em> о </em> файле - а также <em> Скачать </em> (для просто посмотреть) или <em> Открыть </em> (для внесения изменений в сам файл). </li>
+</ol>
+{% block joke %}
+{% if os == 'Windows' %}
+<hr/>
+<p> Это был короткий путь. Теперь - "нативный" путь (иногда работает): </p>
+<ol>
+    {% if browser != 'Firefox' %}
+        <li> Установите и/или запустите Firefox и читайте этот хелп дальше. </li>
+    {% endif %}
+    <li> <a href="http://www.websina.com/bugzero/kb/browser-file-url.html"> Уговорите </a> браузер открывать ссылки file:///// <ul>
+        <li> Добавьте в <i>%USERPROFILE%</i>\Application Data\Mozilla\Firefox\Profiles\<i>всякоразно</i>\prefs.js:
+            <pre style="background-color: silver">user_pref("capability.policy.policynames", "localfilelinks");
+user_pref("capability.policy.localfilelinks.sites", "http://{{server}}");
+user_pref("capability.policy.localfilelinks.checkloaduri.enabled", "allAccess");</pre>
+        </li>
+        <li> Может быть - помутите с about:config (security.fileuri.strict_origin_policy=false) </li>
+        <li> Может быть - плагин какой-то установите (LocalLink (open in this tab - через раз), Local Filesystem Links (не работает с кириллицей и/или пробелами)) </li>
+    </ul> </li>
+    <li> Добавьте <a href="{% url index %}"> эту </a> ссылку в Сетевое окружение (Сетевое окружение - Новое место в сетевом окружении - Далее - Далее - Вставить ссылку - Далее - Далее - не открывать - Готово). </li>
+    <li> Добавьте <a href="http://{{ server }}{{ inbox_url }}"> эту </a> ссылку в Сетевое окружение - и откройте. </li>
+    <li> Мышкой оптом... (и.т.д) </li>
+</ol>
+{% endif %}
+{% endblock %}
+<h1> Фильтр: </h1>
+<dl>
+    <dt> Содержит: </dt>
+        <dd> Слово, которое есть в Наименовании <em> или </em> Комментарии. Добавляется к остальным фильтрам по <em> И </em> (т.е. трымтырым И содержит...). Если пусто - этот фильтр отключается. <dd>
+    <dt> Удаленные: </dt>
+        <dd> Показывать только не скрытые / только скрытые / и те и другие. <dd>
+    <dt> Фильтр по: </dt>
+        <dd> как отбирать по тегам: <ul>
+            <li> ИЛИ - файлу назначен как минимум один из отмеченных тегов. </li>
+            <li> И минимум - файлу назначены как минимум отмеченные теги. </li>
+            <li> И строго - файлу назначены только отмеченные теги. </li>
+        </ul> <dd>
+    <dt> Теги: </dt>
+        <dd> Отбирать только те файлы, которым назначены отмеченные теги (см. "Фильтр по"). Если не отмечено ни одного тега - будут отбираться файлы <em> без </em> тегов. <ul>
+</dl>
+<h1> Файл: </h1>
+<dl>
+    <dt> Содержит: </dt>
+        <dd> Слово, которое есть в Наименовании <em> или </em> Комментарии. Добавляется к остальным фильтрам по <em> И </em> (т.е. трымтырым И содержит...). Если пусто - этот фильтр отключается. <dd>
+    <dt> Удаленные: </dt>
+        <dd> Показывать только не скрытые / только скрытые / и те и другие. <dd>
+    <dt> Фильтр по: </dt>
+        <dd> как комбинировать теги: <ul>
+            <li> ИЛИ - файлу назначен как минимум один из отмеченных тегов. </li>
+            <li> И минимум - файлу назначены как минимум отмеченные теги. </li>
+            <li> И строго - файлу назначены только отмеченные теги. </li>
+        </ul> <dd>
+    <dt> Теги: </dt>
+        <dd> Отбирать только те файлы, которым назначены отмеченные теги (см. "Фильтр по"). Если не отмечено ни одного тега - будут отбираться файлы <em> без </em> тегов. <ul>
+</dl>
+{% endblock %}

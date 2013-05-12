@@ -1,0 +1,26 @@
+= Moving from MySQL to PostgreSQL =
+http://flug.org.ua/lists/django-russian/32625/
+
+* Create dump:
+    ./manage.py dumpdata --indent=2 > data.json
+* Install PostgreSQL:
+    sudo yum install postgresql-server python-psycopg2
+    service postgresql start
+* Create DB (http://www.cyberciti.biz/faq/howto-add-postgresql-user-account/):
+    sudo su - postgres
+    psql -d template1 -U postgres
+    CREATE USER dasarchive WITH PASSWORD 'dasarchive';
+    CREATE DATABASE dasarchive;
+    GRANT ALL PRIVILEGES ON DATABASE dasarchive TO dasarchive;
+    \q
+    ^D
+* Change local_settings.py
+    DATABASES = {'default': {'ENGINE': 'django.db.backends.postgresql_psycopg2', 'NAME': 'dasarchive', 'USER': 'dasarchive', 'PASSWORD': 'dasarchive'}}
+* Create tables
+    ./manage.py syncdb
+* Clear data:
+    (echo "BEGIN;" && (echo "\\d" | ./manage.py dbshell | grep таблица | gawk 'BEGIN {FS="|"} {print $2}' | sed 's/ //g' | while read i; do echo "DELETE FROM $i;"; done) && echo "COMMIT;") | ./manage.py dbshell
+* Restore data from dump
+    ./manage.py loaddata data.json
+* Test:
+    ./manage.py runserver

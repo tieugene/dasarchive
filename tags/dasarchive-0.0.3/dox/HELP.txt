@@ -1,0 +1,51 @@
+Need:
+    * trash uri (proto, server:port (auto), uri)
+    * Archive uri (proto, server:port (auto), uri (auto))
+So I need to put:
+    + OS/Browser (to select help)
+    * server
+    * trash uri
+    * archive uri
+
+Konq:
+    * (!) Open webdav://trash
+    * Copy/move here
+    * Goto Входящие - Add
+    * Goto Архив
+Epiphany:
+    * (!) Add dav://outbox
+    * Open dav://
+    * ...
+Windows:
+    * (!) Prepare FireFox:
+        *
+    * (!) Add http://dav
+    * (!) Add http://trash and open it
+    * ...
+Other:
+    * You have no proper OS/Browser: Konqueror, Epiphany, Windows
+
+= 20121010 =
+== Linux: ==
+    * Gnome: add oubox (Переход - Адрес - вставить адрес - Enter - Закладки - добавить закладку
+    * Open inbox (Dolphin/Konqueror or Nautilus)
+== MacOS: ==
+    * Add outbox to your places (https://www.liferay.com/community/wiki/-/wiki/Main/WebDAV#section-WebDAV-Mac+OS+X)
+    * Add inbox to you places - and open it
+== Windows: ==
+=== Short way ===
+    * Download, install and run NetDrive (http://www.netdrive.net/download.html)
+    * Add outbox as W
+    * Add Inbox as you want - and open it
+=== Native way ===
+    * Prepare Firefox:
+        * ...
+        * ...
+        * ...
+    * Add outbox (not open)
+    * Add inbox - and open it
+== All ==
+    * Copy/move here
+    * Inbox: add
+    * Archive: use (filter)
+    * Download - for readonly, Open - for editing

@@ -1,0 +1,79 @@
+Tries:
+#q = q.filter(tags__pk__in=tags).annotate(alltags_count=Count('tags', distinct=True)).filter(alltags_count > 0)
+#q = q.extra(select={'tcount': 'SELECT COUNT(*) FROM dasarchive_file_tags WHERE (dasarchive_file_tags.file_id = dasarchive_file.id) AND (dasarchive_file_tags.tagitem_id IN %s)' % str(tuple(tags))}, where=['tcount=%d' % len(tags)])
+#q = q.extra(select={'tcount': 'SELECT COUNT(id) FROM dasarchive_file_tags WHERE (dasarchive_file_tags.file_id = dasarchive_file.id) AND (dasarchive_file_tags.tagitem_id IN %s)' % str(tuple(tags))})
+#q = q.extra(select={'foundtags_count': 'SELECT DISTINCT COUNT(*) FROM dasarchive_file_tags WHERE (dasarchive_file_tags.file_id = dasarchive_file.id) AND (dasarchive_file_tags.tagitem_id IN %s)  GROUP BY dasarchive_file.id' % str(tuple(tags))})
+#q = q.annotate(foundtags_count=Count('tags', distinct=True))
+#q = q.filter(foundtags_count=len(tags))
+#q = q.extra(tables=['(SELECT COUNT(*) FROM dasarchive_file_tags WHERE (dasarchive_file_tags.file_id = dasarchive_file.id) AND (dasarchive_file_tags.tagitem_id IN %s)) AS tcount' % str(tuple(tags))], where=['tcount=%d' % len(tags)])
+            #q = q.exclude(tags__pk__not__in=tags).annotate(alltags_count=Count('tags', distinct=True))
+            #table1.objects.exclude(id__in = table2.objects.filter(your_condition).values_list('id', flat=True))
+
+
+OR: all().filter(tags__pk__in=...)
+AND+: filter().annotate(Count('tags')) == len(tags)
+AND: in == all => all().exclude(tags__not__in)
+
+= filter > annotate =
+q = q.filter(tags__pk__in=tags).annotate(foundtags_count=Count('tags', distinct=True))
+SELECT
+    "dasarchive_file"."id",
+    "dasarchive_file"."name",
+    "dasarchive_file"."fname",
+    "dasarchive_file"."comment",
+    "dasarchive_file"."mime",
+    "dasarchive_file"."size",
+    "dasarchive_file"."md5",
+    "dasarchive_file"."ctime",
+    "dasarchive_file"."mtime",
+    "dasarchive_file"."updated",
+    "dasarchive_file"."deleted",
+    COUNT(DISTINCT "dasarchive_file_tags"."tagitem_id") AS "foundtags_count" FROM "dasarchive_file"
+    LEFT OUTER JOIN "dasarchive_file_tags" ON ("dasarchive_file"."id" = "dasarchive_file_tags"."file_id")
+    WHERE "dasarchive_file_tags"."tagitem_id" IN (56, 126)
+    GROUP BY
+        "dasarchive_file"."id",
+        "dasarchive_file"."name",
+        "dasarchive_file"."fname",
+        "dasarchive_file"."comment",
+        "dasarchive_file"."mime",
+        "dasarchive_file"."size",
+        "dasarchive_file"."md5",
+        "dasarchive_file"."ctime",
+        "dasarchive_file"."mtime",
+        "dasarchive_file"."updated",
+        "dasarchive_file"."deleted"
+    ORDER BY "dasarchive_file"."name" ASC
+
+= annotate =
+q = q.annotate(alltags_count=Count('tags', distinct=True))
+SELECT
+    "dasarchive_file"."id",
+    "dasarchive_file"."name",
+    "dasarchive_file"."fname",
+    "dasarchive_file"."comment",
+    "dasarchive_file"."mime",
+    "dasarchive_file"."size",
+    "dasarchive_file"."md5",
+    "dasarchive_file"."ctime",
+    "dasarchive_file"."mtime",
+    "dasarchive_file"."updated",
+    "dasarchive_file"."deleted",
+    COUNT(DISTINCT "dasarchive_file_tags"."tagitem_id") AS "alltags_count" FROM "dasarchive_file"
+    LEFT OUTER JOIN "dasarchive_file_tags" ON ("dasarchive_file"."id" = "dasarchive_file_tags"."file_id")
+    GROUP BY
+        "dasarchive_file"."id",
+        "dasarchive_file"."name",
+        "dasarchive_file"."fname",
+        "dasarchive_file"."comment",
+        "dasarchive_file"."mime",
+        "dasarchive_file"."size",
+        "dasarchive_file"."md5",
+        "dasarchive_file"."ctime",
+        "dasarchive_file"."mtime",
+        "dasarchive_file"."updated",
+        "dasarchive_file"."deleted"
+    ORDER BY "dasarchive_file"."name" ASC
+
+= Need =
++

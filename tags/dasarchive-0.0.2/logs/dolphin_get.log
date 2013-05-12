@@ -1,0 +1,2 @@
+127.0.0.1 - - [03/Aug/2012:11:06:44 +0400] "PROPFIND /ftp/folder1/test.txt HTTP/1.1" 207 1038 "-" "Mozilla/5.0 (X11) KHTML/4.8.4 (like Gecko) Konqueror/4.8 Fedora/4.8.4-8.fc17"
+127.0.0.1 - - [03/Aug/2012:11:06:45 +0400] "GET /ftp/folder1/test.txt HTTP/1.1" 304 - "-" "Mozilla/5.0 (X11) KHTML/4.8.4 (like Gecko) Konqueror/4.8 Fedora/4.8.4-8.fc17"

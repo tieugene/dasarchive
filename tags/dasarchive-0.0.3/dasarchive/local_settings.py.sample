@@ -1,0 +1,15 @@
+DEBUG = True
+#DEBUG = False
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': 'unix:/tmp/memcached.sock',
+    }
+}
+#DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3', 'NAME': '/mnt/shares/dasarchive/dasarchive.db'}}
+#INBOX_ROOT = '/var/lib/trash'
+#INBOX_URL = '/trash/'
+#OUTBOX_ROOT = '/var/lib/dasarchive'
+#OUTBOX_DRIVE = 'B'
+#UASCACHE_ROOT = '/var/lib/uascache'
+#HELP_TEMPLATE = 'help_formysite.html'

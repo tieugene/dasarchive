@@ -1,0 +1,23 @@
+= 20121022 =
+MSO compatibility
+Aim: support delete => MOVE/COPY
+Idea:
++ save deleted pk into dict (methods: add:bool/get:bool/put:bool)
+* don't show it in get_children/get_child [for a timeout]
+* remove pk from dict on cp_to/mv_to[/timeout]
+
+= 20121110 =
+FileList: tags control
+
+== Wanted funcs ==
+* Helpers (get...):
+    * A:    groups (li)
+    * A/G:  items (li) - hidden/visible
+    * A/G:  checkboxes - selected
+* Check:
+    * A/G:  hidden exists
+    * A/G:  selected exists
+    * G:    visible exists
+    * A/G:  all<selected
+* set buttons:
+    * ...

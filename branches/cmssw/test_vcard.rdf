@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:v="http://www.w3.org/2006/vcard/ns#">
+  <v:VCard rdf:about = "http://example.com/me/petroff" >
+    <v:fn>Petr Petrov</v:fn>
+    <v:n>
+     <rdf:Description>  
+       <v:family-name>Petrov</v:family-name>
+       <v:given-name>Petr</v:given-name>
+       <v:additional-name>Petrovich</v:additional-name>
+     </rdf:Description>  
+    </v:n>
+    <v:tel>
+      <rdf:Description>  
+        <rdf:value>+7 921 123 45 67</rdf:value>
+        <rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Voice"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Cell"/>
+        <rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Pref"/>
+      </rdf:Description>  
+    </v:tel>
+    <v:email rdf:resource="mailto:petr.petroff@mail.ru"/>
+    <v:adr>
+      <rdf:Description>  
+        <v:street-address>111 Nevsky</v:street-address>
+        <v:locality>SPb</v:locality>
+        <v:postal-code>192001</v:postal-code>
+        <v:country-name>Russia</v:country-name>
+        <rdf:type rdf:resource="http://www.w3.org/2006/vcard/ns#Home"/>
+      </rdf:Description>  
+    </v:adr>
+    <v:org>
+      <rdf:Description>  
+        <v:organisation-name>Example.Com LLC</v:organisation-name>
+        <v:role>Unknown</v:role>
+        <v:tratata>Unknown</v:tratata>
+      </rdf:Description>  
+    </v:org>
+  </v:VCard>
+</rdf:RDF>

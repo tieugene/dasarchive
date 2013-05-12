@@ -1,0 +1,14 @@
+INSERT INTO dasarchive_tagitem VALUES(1,1,'Администрация');
+INSERT INTO dasarchive_tagitem VALUES(2,1,'Общий');
+INSERT INTO dasarchive_tagitem VALUES(3,1,'Бухгалтерия');
+INSERT INTO dasarchive_tagitem VALUES(4,1,'Юристы');
+INSERT INTO dasarchive_tagitem VALUES(5,2,'Иванова');
+INSERT INTO dasarchive_tagitem VALUES(6,2,'Петрова');
+INSERT INTO dasarchive_tagitem VALUES(7,2,'Сидорова');
+INSERT INTO dasarchive_tagitem VALUES(8,3,'Рога и Копыта');
+INSERT INTO dasarchive_tagitem VALUES(9,3,'Ромашка');
+INSERT INTO dasarchive_tagitem VALUES(10,4,'Договор');
+INSERT INTO dasarchive_tagitem VALUES(11,4,'Счет');
+INSERT INTO dasarchive_tagitem VALUES(12,4,'Платежка');
+INSERT INTO dasarchive_tagitem VALUES(13,4,'Письмо');
+INSERT INTO dasarchive_tagitem VALUES(14,4,'Заявление');

@@ -1,0 +1,53 @@
+{% load templatetags %}
+{% load static %}
+{# load adminmedia #}
+{% get_static_prefix as STATIC_URL %}
+{# / #}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title> DasArchive - {% block title %} хранение файлов {% endblock %} </title>
+	<meta name="description" content="{% block meta-description %}Универсальное хранилище файлов{% endblock %}">
+	<meta name="keywords" content="{% block meta-keywords %}{% endblock %}">
+	<link type="text/css" href="{{ STATIC_URL }}css/base.css" rel="stylesheet">
+	<link type="text/css" href="{{ STATIC_URL }}css/fieldset.css" rel="stylesheet"/>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.min.js"></script>
+	<!-- /admin -->
+	{% block js %}
+	{% endblock %}
+	<script type="text/javascript">
+		$(document).ready(function () {
+			{% block jsready %}
+			{% endblock %}
+		})
+	</script>
+	<style type="text/css" >
+	{% block css %}
+	{% endblock %}
+	</style>
+</head>
+<body>
+<div id="topmenu">
+	<div id="tm_index" class=""> <a href="{% url index %}"> Главная </a> </div>
+	<div id="tm_inbox" class=""> <a href="{% url views.inbox '' %}"> Inbox </a> </div>
+	<div id="tm_files"> <a href="{% url file_list %}"> Файлы </a> </div>
+	<!--div> <a href="mailto:im@eap.su"> Контакты </a> </div-->
+	<div style="width: 100%"> <b> DasArchive </b> </div>
+	{% if user.is_authenticated %}
+		<div> {{ user.username }} : </div>
+		<div> <a href="{% url django.contrib.auth.views.logout %}?next={% url index %}"> Выход </a> </div>
+		{% if user.is_superuser %}
+			<div id="tm_admin"> <a href="{% url admin:index %}"> Админка </a> </div>
+		{% endif %}
+	{% else %}
+		<div id="tm_login"> <a href="{% url django.contrib.auth.views.login %}?next={% url index %}" rel="nofollow"> Вход </a> </div>
+	{% endif %}
+</div>
+	<div>
+	{% block body_main %}
+		<p> Заглушка </p>
+	{% endblock %}
+	</div>
+</body>
+</html>

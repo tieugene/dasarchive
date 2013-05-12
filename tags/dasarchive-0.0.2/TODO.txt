@@ -1,0 +1,78 @@
+= Files =
+
+== Create ==	OK
+* os.makedirs()
+* mv as is
+* fill fields
+
+== Read ==
+(download)
+* buildpath
+* return file
+
+== Update ==	OK
+* if filename changed:
+	* mv
+
+== Delete ==	OK
+* rm all files
+* rmdir recursively (if empty)
+
+== DAV ==
+
+=== GET ===
+
+=== PUT ===
+
+=== MV ===
+
+=== DELETE ===
+
+=== COPY ===
+?
+
+=== Disabled ===
+* MKCOL
+
+= Using =
+* os.makedirs(fullpath)
+* SQL: X'val', HEX(val), LPAD(), INSERT()
+
+= etc =
+<D:supportedlock>
+	<D:lockentry>
+		<D:lockscope>
+			<D:exclusive/>
+		</D:lockscope>
+		<D:locktype>
+			<D:write/>
+		</D:locktype>
+	</D:lockentry>
+	<D:lockentry>
+		<D:lockscope>
+			<D:shared/>
+		</D:lockscope>
+		<D:locktype>
+			<D:write/>
+		</D:locktype>
+	</D:lockentry>
+</D:supportedlock>
+
+'supportedlock': [
+	{'lockentry': {
+		'lockscope': 'exclusive',
+		'locktype': 'write',
+		}
+	},
+	{'lockentry': {
+		'lockscope': 'shared',
+		'locktype': 'write',
+		}
+	},
+]
+
+retvalue - dict:
+	'key':
+		None - just selfclosed
+		str - .text =
+		list:
