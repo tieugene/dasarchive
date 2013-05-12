@@ -1,0 +1,5 @@
+$def with(nodes)
+
+<a href="/node/add/"> <button type="button" title="Add new node"> + </button> </a>
+$for node in nodes:
+	<a href="/node/$node[0].id/"> $node[0].id </a>

@@ -1,0 +1,18 @@
+[
+	[	# type, id[, props]
+		0,
+		1,
+		{
+			prop1: 'uugx'
+		}
+	],
+	[	# type, name, start, end, label, [, props]
+		1,
+		1,
+		2,
+		'mytype'
+		{
+			prop1: 'uugx'
+		}
+	]
+]

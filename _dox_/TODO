@@ -1,0 +1,29 @@
++ Node:
+	+ List
+	+ Add
+	+ View
+	+ Del
+	+ Parm:
+		+ Add
+		+ Del
+	+ Rel:
+		+ Add
+		+ Del
++ Rel:
+	+ View
+	+ Del
+	+ Parm:
+		+ Add
+		+ Del
+* Maintain:
+	+ export (json)
+	+ import (json)
+	* clear
+* Bonus:
+	+ graph
+	* impex xml (GraphML? GXL?)
+	* node/rel parm edit
+FIXME:
+	* add/edit parm - Cancel button
+	* parm add - check 'id' etc builins
+	* skip node(0) on load

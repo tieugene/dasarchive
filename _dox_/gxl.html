@@ -1,0 +1,757 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Oliver Christian Heinen">
+  <title>GXL - Graph eXchange Language</title>
+  <style type="text/css">
+    <!--
+      * {font-family:sans-serif;}
+      
+      h2 {
+	font-size:x-large;
+      }
+      
+      h4 {
+	font-size:medium;
+	font-weight:bold;
+	font-style:italic;
+      }
+      
+      .gray1, .gray2, .gray3, .gray4, gray5, gray6 {
+	vertical-align:top;
+      }
+      
+      .gray1 { background-color:#EEEEFF; }
+      .gray2 { background-color:#DDDDEE; }
+      .gray3 { background-color:#CCCCDD; }
+      .gray4 { background-color:#BBBBCC; }
+      .gray5 { background-color:#AAAABB; }
+      .gray6 { background-color:#9999AA; }
+      
+      /* tt is for "tool table"! */
+      .tt_tool_name {
+	font-weight:bold;
+	text-align:center;
+	vertical-align:middle;
+      }
+      
+      .tt_info_link {
+        border-left:  2px solid #000000;
+        border-right: 2px solid #000000;
+	padding-left: 0.3ex;
+	padding-right: 0.3ex;
+      }
+            
+      .tt_version_column {
+        color:#00CC55;
+        font-weight:bold;
+      }
+
+      .tt_date_column {
+        color:#AA0000;
+      }
+      
+     -->
+  </style>
+</head>
+<body background="../line2.gif">
+<a name="top" />
+<table BORDER="0" WIDTH="100%" cellspacing="15" >
+<tr>
+<td align = "left" valign="bottom" width="5%">
+<a href="../index.html"><img src="../gxl.gif" alt="GXL" border="0"></a>
+</td>
+<td align="left">
+<b><a href="http://plg.uwaterloo.ca/~holt/" target="new">Ric Holt
+</a>, <a href="http://www.es.tu-darmstadt.de/" target="new">Andy
+Sch&uuml;rr</a>, <a href="http://www.ics.uci.edu/~ses/" target="new">Susan
+Elliott Sim</a>, <a href="http://www.uni-koblenz.de/~winter/" target="new">Andreas
+Winter</a></b>
+<br><b><font size="+4">
+<font color="#000033">G</font>raph e<font color="#000033">X</font>change
+<font color="#000033">L</font>anguage</font></b>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top">
+<img src="../vline.gif" width="100%" height="2" alt="">
+</td>
+</tr>
+
+<tr>
+<td valign="top" align="left" width="5%">
+<font color="#FFFFFF" size="-1">
+<img src="../h_intro.gif" alt=""><br><br>
+<font>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="../Introduction/background.html"><font color="#EEEEEE">Background</font></a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="../Introduction/intro.html"><font color="#EEEEEE">Introduction</font></a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="../faq/faq.html"><font
+color="#EEEEEE">FAQ</font></a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="../examples/index.html" target="new"><font color="#EEEEEE">Examples</font></a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="../Publications/publications.html"><font color="#EEEEEE">Publications</font></a>
+</font>
+
+<br><br><img src="../h_definition.gif" alt=""><br><br>
+<font>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="../dtd/dtd.html"><font color="#EEEEEE">DTD</font></a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="../xmlschema/xmlschema.html"><font color="#EEEEEE">XML Schema</font></a>
+</font>
+
+<br><br><img src="../h_schemas.gif" alt=""><br><br>
+<font>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="../GraphModel/graphModel.html"><font color="#EEEEEE">Graph Model</font></a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="../MetaSchema/metaSchema.html"><font color="#EEEEEE">Metaschema</font></a>
+</font>
+
+<br><br><img src="../h_experiences.gif" alt=""><br><br>
+<font>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="../tools/tools.html"><font color="#EEEEEE">Tool Catalogue</font></a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.uni-koblenz.de/FB4/Contrib/GUPRO/Site/Downloads/index_html?project=gxl" target="new"><font color="#EEEEEE">Downloads</font></a>
+</font>
+
+<br><br><img src="../h_advance.gif" alt=""><br><br>
+<font>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="../changeRequest/changeRequest.html"><font color="#EEEEEE">Change Requests</font></a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="../future/gxl1.1.html"><font color="#EEEEEE">Future</font></a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="../dtd/gxl-1.1.html"><font color="#EEEEEE">GXL 1.1</font></a>
+</font>
+<br><img src="../seperator.gif" alt="">
+</td>
+
+
+
+
+<td align="left" valign="top">
+<font color="#176000" size="+2"><b>GXL (1.0)&nbsp;<br>
+Document Type Definition</b></font><p>
+<b><font color="#176000">(Dagstuhl Edition, April
+25, 2002)</font></b>
+<p>uncommented document type definition: <a href="../gxl-1.0.dtd">gxl-1.0.dtd</a><!--
+<p><a href="predecessor.html#changes099">changes to previous versions</a>
+-->
+<p><b><font color="#000000">copyright by</font></b>
+<blockquote><i><font color="#000000">&nbsp; <a href="http://www.es.tu-darmstadt.de/" target=new>Andy
+Schuerr</a></font></i>
+<br><i><font color="#000000">&nbsp;&nbsp;&nbsp; Real-Time Systems Lab</font></i>
+<br><i><font color="#000000">&nbsp;&nbsp;&nbsp; Darmstadt University of Technology</font></i>
+<br><i><font color="#000000">&nbsp;&nbsp;&nbsp; Merckstr. 25, D-64283 Darmstadt, Germany</font></i>
+<br><i><font color="#000000">&nbsp;&nbsp;&nbsp; <a href="mailto:andy.schuerr@es.tu-darmstadt.de">andy.schuerr@es.tu-darmstadt.de</a></font></i>
+<p><i><font color="#000000">&nbsp; <a href="http://www.ics.uci.edu/~ses/" target=new>Susan
+Elliott Sim</a></font></i>
+<br><i><font color="#000000">&nbsp;&nbsp;&nbsp; School of Information and Computer Science</font></i>
+<br><i><font color="#000000">&nbsp;&nbsp;&nbsp; 444 Computer Science Bldg.</font></i>
+<br><i><font color="#000000">&nbsp;&nbsp;&nbsp; University of California, Irvine</font></i>
+<br><i><font color="#000000">&nbsp;&nbsp;&nbsp; <a href="mailto:ses@ics.uci.edu">ses@ics.uci.edu</a></font></i>
+<p><i><font color="#000000">&nbsp; <a href="http://plg.uwaterloo.ca/~holt/" target=new>Ric
+Holt</a></font></i>
+<br><i><font color="#000000">&nbsp;&nbsp;&nbsp; Department of Computer
+Science</font></i>
+<br><i><font color="#000000">&nbsp;&nbsp;&nbsp; University of Waterloo</font></i>
+<br><i><font color="#000000">&nbsp;&nbsp;&nbsp; Waterloo N2L 3G1, Canada</font></i>
+<br><i><font color="#000000">&nbsp;&nbsp;&nbsp; <a href="mailto:holt@plg.uwaterloo.ca">holt@plg.uwaterloo.ca</a></font></i>
+<p><i><font color="#000000">&nbsp; <a href="http://www.uni-koblenz.de/~winter" target=new>Andreas
+Winter</a></font></i>
+<br><i><font color="#000000">&nbsp;&nbsp;&nbsp; Institute for Software
+Technology</font></i>
+<br><i><font color="#000000">&nbsp;&nbsp;&nbsp; University of Koblenz-Landau</font></i>
+<br><i><font color="#000000">&nbsp;&nbsp;&nbsp; Universitaetsstrasse 1, D-56070 Koblenz, Germany</font></i>
+<br><i><font color="#000000">&nbsp;&nbsp;&nbsp; <a href="mailto:winter@uni-koblenz.de">winter@uni-koblenz.de</a></font></i></blockquote>
+<font size=-1>GXL has been developed to be an open standard.&nbsp; No licensing
+or other legal arrangements are required&nbsp; for its use, whether commercial
+and non-commercial.&nbsp; The specification of GXL is copyright by its
+authors, to allow control of its evolution. The specification can be reproduced
+and used without charge, but with explicit acknowledgement of its authors.</font>
+<br><font color="#000000">--></font>
+<h2>
+&lt;!--&nbsp;<a NAME="Extensions"></a>Extensions --></h2>
+<tt>&lt;!ENTITY % gxl-extension&nbsp;&nbsp;&nbsp;&nbsp; "" ></tt>
+<br><tt>&lt;!ENTITY % graph-extension&nbsp;&nbsp; "" ></tt>
+<br><tt>&lt;!ENTITY % node-extension&nbsp;&nbsp;&nbsp; "" ></tt>
+<br><tt>&lt;!ENTITY % edge-extension&nbsp;&nbsp;&nbsp; "" ></tt>
+<br><tt>&lt;!ENTITY % rel-extension&nbsp;&nbsp;&nbsp;&nbsp; "" ></tt>
+<br><tt>&lt;!ENTITY % value-extension&nbsp;&nbsp; "" ></tt>
+<br><tt>&lt;!ENTITY % relend-extension&nbsp; "" ></tt>
+<p><tt>&lt;!ENTITY % gxl-attr-extension&nbsp;&nbsp;&nbsp;&nbsp; "" ></tt>
+<br><tt>&lt;!ENTITY % graph-attr-extension&nbsp;&nbsp; "" ></tt>
+<br><tt>&lt;!ENTITY % node-attr-extension&nbsp;&nbsp;&nbsp; "" ></tt>
+<br><tt>&lt;!ENTITY % edge-attr-extension&nbsp;&nbsp;&nbsp; "" ></tt>
+<br><tt>&lt;!ENTITY % rel-attr-extension&nbsp;&nbsp;&nbsp;&nbsp; "" ></tt>
+<br><tt>&lt;!ENTITY % relend-attr-extension&nbsp; "" ></tt>
+<p>&lt;!--
+<br>Predefined "empty" Macros for extending information to GXL documents.
+GXL provides extending&nbsp; <tt><a href="#gxl">gxl</a></tt>,
+<tt><a href="#graph">graph</a></tt>,
+<tt><a href="#node">node</a></tt>,
+<tt><a href="#edge">edge</a></tt>,
+<a href="#rel">rel</a>ation,
+<tt><a href="#val">val</a></tt>ue,
+and <tt><a href="#relend">relend</a></tt> elements with further child objects
+([element]<tt>-extension</tt>)&nbsp; and with further attributes ([element]<tt>-attr-extension</tt>).
+<p>Extending GXL by redefining these macros facilitates specializations
+of GXL e.g. for graph transformation and graph drawing.
+<p><b><font color="#FF0000">Warning:</font></b> Using extensions results
+in a DTD that deviates from the predefined GXL standard. In general, extensions
+are not supported by GXL tools and should be used with care.
+<br>-->
+<h2>
+&lt;!--&nbsp;<a NAME="val"></a>Attribute values --></h2>
+<tt>&lt;!ENTITY % val "</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#locator">locator</a>
+|</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#bool">bool</a>&nbsp;&nbsp;&nbsp;
+|</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#int">int</a>&nbsp;&nbsp;&nbsp;&nbsp;
+|</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#float">float</a>&nbsp;&nbsp;
+|</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#string">string</a>&nbsp;
+|</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#enum">enum</a>&nbsp;&nbsp;&nbsp;
+|</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#seq">seq</a>&nbsp;&nbsp;&nbsp;&nbsp;
+|</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#set">set</a>&nbsp;&nbsp;&nbsp;&nbsp;
+|</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#bag">bag</a>&nbsp;&nbsp;&nbsp;&nbsp;
+|</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#tup">tup</a></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#Extensions">%value-extension;</a>"></tt>
+<p>&lt;!--
+<br>The <tt><a href="#val">val</a></tt> entity groups together attribute
+types available in GXL, which are the OCL standard data types <tt><a href="#bool">bool</a>,
+<a href="#int">int</a>,
+<a href="#float">float</a>,
+<a href="#string">string</a>,
+<a href="#seq">seq</a>,
+<a href="#set">set</a>,
+and <a href="#bag">bag</a></tt>. The composite data types tuples (<tt><a href="#tup">tup</a></tt>)
+and enumeration values (<tt><a href="#enum">enum</a></tt>) are also available.
+The <tt><a href="#locator">locator</a></tt> data type is used to to link
+to arbitrary hyper documents and identifiable XML elements.
+<p>Additional data types can be adding by redefining <tt><a href="#Extensions">%value-extension;</a>.</tt>
+<br>-->
+<br>&nbsp;
+<h2>
+&lt;!--&nbsp;<a NAME="gxl"></a>gxl --></h2>
+<tt>&lt;!ELEMENT gxl&nbsp; (<a href="#graph">graph</a>* <a href="#Extensions">%gxl-extension;</a>)
+></tt>
+<br><tt>&lt;!ATTLIST gxl</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; xmlns:xlink CDATA&nbsp;&nbsp;&nbsp; #FIXED&nbsp;&nbsp;&nbsp;
+"http://www.w3.org/1999/xlink"</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; <a href="#Extensions">%gxl-attr-extension;</a></tt>
+<br><tt>></tt>
+<p>&lt;!--
+<br>This tag is used to delineate a GXL document, which may contain multiple
+<tt><a href="#graph">graphs</a></tt>.&nbsp;
+In particular, it is possible to <font color="#000000">keep an data (represented
+as a GXL graph), schema (represented as a GXL graph), meta schema (which
+is represented as a GXL graph), and so on in one document.</font>
+<p>GXL uses XLink to refer to object possibly defined outside the current
+GXL document. This requires declaration of XLink namespace. The fixed <tt>xmlns:xlink</tt>
+attribute makes the prefix <tt>xlink </tt>available within the gxl element.
+The XLink attributes can now be used in GXL documents (including their
+definition in the DTD) as <tt>xlink:[attribute]</tt>
+<p><font color="#000000">XML requires all identifiers used in one <b>document</b>
+(not in one graph) to be disjoint.&nbsp; Consequently, identifiers must
+be unique across graphs in GXL documents containing multiple graphs. GXL
+forbids references between graph elements of different graphs in the same
+document except for <tt><a href="#type">type allocation</a></tt> and within
+<tt><a href="#locator">locator
+attributes</a></tt>.</font>
+<p>Further elements may be added to GXL documents by redefining <tt><a href="#Extensions">%gxl-extension;</a></tt>.
+Further attributes of GXL documents can be added by redefining <tt><a href="#Extensions">%gxl-attr-extension;</a></tt>.
+<p>-->
+<h2>
+&lt;!--&nbsp;<a NAME="type"></a>type --></h2>
+<tt>&lt;!ELEMENT type EMPTY></tt>
+<br><tt>&lt;!ATTLIST type</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; xlink:type&nbsp; (simple)&nbsp;&nbsp;&nbsp;
+#FIXED&nbsp; "simple"</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; xlink:href&nbsp; CDATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#REQUIRED</tt>
+<br><tt>></tt>
+<p>&lt;!--
+<br><tt>type</tt> elements denote XLink references to corresponding elements
+in the schema. They are modelled as simple XLinks, where the <tt>xlink:href
+attribute</tt> point to an element representing the required schema information.
+This link represents the isInstanceOf relationship. In the <a href="../GraphModel/graphModel.html">conceptual
+model,</a> the references to type information is modeled by the aggregation
+relationships <i>refersType</i> (to a GXL element) and <i>refersDocument</i>
+(to the proper document). In GXL these associations are subsumed in the
+URI valued attribute <tt>xlink:href.</tt>
+<p>There are restrictions on what the correspendences that can be established
+using the type entity; in other words, the type entity cannot be used to
+create relationships arbitrarily between any entity in the instance graph
+and any entity in the schema.
+<p>Specifically, GXL requires type elements associated with a
+<ul>
+<li>
+<tt><a href="#graph">graph</a></tt> element to point to a schema graph
+(node element of type <i>GraphClass</i> (cf. <a href="../MetaSchema/metaSchema.html">GXL Meta
+Schema</a>) in the schema graph)</li>
+
+<li>
+<tt><a href="#node">node</a> </tt>element to point to a graph element representing
+a node type (node element of type <i>NodeClass</i> ((cf. <a href="../MetaSchema/metaSchema.html">GXL
+Meta Schema</a>)&nbsp; in the schema graph)</li>
+
+<li>
+<tt><a href="#edge">edge</a> </tt>element to point to a graph element representing
+an edge type (node element of type <i>EdgeClass</i> (cf. <a href="../MetaSchema/metaSchema.html">GXL
+Meta Schema</a>) in the schema graph)</li>
+
+<li>
+<tt><a href="#rel">rel</a></tt>ation element point to a graph element representing
+a relation type (node element of type <i>RelationClass </i>(cf. <a href="../MetaSchema/metaSchema.html">GXL
+Meta Schema</a>)&nbsp; in the schema graph)</li>
+
+<li>
+<tt><a href="#attr">attr</a> </tt>element point to a graph element representing
+an attribute type (node element of class <i>Domain</i> (cf. <a href="../MetaSchema/metaSchema.html">GXL
+Meta Schema</a>)&nbsp; in the schema graph)</li>
+</ul>
+All types within a single graph <b>must</b> point to the elements within
+<b>a
+single schema graph</b>.
+<br>-->
+<h2>
+&lt;!--&nbsp;<a NAME="graph"></a>graph --></h2>
+<tt>&lt;!ELEMENT graph (<a href="#type">type</a>? , <a href="#attr">attr</a>*
+, ( <a href="#node">node</a> | <a href="#edge">edge</a> | <a href="#rel">rel</a>
+)* <a href="#Extensions">%graph-extension;</a>) ></tt>
+<br><tt>&lt;!ATTLIST graph</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #REQUIRED</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; role&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NMTOKEN&nbsp; #IMPLIED</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; edgeids&nbsp;&nbsp;&nbsp;&nbsp; ( true | false
+) "false"</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; hypergraph&nbsp; ( true | false ) "false"</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; edgemode&nbsp;&nbsp;&nbsp; ( directed | undirected
+|</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+defaultdirected | defaultundirected) "directed"</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; <a href="#Extensions">%graph-attr-extension;</a></tt>
+<br><tt>></tt>
+<p>&lt;!--
+<br>This tag is used to enclose a graph within a GXL document.
+<p>A graph may link to its schema, which is accessible by following the
+<tt>xlink:href</tt>
+link defined in its (optional) <tt><a href="#type">type</a></tt> element.
+GXL requires that the resource which is accessible by this link is a schema
+graph document (i.e. a GXL graph matching the GXL <a href="../MetaSchema/metaSchema.html">meta
+schema</a>).&nbsp; A <tt>graph</tt> contains a possibly empty list of <tt><a href="#attr">attr</a></tt>ibutes,
+and a possibly empty list of <tt><a href="#node">node</a></tt>s, <tt><a href="#edge">edge</a></tt>s,
+or <tt><a href="#rel">rel</a></tt>ations.
+<p>A <tt>role</tt> may be specified for graph, for example, if it is a
+component of a hierarchical graph. The <tt>edgeids</tt>&nbsp; attribute
+is
+<tt>true</tt> for graphs where
+<tt><a href="#edge">edge</a></tt>s&nbsp;
+and <tt><a href="#rel">rel</a></tt>ations possess their own identifiers,
+it is "<tt>false</tt>" for graphs without edge&nbsp; or relation identifiers.
+The
+<tt>hypergraph</tt> parameter allows the existence of hyperedges if
+its value is "<tt>true</tt>". Hyperedges are general relationships which
+connect an arbitrary number of elements instead of two elements (in the
+case directed or undirected edges). The <tt>edgemode</tt> attribute indicates
+how the edges or hyperedges of the current graph are interpreted. <tt>edgemode
+= "directed"</tt> or
+<tt>edgemode = "undirected</tt>" indicates that all
+edges and hyperedges are interpreted as directed or undirected edges. In
+this case, overwriting the interpretation of specific edges and relations
+is impossible. If <tt>edgemode = "defaultdirected"</tt> or <tt>edgemode
+= "defaultundirected"</tt>,&nbsp; it is possible to overwrite the interpretation
+of edge orientations for specific edges and relations.
+<p>By redefining <tt><a href="#Extensions">%graph-extension;</a></tt> further
+sub-elements may be added to&nbsp; <tt><a href="#graph">graph</a></tt>
+elements. Further attributes of graphs can be added by redefining <tt><a href="#Extensions">%graph-attr-extension;</a></tt>.
+<br>-->
+<h2>
+&lt;!--&nbsp;<a NAME="node"></a>node --></h2>
+<tt>&lt;!ELEMENT node (<a href="#type">type</a>? , <a href="#attr">attr</a>*,
+<a href="#graph">graph</a>*
+<a href="#Extensions">%node-extension;</a>)
+></tt>
+<br><tt>&lt;!ATTLIST node</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #REQUIRED</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; <a href="#Extensions">%node-attr-extension;</a></tt>
+<br><tt>></tt>
+<p>&lt;!--
+<br>A <tt>node</tt> contains a possibly empty list of <tt><a href="#attr">attr</a></tt>ibutes,
+and an optional list of <tt><a href="#graph">graph</a></tt>s.
+<p>A <tt>node</tt> may link to its node <tt><a href="#type">type</a></tt>,
+using the
+<tt>xlink:href</tt> link defined in its (optional) <tt><a href="#type">type</a></tt>
+element. GXL requires the target element to define a node type in the corresponding
+schema graph. Finally, a node has a node unique identifier <tt>id</tt>.
+<p><tt><a href="#graph">Graph</a></tt> elements associated to a node, represent
+graphs on a lower level of hierarchy. <font color="#000000">A node can
+be associated with multiple child graphs.</font> Their structure has to
+follow the graph class specifying the type of the sub graph.
+<p>By redefining <tt><a href="#Extensions">%node-extension;</a></tt> further
+sub elements may be added to&nbsp; <tt><a href="#node">node</a></tt> elements.
+Further attributes of node elements can be added by redefining <tt><a href="#Extensions">%node-attr-extension;</a></tt>.
+<br>-->
+<h2>
+&lt;!--&nbsp;<a NAME="edge"></a>edge --></h2>
+<tt>&lt;!ELEMENT edge (<a href="#type">type</a>?,
+<a href="#attr">attr</a>*,
+<a href="#graph">graph</a>*
+<a href="#Extensions">%edge-extension;</a>)
+></tt>
+<br><tt>&lt;!ATTLIST edge</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #IMPLIED</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; from&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+IDREF&nbsp;&nbsp;&nbsp; #REQUIRED</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; to&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+IDREF&nbsp;&nbsp;&nbsp; #REQUIRED</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; fromorder&nbsp;&nbsp;&nbsp;&nbsp; CDATA&nbsp;&nbsp;&nbsp;
+#IMPLIED</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; toorder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CDATA&nbsp;&nbsp;&nbsp; #IMPLIED</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; isdirected&nbsp;&nbsp;&nbsp; ( true | false
+) #IMPLIED</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; <a href="#Extensions">%edge-attr-extension;</a></tt>
+<br><tt>></tt>
+<p>&lt;!--
+<br>An <tt>edge</tt> is a special binary relationship. (In contrast to
+<tt><a href="#relend">relend</a></tt>s,
+edges are first class <i>GraphElement</i>s.)
+<p>An <tt>edge</tt> may link to its edge <tt><a href="#type">type</a></tt>,
+which is accessible by following the
+<tt>xlink:href</tt> link defined in
+its (optional) <tt><a href="#type">type</a></tt> element. GXL requires
+the target element to define an edge type in the corresponding schema graph.&nbsp;
+Edges may have an edge<tt>id
+</tt>(mandatory for graphs with <tt>edgeids
+= "true"</tt>).
+<p>Each <tt>edge</tt> contains a possibly empty list of <tt><a href="#attr">attr</a>i</tt>butes,
+and an optional list of <tt><a href="#graph">graph</a></tt>s.
+<p>The two graph elements (<tt><a href="#node">node</a></tt>, <tt><a href="#node">edge</a></tt>,
+<tt><a href="#rel">rel</a></tt>ation)
+connected by an <tt>edge</tt> are accessed by following the reference defined
+in the
+<tt>from</tt>- and
+<tt>to</tt>-attributes. GXL only allows <tt>from</tt>/<tt>to
+</tt>connections
+within the same GXL
+<tt><a href="#graph">graph</a></tt> element, including
+components of hierarchical graphs. Those
+<tt>edge</tt>s point from the
+graph element referenced in the <tt>from </tt>attribute to the graph element
+referenced in the <tt>to </tt>attributes.
+<p>In graphs where edges must be traverse in a fixed order, the ordering
+of incidences is recorded using the <tt>fromorder</tt> and <tt>toorder</tt>
+attributes.&nbsp; The order of incidence on the entity that the edge came
+<tt>from</tt>
+is given by the <tt>fromorder</tt>, and the order of incidence on the entity
+that the edge is going <tt>to</tt> is given <tt>toorder</tt> attribute.
+Since incidence information is stored on the edges (and <tt>relend</tt>s),
+the collection of&nbsp; values in the <tt>fromorder</tt> and <tt>toorder</tt>
+attributes of all edges (and <tt>endorder</tt> attributes of all <tt><a href="#relend">relend</a></tt>s)
+incident to a node must define a proper ordering of&nbsp; these incidences.
+The values of <tt>fromorder</tt> and <tt>toorder</tt> are required to be
+numbers.
+<p>The <tt>isdirected</tt> attribute is used to specify an edgemode (directed
+or undirected) for an edge where it does not conflict with the <tt>edgemode</tt>
+attribute of&nbsp; the surrounding&nbsp; <tt><a href="#graph">graph</a></tt>
+element.&nbsp; If surrounding graph has been set to <tt>edgemode = "directed"</tt>
+or <tt>edgemode = "undirected" </tt>the edge orientation MUST follow this
+specification. If <tt>edgemode = "defaultdirected"</tt> or <tt>edgemode
+= "defaultundirected"</tt>, this predefined orientation can overwritten
+using the <tt>isdirected
+</tt>attribute.
+<p><tt><a href="#graph">Graph</a></tt> elements are associated with an
+edge to represent graphs on a lower level of hierarchy. <font color="#000000">An
+edge can be associated with multiple child graphs.</font> Their structure
+has to follow the graph class specifying the type of the sub graph.
+<p>By redefining <tt><a href="#Extensions">%edge-extension;</a></tt> further
+sub-elements may be added to <tt><a href="#edge">edge</a> </tt>elements.
+Further attributes of edge elements can be added by redefining <tt><a href="#Extensions">%edge-attr-extension;</a></tt>.
+<br>-->
+<h2>
+&lt;!--&nbsp;<a NAME="rel"></a>rel --></h2>
+<tt>&lt;!ELEMENT rel (<a href="#type">type</a>? , <a href="#attr">attr</a>*,
+<a href="#graph">graph</a>*,
+<a href="#relend">relend</a>*
+<a href="#Extensions">%rel-extension;</a>)
+></tt>
+<br><tt>&lt;!ATTLIST rel</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #IMPLIED</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; isdirected&nbsp;&nbsp;&nbsp; ( true | false
+) #IMPLIED</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; <a href="#Extensions">%rel-attr-extension;</a></tt>
+<br><tt>></tt>
+<p>&lt;!--
+<br>The <tt>rel</tt> element allows the definition of n-ary relationships,
+which connect multiple <tt><a href="#graph">graph</a></tt> elements. In
+graph theory, these relations are usually called hyperedges (a database
+designer would prefer the name "table").
+<p>A <tt>rel</tt> may link to its rel <tt><a href="#type">type</a></tt>,
+which is accessible by following the <tt>xlink:href</tt> relend defined
+in its (optional) <tt><a href="#type">type</a></tt> element. GXL requires
+that the element which is accessible by this xlink defines a relation type
+in the corresponding schema graph. Relations may possess an edge id.
+<p>Each <tt>rel</tt> contains&nbsp; a possibly empty list of <tt><a href="#attr">attr</a></tt>ibutes,
+an optional list of <tt><a href="#graph">graph</a></tt>s, and a possibly
+empty list of incident relation ends (<tt><a href="#relend">relend</a></tt>).
+These <tt><a href="#relend">relend</a></tt>s are often also called "tentacles"
+(or "columns" by a database designer).&nbsp; GXL distinguishes between
+incoming and outgoing <tt><a href="#relend">relend</a></tt>s.
+<p>Further sub-elements may be added to <tt><a href="#rel">rel</a></tt>ation
+elements, by redefining <tt><a href="#Extensions">%rel-extension;</a></tt>
+.
+<p>The <tt>isdirected</tt> attribute is used to specify an edgemode (directed
+or undirected) for a relation where it does not conflict with the <tt>edgemode</tt>
+attribute of&nbsp; the surrounding&nbsp; <tt><a href="#graph">graph</a></tt>
+element.&nbsp; If the surrounding graph has been set to <tt>edgemode = "directed"</tt>
+or <tt>edgemode = "undirected" </tt>the relation orientation must follow
+this specification. If <tt>edgemode = "defaultdirected"</tt> or <tt>edgemode
+= "defaultundirected"</tt>, this predefined orientation can be overwritten
+using the <tt>isdirected</tt>attribute. Please note, that graphs are directed by default while relations are undirected by default. Thus, we recommend to define the edgemode for relations explicitly.
+<p><tt><a href="#graph">Graph</a></tt> elements associated to a relation,
+represent graphs on a lower level of hierarchy. <font color="#000000">An
+relation can be associated with multiple child graphs.</font> Their structure
+has to follow the graph class specifying the type of the sub graph.
+<p>By redefining <tt><a href="#Extensions">%rel-extension;</a></tt> further
+sub-elements may be added to <tt><a href="#rel">rel</a></tt> elements.
+Further attributes (of relation elements) can be added by redefining
+<tt><a href="#Extensions">%rel-attr-extension;</a></tt>.
+<br>-->
+<h2>
+&lt;!--&nbsp;<a NAME="relend"></a>relend --></h2>
+<tt>&lt;!ELEMENT relend (<a href="#attr">attr</a>* <a href="#Extensions">%relend-extension;</a>)
+></tt>
+<br><tt>&lt;!ATTLIST relend</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; target&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IDREF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#REQUIRED</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; role&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NMTOKEN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#IMPLIED</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; direction&nbsp;&nbsp; ( in | out | none)&nbsp;&nbsp;&nbsp;
+#IMPLIED</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; startorder&nbsp; CDATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#IMPLIED</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; endorder&nbsp;&nbsp;&nbsp; CDATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#IMPLIED</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; <a href="#Extensions">%relend-attr-extension;</a></tt>
+<br><tt>></tt>
+<br>&nbsp;
+<p>&lt;!--
+<br>A <tt><a href="#rel">rel</a></tt>'s relation end list defines the list
+of connected graph elements. In contrast to <tt><a href="#edge">edge</a></tt>s,<tt>
+relends</tt> are not first class <i>GraphElement</i>s.
+<p><tt>A relend</tt> may have its own <tt><a href="#attr">attr</a></tt>ibutes
+(e.g. for layout data on the instance level).&nbsp; Further sub-elements
+may be added to <tt><a href="#rel">relend</a></tt> elements by redefining
+<tt><a href="#Extensions">%relend-extension;</a></tt>
+.
+<p>A single <tt>relend</tt> element defines an incidence together with
+its optional
+<tt>role</tt> (name/tentacle/relend name) and <tt>direction</tt>
+according the covering <tt><a href="#rel">rel</a></tt>ation element. Although the <tt>role</tt>
+attribute is defined as optional, the GXL Validator expects that all relation ends have
+a role and prints an error otherwise.
+<p>GXL distinguishes between incoming and outgoing relends.&nbsp; Relends
+with
+<tt>direction = "in"</tt> model tentacles pointing into the relation,
+and relends with <tt>direction = "out"</tt> model tentacles pointing out
+of the relation. Missing <tt>direction</tt> value or <tt>direction = "none"</tt>
+indicates undirected tentacles. A direction attribute is required for relends
+contained in a <tt><a href="#rel">rel</a></tt>ation element with <tt>isdirected
+= "true"</tt>. They are ignored&nbsp; for those relends contained in a
+relation element with i<tt>sdirected ="false"</tt>.&nbsp; The same holds
+for those <tt><a href="#rel">rel</a></tt>ations whose orientation is inherited
+from the surrounding <tt><a href="#graph">graph</a></tt> element.
+<p>The <tt>target</tt> attribute refers to those graph elements which are
+incident to the parent <tt><a href="#rel">rel</a></tt>. To facilitate relations
+between <tt><a href="#edge">edge</a></tt>s and <tt><a href="#rel">rel</a></tt>'s
+the references are not restricted to <tt><a href="#node">node</a></tt>
+elements only. Here GXL provides <tt><a href="#node">node</a></tt>, <tt><a href="#edge">edge</a></tt>
+and <tt><a href="#rel">rel</a></tt> elements.
+<p>The ordering of relends according their target (association end) is
+given by the <tt>endorder</tt> attribute.&nbsp; The ordering of relends
+according their incident relation (association start) is given by the <tt>startorder</tt>
+attribute. The incidence order for a given <tt><a href="#node">node</a></tt>
+is given in by the collection of all <tt>endorder</tt> attributes of <tt><a href="#relend">relend</a></tt>s
+(and <tt>fromorder</tt> and <tt>toorder</tt> attributes of <tt><a href="#edge">edge</a></tt>s)
+incident to a the node; these attributes together must define a proper
+ordering of&nbsp; incidences. Analogously, all values of <tt>startorder</tt>
+attributes of <tt><a href="#relend">relend</a></tt>s incident to a given
+<tt><a href="#rel">rel</a></tt>ation
+have to define a proper ordering. The values of <tt>startorder</tt> and
+<tt>endorder</tt>
+must be numbers.
+<p>Further attributes (of relend elements) can be added by redefining
+<tt><a href="#Extensions">%relend-attr-extension;</a></tt>.
+<br>-->
+<h2>
+&lt;!--&nbsp;<a NAME="attr"></a>attr --></h2>
+<!--
+type for attributes was removed since
+- it doesn't conform the schema
+- nobody used it or will use it in future
+
+OLD TEXT:
+<tt>&lt;!ELEMENT attr (<a href="#type">type</a>?, <a href="#attr">attr</a>*,
+(<a href="#val">%val;</a>)) ></tt>
+-->
+<tt>&lt;!ELEMENT attr (<a href="#attr">attr</a>*,
+(<a href="#val">%val;</a>)) ></tt>
+<br><tt>&lt;!ATTLIST attr</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; id&nbsp;&nbsp;&nbsp;&nbsp; ID&nbsp;&nbsp;&nbsp;
+#IMPLIED</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; name&nbsp;&nbsp; NMTOKEN&nbsp; #REQUIRED</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; kind&nbsp;&nbsp; NMTOKEN&nbsp; #IMPLIED</tt>
+<br><tt>></tt>
+<p>&lt;!--
+<br>An <tt>attr</tt>ibute has a <tt>name</tt> and a <tt><a href="#val">val</a></tt>ue
+part. GXL provides values from the OCL standard types (<tt><a href="#bool">bool</a>,
+<a href="#int">int</a>,
+<a href="#float">float</a>,
+<a href="#string">string</a>,
+<a href="#seq">seq</a>,
+<a href="#set">set</a>,
+and
+<a href="#bag">bag</a></tt>), as well as <tt><a href="#tup">tup</a></tt>le
+and <tt><a href="#enum">enum</a></tt>, and values which define references
+to other documents or elements (<tt><a href="#locator">locator</a></tt>).
+Attributes may in turn have <tt><a href="#attr">attr</a></tt>ibutes
+(e.g. for storing layout).
+<!--
+They can also be associated with an attribute
+type in a schema using a <tt><a href="#type">type</a></tt> element, and
+the target must be an attribute type definition (i.e. an object, representing
+the mapping of attribute name and attribute value)
+-->
+<p>The <tt>kind</tt> attribute is provided to distinguish between different
+varieties of attributes, for example,&nbsp; to mark attributes as derived.
+GXL also optionally supports direct access to attributes by unique attribute
+identifiers.
+<br>-->
+<h2>
+&lt;!--&nbsp;<a NAME="locator"></a>locator --></h2>
+<tt>&lt;!ELEMENT locator&nbsp; EMPTY ></tt>
+<br><tt>&lt;!ATTLIST locator</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; xlink:type&nbsp; (simple)&nbsp;&nbsp;&nbsp;
+#FIXED&nbsp; "simple"</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; xlink:href&nbsp; CDATA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#REQUIRED</tt>
+<br><tt>></tt>
+<p>&lt;!--
+<br><tt>Locator</tt>s provide XLinks (the URI attribute defined in the
+<a href="../GraphModel/graphModel.html">conceptual
+model</a> as implemented by XLink) to additional documents or document
+elements. Those values are used for both referencing arbitrary web documents
+and other <tt><a href="#graph">graph</a></tt>s&nbsp; and their elements
+(<tt><a href="#node">node</a>s</tt>,
+<tt><a href="#edge">edge</a></tt>s,
+<tt><a href="#rel">rel</a></tt>).
+<br>-->
+<h2>
+&lt;!--&nbsp;<a NAME="bool"></a><a NAME="int"></a><a NAME="float"></a><a NAME="string"></a>atomic
+values --></h2>
+<tt>&lt;!ELEMENT bool&nbsp;&nbsp;&nbsp; (#PCDATA) ></tt>
+<br><tt>&lt;!ELEMENT int&nbsp;&nbsp;&nbsp;&nbsp; (#PCDATA) ></tt>
+<br><tt>&lt;!ELEMENT float&nbsp;&nbsp; (#PCDATA) ></tt>
+<br><tt>&lt;!ELEMENT string&nbsp; (#PCDATA) ></tt>
+<p>&lt;!--
+<br>Atomic values describe <tt>bool</tt>ean, <tt>int</tt>eger, <tt>real
+</tt>and
+<tt>string</tt>
+values.&nbsp; GXL uses the grammar rules from Java for the basic types.
+<br>&nbsp;
+<ul>
+<li>
+Legal values for <tt>bool</tt> are <tt>true</tt> and <tt>false</tt> (lower
+case).</li>
+
+<li>
+Legal <tt>int</tt>s (INT) and <tt>float</tt>s (FLOAT) are decimal numbers
+and are represented using the following regular expression.</li>
+</ul>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DIGIT ::= "0" | ... | "9"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NONZERODIGIT ::= "1" | ... | "9"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DIGITS ::= DIGIT+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INT ::= ["+"|"-"]("0" | NONZERODIGIT DIGIT*)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FLOAT ::= ["+"|"-"] (( DIGITS [ "." DIGITS ] ) | ("." DIGITS) [("E"
+| "e") ["+"|"-"] DIGITS]
+<br>&nbsp;
+<ul>
+
+<li>
+<tt>String</tt>s are encoded using Unicode and inherit further restrictions
+are from XML.</li>
+</ul>
+-->
+<h2>
+&lt;!--&nbsp;<a NAME="enum"></a>enumeration value --></h2>
+<tt>&lt;!ELEMENT enum&nbsp;&nbsp;&nbsp; (#PCDATA) ></tt>
+<br>&nbsp;
+<p>&lt;!--
+<br>Values of an enumeration type
+<br>-->
+<h2>
+&lt;!--&nbsp;<a NAME="seq"></a><a NAME="set"></a><a NAME="bag"></a><a NAME="tup"></a>composite
+values --></h2>
+<tt>&lt;!ELEMENT seq&nbsp;&nbsp;&nbsp;&nbsp; (<a href="#val">%val;</a>)*
+></tt>
+<br><tt>&lt;!ELEMENT set&nbsp;&nbsp;&nbsp;&nbsp; (<a href="#val">%val;</a>)*
+></tt>
+<br><tt>&lt;!ELEMENT bag&nbsp;&nbsp;&nbsp;&nbsp; (<a href="#val">%val;</a>)*
+></tt>
+<br><tt>&lt;!ELEMENT tup&nbsp;&nbsp;&nbsp;&nbsp; (<a href="#val">%val;</a>)*
+></tt>
+<p>&lt;!--
+<br>GXL supports <tt>seq</tt>uence, <tt>set</tt>, <tt>bag</tt>, and <tt>tuple
+</tt>container
+values. Sequences, sets and bags contain further <tt><a href="#val">val</a></tt>ues.
+All components within a container must have the same type (<tt><a href="#val">val</a></tt>ues).
+<br>-->
+<br>&nbsp;
+<p><font size=-2>&lt;!-- (S. Sim, A. Winter -&nbsp; April 17, 2001) --></font>
+
+</td>
+
+</tr>
+<tr>
+<td colspan="2" align="right">
+<a href="#top"><img src="../top2.gif" border="0" alt="top"></a>
+<img src="../vline.gif" width="100%" height="2" alt="">
+</td>
+</tr>
+<tr>
+<td align="left" width="5%">
+<font color="#FFFFFF">July 17, 2002</font>
+<br><br>
+<a href="../changeLog/changeLog.html"><font color="#EEEEEE">[change log]</font></a>
+</td>
+<td align="left">
+<table width="100%">
+<tr>
+<td></td>
+<td align="right">
+[<a href="print.html" target="new">printable version of this page</a>]
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</body>
+</html>
