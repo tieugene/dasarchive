@@ -1,0 +1,17 @@
+* как проверить валидность данных (валидатор врет) - rapper, reasoner (jena, cwm)
+* как нарисовать свою схему (Protégé)
+* примеры http://protegewiki.stanford.edu/wiki/Protege_Ontology_Library
+* как на неё ссылаться (>myweb>purl.org)
+
+howto:
+* добавить объект - да взять и добавить (sparql insert data, родить uuid на стороне сервера и добавить в нужной форме всё что надо)
+* добавить атрибут
+* найти объект
+* найти все атрибуты объекта
+* найти все _возможные_ атрибуты объекта
+
+try:
+python-surfrdf-sparql
+shared-desktop-ontologies
+jena
+eyeball

@@ -1,0 +1,19 @@
+= ontos =
+FOAF: http://xmlns.com/foaf/spec/
+VCard: http://www.w3.org/TR/vcard-rdf/
+Organization: http://www.w3.org/TR/vocab-org/
+
+= todo =
+== common ==
+
+* validate: http://www.w3.org/RDF/Validator/
+* browse: http://xml.mfd-consult.dk/foaf/explorer/
+
+== foaf ==
+generate foaf: http://www.ldodds.com/foaf/foaf-a-matic.html
+
+= Notes =
+* чота 4store ваш не фурычит. 4s-backend стартует - и тишина. 4s-httpd стартует - и тишина.
+* Переходим к virtuoso (http://virtuoso.openlinksw.com/dataspace/dav/wiki/Main/).
+* django-4store - что-то я не понял, что оно дает. И пользует python-4store-client (HTTP4Store)
+* мы можем завести объекты типа foaf:Person или v:VCard [с rdf:ID="uuid"].
