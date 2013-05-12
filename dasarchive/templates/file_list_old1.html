@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load templatetags %}
+{% block title %} Архив {% endblock %}
+{% block jsready %}
+    $("#tm_files").addClass("active");
+    $('ul#filter>li>button.showhide').click(toggle_children);
+    $('ul#filter>li>button.selectgroup').click(selectGroup);
+    $('ul#filter>li>button.deselectgroup').click(deselectGroup);
+    $('ul#filter>li>ul>li>label>input:checkbox:not(:checked)').parent().parent().hide();
+    $('ul#filter>li>ul>li>label>input:checkbox:checked').parent().parent().addClass('bold');
+{% endblock %}
+{% block js %}
+	<script type="text/javascript">
+		function selectAll() {
+			$("ul#filter>li>ul>li>label>input:checkbox:not(:checked)").click(); // attr("checked","checked")
+		}
+		function deselectAll() {
+			$("ul#filter>li>ul>li>label>input:checkbox:checked").click();  // removeAttr("checked")
+		}
+		function selectGroup() {
+			$("ul>li>label>input:checkbox:not(:checked)", $(this).parent()).click();
+		}
+		function deselectGroup() {
+			$("ul>li>label>input:checkbox:checked", $(this).parent()).click();
+		}
+		function toggle_children() {
+            // toggle children LIs: if hidden - show all; if all - hide unchecked
+            var children = $('ul>li>label>input:checkbox:not(:checked)', $(this).parent()).parent().parent()
+            if ($(this).attr('value') == "0") { // if hidden - show all
+                children.show();
+                $(this).text('-');
+                $(this).attr('value', '1');
+            } else {
+                children.hide();
+                $(this).text('+');
+                $(this).attr('value', '0');
+            };
+            return false;
+		}
+	</script>
+{% endblock %}
+{% block css %}
+{# http://www.w3schools.com/cssref/css_selectors.asp #}
+{# tags styles #}
+ul#filter {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ul#filter li button {
+    width: 2em;
+}
+ul#filter li ul {
+    list-style-type: none;
+}
+{% for taggroup in taggroup_list %}
+    {% if taggroup.bgcolor %}
+        #filter_tags-tag{{ taggroup.pk }} { background-color: {{ taggroup.bgcolor|color }}; }
+    {% endif %}
+{% endfor %}
+{# /tags styles #}
+{% endblock %}
+{% block body_main %}
+<p>
+    <a href="?page=1"> <img src="{{ STATIC_URL }}img/go-first.png" title="Начало" style="border: 1px solid silver"/> </a>
+    <a href="?page={{ object_list.previous_page_number }}"> <img src="{{ STATIC_URL }}img/go-previous.png" title="Назад" style="border: 1px solid silver"/> </a>
+    Page {{ object_list.number }}/{{ object_list.paginator.num_pages }}
+    <a href="?page={{ object_list.next_page_number }}"> <img src="{{ STATIC_URL }}img/go-next.png" title="Вперед" style="border: 1px solid silver"/> </a>
+    <a href="?page={{ object_list.paginator.num_pages }}"> <img src="{{ STATIC_URL }}img/go-last.png" title="Конец" style="border: 1px solid silver"/> </a>
+    Файлов по фильтру: {{ object_list.paginator.count }}
+</p>
+<table> <tr>
+<td valign="top">
+<table class="bl br bt" style="border-collapse: collapse">
+ <tr class="bold center">
+  <td class="br bb"> № </td>
+  <td class="br bb"> X </td>
+  <td class="br bb"> Name </td>
+  <td class="br bb"> Size </td>
+  <!--td class="br bb"> Mtime </td>
+  <td class="br bb"> Ctime </td-->
+  <td class="bb"> Tags </td>
+  <td class="br bb"> Links </td>
+ </tr>
+{% for object in object_list %}
+ <tr class="bb {% cycle 'even' 'odd' %}">
+  <td class="br bb right"> {{ forloop.counter|add:page_start }} </td>
+  <td class="br bb right"> {% if object.deleted %} X {% else %} &nbsp; {% endif %} </td>
+  <td class="br bb"> <a href="{% url file_detail object.pk %}" title="{{ object.comment }}"> {{ object.name }} </a> </td>
+  <td class="br bb right"> {{ object.size }} </td>
+  <!--td class="br bb"> {{ object.mtime|date:"Y-m-d H:i:s" }} </td>
+  <td class="br bb"> {{ object.ctime|date:"Y-m-d H:i:s" }} </td-->
+  <td class="bb">
+	{% for tag in object.tags.all %}
+	<p style="color: {{ tag.get_fgcolor_html }}; background-color: {{ tag.get_bgcolor_html }};"> {{ tag }} </p>
+	{% endfor %}
+  </td>
+  <td valign="top">
+    <a href="{% url file_edit object.pk %}?next={% url file_list %}"> <img src="{{ STATIC_URL }}img/document-edit.png" alt="edit" title="Редактировать" style="border: 1px solid silver"/> </a>
+    <a href="{% url file_download object.pk %}"> <img src="{{ STATIC_URL }}img/download.png" alt="download" title="Скачать" style="border: 1px solid silver"/> </a>
+  </td>
+ </tr>
+{% endfor %}
+</table>
+</td>
+<td class="box" valign="top">
+<!-- filter -->
+<form id="filterForm" method="post" action="{% url file_filter %}">
+	<button type="submit" title="если не отмечены теги, то показаны файлы без тегов. Чтобы увидеть все файлы - установите OR и отметьте все теги (педаль +). Далее - по вкусу."> Фильтровать </button>
+	<button type="reset"> Сброс </button>
+    <table>
+    {{ form_main.as_table }}
+    </table>
+    <a href="{% url resettags %}"> <button type="button" title="Обновить список тегов" style="width: 2em"> ? </button> </a>
+	<button type="button" onClick="selectAll()" title="Выделить все" style="width: 2em"> * </button>
+	<button type="button" onClick="deselectAll()" title="Снять все" style="width: 2em"> - </button>
+    <ul id="filter"> {% for field in form_tags %}
+        <li id="filter_{{ field.html_name }}">
+            <button class="showhide" type="button" value="0"> + </button>
+            <button class="selectgroup" type="button" title="Выделить все"> * </button>
+            <button class="deselectgroup" type="button" title="Снять все"> - </button>
+            {{ field.label_tag }}
+{{ field }}
+        </li> {% endfor %}
+    </ul>
+</form>
+</td>
+</tr>
+</table>
+{% endblock %}

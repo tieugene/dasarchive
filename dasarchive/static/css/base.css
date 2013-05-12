@@ -1,0 +1,229 @@
+p {
+	margin: 0;
+}
+
+a:link {
+    text-decoration: underline ;
+    color: #4444ff ;
+}
+
+a:visited {
+	/*text-decoration: none;*/
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.button {
+	border: outset;
+	border-width: 2px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+a.button {
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	text-decoration: none;
+}
+
+td.button {
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	text-decoration: none;
+	text-align: center;
+}
+
+th.button {
+	padding: 0px;
+	text-decoration: none;
+	text-align: center;
+}
+
+/*#content {*/
+	/*width: 100%;*/
+	/*float: left;*/
+/*}*/
+
+.pdable:after {
+	content: "▿";
+}
+
+table.tabbed {
+	border-style: none;
+	border: 0px;			/* border="0" */
+	border-collapse: collapse;	/* cellspacing="0" */
+}
+
+table.tabbed td {
+	padding: 0.2em 0.5em;
+	border-radius: 0.4em 0.4em 0 0;		/* radius: lt rt rb lb */
+	/*padding: 0px;*/			/* cellpadding="0" */
+}
+
+/* temlists */
+
+table.catitem {
+	/*padding: 0;*/
+	border-spacing: 0;
+}
+
+table.catitem td.catcell {
+	vertical-align: top;
+	border-top: 2px;
+	border-style: solid;
+	margin: 0;
+	padding: 0;
+	border-color: #BBCCFF;		/* FIXME: */
+}
+
+table.catitem td.itemcell {
+	vertical-align: top;
+	border-width: 2px;
+	border-style: solid;
+	padding: 0;
+	margin: 0;
+	border-color: #BBCCFF;		/* FIXME: */
+}
+
+table.itemlist, table.catlist {
+	/*border-style: none;
+	border: 0;*/
+	border-collapse: collapse;	/* cellspacing="0" */
+}
+
+table.itemlist caption, table.catlist caption {
+	text-align: left;
+	padding: 0.3em;
+	white-space: nowrap;
+}
+
+/*table.itemlist tbody tr {
+	border-style: dotted;
+	border-width: thin;
+}*/
+
+table.itemlist tbody tr td {
+	padding: 0 0.3em;
+	border-style: dotted;
+	border-width: thin;
+}
+
+table.itemlist tbody tr a, table.catlist tbody tr a {
+	text-decoration: none;
+}
+
+.addressbar td {
+    padding: 2px 6px;
+}
+
+.bordered {
+	border: 2px solid;
+	padding: 0;
+	margin: 0
+}
+
+span.abc {
+	border: 1px solid #D0D0D0;
+}
+
+span.abc a {
+	text-decoration: none;
+}
+
+span.abc a.active {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.pagination a {
+	text-decoration: none;
+	border: 1px solid #D0D0D0;
+}
+/* ==== */
+dt p	{ font-weight: bold; }
+dt	{ font-weight: bold; }
+/*table {
+	border-collapse: collapse;
+	border: none;
+}
+td {
+	border: 1px solid black;
+	padding: 2pt;
+}*/
+#topmenu {
+    border-collapse: collapse;
+	/*background-color: #EBEFF9;*/
+	/*background-color: white;*/
+	width: 100%;
+	text-align: center;
+    border-top: 3px solid #EBEFF9;
+    border-bottom: none;
+	/* border-top: 5px solid #EBEFF9; */
+}
+#topmenu td {
+	/* border-bottom: 1px solid #6B90DA; */
+    background-color: #EBEFF9;
+    /*border: none;*/
+    /*border-bottom: 1px solid #6B90DA;*/
+    border: none;
+	padding: 0;
+	white-space: nowrap;
+}
+#topmenu div {
+    padding: 3px 1em;
+    border-bottom: 1px solid #6B90DA;
+}
+#topmenu div.active {
+	border-top: 1px solid #6B90DA;
+	border-left: 1px solid #6B90DA;
+	border-right: 1px solid #6B90DA;
+    border-bottom: 1px solid white;
+	background-color: white;
+}
+#topmenu a:link {
+	color: blue;
+}
+#topmenu a:visited {
+	color: blue;
+}
+button.rounded {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.even	{ background-color: white; }
+.odd	{ background-color: #F0F0F0; }
+.wide	{ width: 100%; }
+.table	{ display: table; }
+.row	{ display: table-row; }
+.cell	{ display: table-cell; }
+.center	{ text-align: center; }
+.right	{ text-align: right; }
+.bt	{ border-top: 1px solid black; }
+.bb	{ border-bottom: 1px solid black; }
+.bl	{ border-left: 1px solid black; }
+.br	{ border-right: 1px solid black; }
+.box	{ border: 1px solid black; }
+.nobt	{ border-top: 0; }
+.nobb	{ border-bottom: 0; }
+.nobl	{ border-left: 0; }
+.nobr	{ border-right: 0; }
+.nobox	{ border: 0; }
+.bold	{ font-weight: bold; }
+div#legend {
+	margin: auto;
+	border: 1px solid lightgrey;
+	margin: 3pt;
+	padding: 3pt;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color: whitesmoke;
+}

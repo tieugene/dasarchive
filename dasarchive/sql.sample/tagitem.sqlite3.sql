@@ -1,0 +1,14 @@
+INSERT INTO dasarchive_tagitem (id, group_id, name) VALUES(1,1,'Администрация');
+INSERT INTO dasarchive_tagitem (id, group_id, name) VALUES(2,1,'Общий');
+INSERT INTO dasarchive_tagitem (id, group_id, name) VALUES(3,1,'Бухгалтерия');
+INSERT INTO dasarchive_tagitem (id, group_id, name) VALUES(4,1,'Юристы');
+INSERT INTO dasarchive_tagitem (id, group_id, name) VALUES(5,2,'Иванова');
+INSERT INTO dasarchive_tagitem (id, group_id, name) VALUES(6,2,'Петрова');
+INSERT INTO dasarchive_tagitem (id, group_id, name) VALUES(7,2,'Сидорова');
+INSERT INTO dasarchive_tagitem (id, group_id, name, comment) VALUES(8,3,'Рога и Копыта', 'ООО "Рога и Копыта"');
+INSERT INTO dasarchive_tagitem (id, group_id, name) VALUES(9,3,'Ромашка');
+INSERT INTO dasarchive_tagitem (id, group_id, name) VALUES(10,4,'Договор');
+INSERT INTO dasarchive_tagitem (id, group_id, name) VALUES(11,4,'Счет');
+INSERT INTO dasarchive_tagitem (id, group_id, name, comment) VALUES(12,4,'Платежка', 'Платежное поручение');
+INSERT INTO dasarchive_tagitem (id, group_id, name) VALUES(13,4,'Письмо');
+INSERT INTO dasarchive_tagitem (id, group_id, name) VALUES(14,4,'Заявление');

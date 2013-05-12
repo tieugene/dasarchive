@@ -1,0 +1,50 @@
+= Idea =
+* хранится X последних копий
+* ночью сравнивается текущее и в yesterday, если отличия:
+** yesterday => backup/<ID>/<YYYYMMDD>
+** current => yesterday
+
+= Dirs =
+Daily:      MEDIA_ROOT/yesterday/
+Backups:    MEDIA_ROOT/backup/
+
+= Backup =
+0. get yesterday and current
+1. current - for each:
+    - not exists => add
+    - fname => rename
+    - md5 => rollback, replace
+    - update yesterday/index
+2. yesterday:
+    - clean extra files
+    - delete empty dirs
+3. rollback:
+    - clean extra files
+    - delete empty dirs
+4. backup mysql
+5. rsync yesterday, rollback, mysql
+
+= checks =
+* current (fnames, crc, size, extra files)
+* yesterday (extra files)
+
+= Notes =
+* MD5: 60MB/s => 250GB == 01:10
+* Delete empty dirs:
+    find . -type d -empty
+    find test -depth -empty -delete
+    find directory -mindepth 1 -type d -empty -delete
+* Dict (http://wiki.bash-hackers.org/syntax/arrays):
+    declare -A ARRAY
+
+= Resume =
+Пора кончать. Поэтому закончим на мнимальном надежном полуавтомате.
+Общий принцип - максимальная надежность и ручное вмешательство при малейшем сбое.
+Поэтому:
+1. check current
+2. check yesterday
+if ok:
+3. backup
+== disabled ==
+* update current
+* update yesterday

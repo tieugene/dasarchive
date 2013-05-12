@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} Файлы {% endblock %}
+{% block jsready %}
+$("#tm_files").addClass("active");
+{% endblock %}
+{% block body_main %}
+<p> Файл уже существует: </p>
+{% for object in object_list %}
+ <div class="row bb {% cycle 'even' 'odd' %}">
+  <div class="cell br bb right"> {% if object.deleted %} X {% else %} &nbsp; {% endif %} </div>
+  <div class="cell br bb"> <a href="{% url file_detail object.pk %}" title="{{ object.comment }}"> {{ object }} </a> </div>
+  <div class="cell br bb right"> {{ object.size }} </div>
+  <div class="cell br bb"> {{ object.mtime|date:"Y-m-d H:i:s" }} </div>
+  <div class="cell br bb"> {{ object.ctime|date:"Y-m-d H:i:s" }} </div>
+  <div class="cell bb">
+	{% for tag in object.tags.all %}
+	<p style="color: {{ tag.get_fgcolor_html }};background-color: {{ tag.get_bgcolor_html }};"> {{ tag }} </p>
+	{% endfor %}
+  </div>
+ </div>
+{% endfor %}
+{% endblock %}

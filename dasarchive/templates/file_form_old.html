@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load templatetags %}
+{% block jsready %}
+    $("#tm_files").addClass("active");
+    $('#tags input:checkbox').not(':checked').parent().parent().hide();
+    $('#tags button').click(toggle_children);
+{% endblock %}
+{% block js %}
+	<script type="text/javascript">
+		function toggle_children() {
+            // toggle children LIs: if hidden - show all; if all - hide unchecked
+            if ($(this).attr('value') == "0") { // if hidden - show all
+                $('td input:checkbox', $(this).parent().parent()).not(':checked').parent().parent().show();
+                $(this).text('-');
+                $(this).attr('value', '1');
+            } else {
+                $('td input:checkbox', $(this).parent().parent()).not(':checked').parent().parent().hide();
+                $(this).text('+');
+                $(this).attr('value', '0');
+            };
+            return false;
+		}
+	</script>
+{% endblock %}
+{% block body_main %}
+<form action="" method="POST">
+	{% csrf_token %}
+	<button type="submit" title="Записать"> <img src="{{ STATIC_URL }}img/dialog-ok.png" alt="ok"/> </button>
+	<a href="{% if path %}{% url views.inbox '' %}{% else %}{% url file_detail object.pk %}{% endif %}"> <button type="button" title="Отказаться"> <img src="{{ STATIC_URL }}img/dialog-cancel.png" alt="cancel"/> </button> </a>
+	{% if path %} <p> Path: <input type="text" name="path" readonly="readonly" value="{{ path }}"/> </p> {% endif %}
+    <table> <tr>
+	<td valign="top"> <table>
+		<caption> <p> {% if mode %} Новый файл {% else %} Редактировать Файл {% endif %} </p> </caption>
+    {% for field in form %}
+        {% if field.html_name != 'tags' %}
+        <tr>
+            <td> {{ field.errors }} {{ field.label_tag }} </td>
+            <td> {{ field }} </td>
+        <tr>
+        {% endif %}
+    {% endfor %}
+	</table> </td>
+    <td valign="top">
+    {{ form.tags.errors }}
+    <table id="tags">
+    {% for taggroup in taggroup_list %}
+        <tr {% if taggroup.bgcolor %} style="background-color: {{ taggroup.bgcolor|color }};" {% endif %}>
+        <td valign="top"> <button type="button" value="0" style="padding: 0"> + </button> {{ taggroup.name }}: </td>
+        <td>
+        {% for tag in taggroup.items.all %}
+            <p>
+                <label>
+                    <input type="checkbox" name="tags" value="{{ tag.pk }}" {% if tag.pk in form.tags.value %} checked="checked" {% endif %} />
+                    {{ tag }}
+                    {% if tag.comment %} <i> ({{ tag.comment }})</i> {% endif %}
+                </label>
+            </p>
+        {% endfor %}
+        </td>
+        </tr>
+    {% endfor %}
+    </table>
+    </td>
+    </tr> </table>
+</form>
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load templatetags %}
+{% block title %} Архив {% endblock %}
+{% block jsready %}
+    $("#tm_files").addClass("active");
+    onLoad();
+{% endblock %}
+{% block js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/file_list.js"></script>
+{% endblock %}
+{% block css %}
+{# http://www.w3schools.com/cssref/css_selectors.asp #}
+{# *All button styles #}
+button.doall {
+    background-color: silver;
+    width: 2em;
+}
+{# tags styles #}
+ul#filter {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ul#filter button {
+    width: 2em;
+}
+ul#filter li ul {
+    list-style-type: none;
+}
+{% for taggroup in taggroup_list %}
+    {% if taggroup.bgcolor %}
+        #filter_tags-tag{{ taggroup.pk }} { background-color: {{ taggroup.bgcolor|color }}; }
+    {% endif %}
+{% endfor %}
+{# /tags styles #}
+{% endblock %}
+{% block body_main %}
+<p>
+    <a href="?page=1"> <img src="{{ STATIC_URL }}img/go-first.png" title="Начало" style="border: 1px solid silver"/> </a>
+    <a href="?page={{ object_list.previous_page_number }}"> <img src="{{ STATIC_URL }}img/go-previous.png" title="Назад" style="border: 1px solid silver"/> </a>
+    Page {{ object_list.number }}/{{ object_list.paginator.num_pages }}
+    <a href="?page={{ object_list.next_page_number }}"> <img src="{{ STATIC_URL }}img/go-next.png" title="Вперед" style="border: 1px solid silver"/> </a>
+    <a href="?page={{ object_list.paginator.num_pages }}"> <img src="{{ STATIC_URL }}img/go-last.png" title="Конец" style="border: 1px solid silver"/> </a>
+    Файлов по фильтру: {{ object_list.paginator.count }}
+</p>
+<table> <tr>
+<td valign="top">
+<table class="bl br bt" style="border-collapse: collapse">
+ <tr class="bold center">
+  <td class="br bb"> № </td>
+  <td class="br bb"> X </td>
+  <td class="br bb"> Name </td>
+  <td class="br bb"> Size </td>
+  <!--td class="br bb"> Mtime </td>
+  <td class="br bb"> Ctime </td-->
+  <td class="bb"> Tags </td>
+  <td class="br bb"> Links </td>
+ </tr>
+{% for object in object_list %}
+ <tr class="bb {% cycle 'even' 'odd' %}">
+  <td class="br bb right"> {{ forloop.counter|add:page_start }} </td>
+  <td class="br bb right"> {% if object.deleted %} X {% else %} &nbsp; {% endif %} </td>
+  <td class="br bb"> <a href="{% url file_detail object.pk %}" title="{{ object.comment }}"> {{ object.name }} </a> </td>
+  <td class="br bb right"> {{ object.size }} </td>
+  <!--td class="br bb"> {{ object.mtime|date:"Y-m-d H:i:s" }} </td>
+  <td class="br bb"> {{ object.ctime|date:"Y-m-d H:i:s" }} </td-->
+  <td class="bb">
+	{% for tag in object.tags.all %}
+	<p style="color: {{ tag.get_fgcolor_html }}; background-color: {{ tag.get_bgcolor_html }};"> {{ tag }} </p>
+	{% endfor %}
+  </td>
+  <td valign="top">
+    <a href="{% url file_edit object.pk %}?next={% url file_list %}"> <img src="{{ STATIC_URL }}img/document-edit.png" alt="edit" title="Редактировать" style="border: 1px solid silver"/> </a>
+    <a href="{% url file_download object.pk %}"> <img src="{{ STATIC_URL }}img/download.png" alt="download" title="Скачать" style="border: 1px solid silver"/> </a>
+  </td>
+ </tr>
+{% endfor %}
+</table>
+</td>
+<td class="box" valign="top">
+<!-- filter -->
+<form id="filterForm" method="post" action="{% url file_filter %}">
+	<button type="submit" title="если не отмечены теги, то показаны файлы без тегов. Чтобы увидеть все файлы - установите OR и отметьте все теги (педаль +). Далее - по вкусу."> Фильтровать </button>
+	<button type="reset"> Сброс </button>
+    <table>
+    {{ form_main.as_table }}
+    </table>
+    <button class="doall" id="showall" type="button" onClick="showAll()" title="Показать все"> + </button>
+    <button class="doall" id="hideall" type="button" onClick="hideAll()" title="Показать только отмеченные"> - </button>
+	<button class="doall" id="selectall" type="button" onClick="selectAll()" title="Выделить все"> [v] </button>
+	<button class="doall" id="deselectall" type="button" onClick="deselectAll()" title="Снять все"> [&nbsp;] </button>
+    <a href="{% url resettags %}"> <button class="doall" type="button" title="Обновить список тегов"> ? </button> </a>
+    <ul id="filter"> {% for field in form_tags %}
+        <li id="filter_{{ field.html_name }}">
+            <button class="showgroup" type="button" title="Показать все"> + </button>
+            <button class="hidegroup" type="button" title="Показать только отмеченные"> - </button>
+            <button class="selectgroup" type="button" title="Выделить все"> [v] </button>
+            <button class="deselectgroup" type="button" title="Снять все"> [&nbsp;] </button>
+            {{ field.label_tag }}
+{{ field }}
+        </li> {% endfor %}
+    </ul>
+</form>
+</td>
+</tr>
+</table>
+{% endblock %}

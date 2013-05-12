@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load templatetags %}
+{% block jsready %}
+    $("#tm_files").addClass("active");
+    $('ul#tags li ul li input:checkbox').not(':checked').parent().parent().hide();
+    $('ul#tags li button').click(toggle_children);
+{% endblock %}
+{% block js %}
+	<script type="text/javascript">
+		function toggle_children() {
+            // toggle children LIs: if hidden - show all; if all - hide unchecked
+            if ($(this).attr('value') == "0") { // if hidden - show all
+                $('ul li input:checkbox', $(this).parent()).not(':checked').parent().parent().show();
+                $(this).text('-');
+                $(this).attr('value', '1');
+            } else {
+                $('ul li input:checkbox', $(this).parent()).not(':checked').parent().parent().hide();
+                $(this).text('+');
+                $(this).attr('value', '0');
+            };
+            return false;
+		}
+	</script>
+{% endblock %}
+{% block css %}
+{# tags styles #}
+ul#tags {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ul#tags li button {
+    width: 2em;
+}
+ul#tags li ul {
+    list-style-type: none;
+}
+{# /tags styles #}
+{% endblock %}
+{% block body_main %}
+<form action="?next={{ next }}" method="POST">
+	{% csrf_token %}
+	<button type="submit" title="Записать"> <img src="{{ STATIC_URL }}img/dialog-ok.png" alt="ok"/> </button>
+	<a href="{% if path %}{{ next }}{% else %}{{ next }}{% endif %}"> <button type="button" title="Отказаться"> <img src="{{ STATIC_URL }}img/dialog-cancel.png" alt="cancel"/> </button> </a>
+	<button type="reset" title="Сброс"> <img src="{{ STATIC_URL }}img/edit-undo.png" alt="reset"/> </button>
+	{% if path %}
+        <p> Path: <input type="text" name="path" readonly="readonly" value="{{ path }}"/> </p>
+    {% endif %}
+    <table> <tr>
+	<td valign="top"> <table>
+		<caption> <p> {% if mode %} Новый файл {% else %} Редактировать Файл {% endif %} </p> </caption>
+    {% for field in form %}
+        {% if field.html_name != 'tags' %}
+        <tr>
+            <td> {{ field.errors }} {{ field.label_tag }} </td>
+            <td> {{ field }} </td>
+        <tr>
+        {% endif %}
+    {% endfor %}
+	</table> </td>
+    <td valign="top">
+    {{ form.tags.errors }}
+    <ul id="tags">
+    {% for taggroup in taggroup_list %}
+        <li {% if taggroup.bgcolor %} style="background-color: {{ taggroup.bgcolor|color }};" {% endif %}>
+            <button type="button" value="0" style="padding: 0"> + </button>
+            {{ taggroup.name }}:
+            <ul>
+            {% for tag in taggroup.items.all %}
+                <li>
+                    <label>
+                        <input type="checkbox" name="tags" value="{{ tag.pk }}" {% if tag.pk in form.tags.value %} checked="checked" {% endif %} />
+                        <span {% if tag.comment %} title="{{ tag.comment }}" {% endif %} {% if tag.pk in form.tags.value %} class="bold" {% endif %}> {{ tag }} </span>
+                    </label>
+                </li>
+            {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+    </ul>
+    </td>
+    </tr> </table>
+</form>
+{% endblock %}
