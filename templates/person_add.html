@@ -1,0 +1,23 @@
+$def with(form)
+$def field_row(v, c=''):
+	<div class="row"> <div class="cell $c"> $v.description </div> <div class="cell"> $:v.render() </div> <div class="cell err"> $:v.note </div> </div>
+
+$var title: Person add
+$var jsready: $$('#tm_core').addClass('active');
+
+<center> <a href="/core/"> Core </a> &gt; <a href="/person_list/"> Persons </a> </center>
+<form method="POST" id="myForm">
+<p>
+	<button type="submit"> OK </button>
+	<button type="reset"> Стереть </button>
+	<a href="/person_list/"> <button type="button" onClick="populateForm()"> Пример </button> </a>
+</p>
+<fieldset>
+ <legend> Личные данные </legend>
+	<div class="table">
+	$:field_row(form.lastname, 'required')
+	$:field_row(form.firstname, 'required')
+	$:field_row(form.midname)
+	</div>
+</fieldset>
+</form>

@@ -1,0 +1,39 @@
+// dot -Tsvg -o ui.svg ui.dot
+
+digraph ui {
+ label = "UI";
+ rankdir = LR;
+ node [ shape = rectangle, style=rounded ];
+ patient_list	[ label = "List" ];
+ patient_detail	[ label = "Detail" ];
+ patient_add	[ label = "Add" ];
+ patient_edit	[ label = "Edit" ];
+ employee_list	[ label = "List" ];
+ ref_list	[ label = "List" ];
+ index -> { patient_list employee_list ref_list };
+ subgraph cluster_patient {
+  label = "Поциэнт";
+  shape = folder;
+  //style="filled";
+  //fillcolor="lightgrey";
+  //node [style=filled,color=white];
+  patient_list -> patient_detail [ label = "View" ];
+  patient_list -> patient_list [ label = "Del\nchecked" ];
+  patient_list -> patient_add [ label = "Add" ];
+  patient_add -> patient_add [ label = "Err" ];
+  patient_add -> patient_list [ label = "Cancel" ];
+  patient_add -> patient_detail [ label = "OK" ];
+  patient_detail -> patient_edit [ label = "Edit" ];
+  patient_detail -> patient_list [ label = "Del" ];
+  patient_edit -> patient_edit [ label = "Err" ];
+  patient_edit -> patient_detail [ label = "OK\nCancel" ];
+ }
+ subgraph cluster_employee {
+  label = "Сотрудники";
+  employee_list;
+ }
+ subgraph cluster_ref {
+  label = "Справочники";
+  ref_list;
+ }
+}

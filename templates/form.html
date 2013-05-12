@@ -1,0 +1,198 @@
+$def with(form, okveds, selected)
+$def field_row(v, c=''):
+	<div class="row"> <div class="cell $c"> $v.description </div> <div class="cell"> $:v.render() </div> <div class="cell err"> $:v.note </div> </div>
+$# ex1: $:form.lastname.render()
+$# ex2: $for f in form.inputs: $:field_row(f)
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8" />
+ <title> Оформление ИП </title>
+ <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+ <script type="text/javascript" src="http://www.keyframesandcode.com/resources/javascript/jQuery/populate/jquery.populate.pack.js"></script>
+ <script type="text/javascript">
+	var sample = {
+		'lastname':	'Иванов',
+		'firstname':	'Иван',
+		'midname':	'Иванович',
+		'birthdate':	'01.01.1970',
+		'birthplace':	'Поребрик-сити',
+		'inn':		'123456789093',
+		'addr_zip':	'192001',
+		'addr_street':	'пр-т Большевиков',
+		'addr_house':	'1',
+		'addr_app':	'пом. 1Н',
+		'doc_series':	'4005',
+		'doc_no':	'321654',
+		'doc_date':	'01.03.2003',
+		'doc_who':	'15-е отделение',
+		'doc_kp':	'151235',
+	};
+	function populateForm() {
+		$$(document.forms['myForm']).populate(sample);
+	};
+	function section_toggle() {
+		var div = $$(">div.items", $$(this).parent().parent());
+		if (div.css("display") == 'none') {
+			$$(this).html("-");
+			div.show();
+		} else {
+			$$(this).html("+");
+			div.hide();
+		};
+	};
+	function item_remove() {
+		var id = $$(this).attr('value');
+		var item = $$('#'+id);
+		// enable item
+		$$('>input', item).removeAttr("disabled");
+		$$('>input', item).attr('checked', false)
+		// remove self
+		$$(this).parent().remove();
+	};
+	function item_add() {	// insert item into selected
+		// disable checkbox
+		this.disabled = true;
+		// create new item
+		var p = $$(this).parent();
+		a = $$('<li> <input type="checkbox" name="selected" checked="checked" value="'+p.attr('id')+'"/> '+$$('>span', p).html()+' </li>')
+		$$('>input', a).click(item_remove);
+		// add it to selected
+		a.appendTo('#selected');
+	};
+	$$(document).ready(function() {
+		$$("div.items").hide();
+		$$('div.section>p.section>button').click(section_toggle);
+		$$('div.items>p.item>input').click(item_add);
+	});
+ </script>
+ <style type="text/css" >
+	div.table {
+		display: table;
+	}
+	div.row {
+		display: table-row;
+	}
+	div.cell {
+		display: table-cell;
+	}
+	fieldset {
+		/* display: inline-block; */
+		vertical-align: top;
+		background: #F0F0F0;
+	}
+	legend {
+		font-weight: bold;
+		background: white;
+	}
+	.required {
+		font-weight: bold;
+	}
+	.err {
+		color: red;
+	}
+	/* okveds */
+	div.section p {
+		margin: 0;
+		padding: 0;
+	}
+	button.section {
+		margin: 0;
+		padding: 0;
+	}
+ </style>
+</head>
+<body>
+<form method="POST" id="myForm">
+<h1> Оформление ИП </h1>
+<p> Здесь можно бесплатно оформить документы на ИП </p>
+<p> Ограничения: </p>
+<ul>
+ <li> Только Питер </li>
+ <li> Только граждане РФ </li>
+ <li> Только совершеннолетние </li>
+</ul>
+<p>
+	<button type="submit"> Печать </button>
+	<button type="reset"> Стереть </button>
+	<button type="button" onClick="populateForm()"> Пример </button>
+</p>
+
+<div style="display: inline-block;">
+<div>
+<fieldset>
+ <legend> Личные данные </legend>
+	<div class="table">
+	$:field_row(form.lastname, 'required')
+	$:field_row(form.firstname, 'required')
+	$:field_row(form.midname)
+	$:field_row(form.sex, 'required')
+	$:field_row(form.birthdate, 'required')
+	$:field_row(form.birthplace, 'required')
+	$:field_row(form.inn)
+	$:field_row(form.tax, 'required')
+	</div>
+</fieldset>
+</div>
+<div>
+<fieldset>
+ <legend> Контактные телефоны: </legend>
+	<div class="table">
+	$:field_row(form.phone_code)
+	$:field_row(form.phone_no)
+	$:field_row(form.phone_fax)
+	</div>
+</fieldset>
+</div>
+</div>
+
+<div style="display: inline-block; vertical-align: top;">
+<div>
+<fieldset>
+ <legend> Место жительства </legend>
+	<div class="table">
+	$:field_row(form.addr_zip, 'required')
+	$:field_row(form.addr_locality)
+	$:field_row(form.addr_street, 'required')
+	$:field_row(form.addr_house, 'required')
+	$:field_row(form.addr_building)
+	$:field_row(form.addr_app)
+	</div>
+</fieldset>
+</div>
+<div>
+<fieldset>
+ <legend> Паспорт: </legend>
+	<div class="table">
+	$:field_row(form.doc_series, 'required')
+	$:field_row(form.doc_no, 'required')
+	$:field_row(form.doc_date, 'required')
+	$:field_row(form.doc_who, 'required')
+	$:field_row(form.doc_kp, 'required')
+	</div>
+</fieldset>
+</div>
+</div>
+<div class="err"> $:form.note </div>
+<h3> Выбранные ОКВЭДы: </h3> <em> (первый будет основным) </em>
+<ul id="selected">
+$# $for v, i, s in selected:
+$#	<li> <input type="checkbox" name="selected" checked="checked" value="$v"/> $i: $s </li>
+</ul>
+</form>
+<hr/>
+<h3> Справочник ОКВЭДов: </h3>
+	<div> <div>
+$for okved in okveds:
+	$if len(okved.id) == 2:
+		</div> </div>
+		<div class="section">
+		<p class="section" id="a$okved.id.replace('.', '_')"> <button class="section" type="button"> + </button> $okved.id.replace('.', '_'): $okved.name </p>
+		<div class="items">
+	$else:
+		<p class="item" id="a$okved.id.replace('.', '_')"> <input type="checkbox"/> <span> $okved.id: $okved.name </span> </p>
+</div>
+</body>
+</html>
