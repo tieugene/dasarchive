@@ -1,0 +1,586 @@
+OPTIONS /ftp/folder1 HTTP/1.1
+Host: localhost
+Accept-Encoding: gzip, deflate
+User-Agent: gvfs/1.12.3
+Accept-Language: ru-ru, ru;q=0.9
+Connection: Keep-Alive
+
+HTTP/1.1 301 Moved Permanently
+Date: Fri, 03 Aug 2012 06:36:34 GMT
+Server: Apache/2.2.22 (Fedora)
+Location: http://localhost/ftp/folder1/
+Content-Length: 312
+Connection: close
+Content-Type: text/html; charset=iso-8859-1
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://localhost/ftp/folder1/">here</a>.</p>
+<hr>
+<address>Apache/2.2.22 (Fedora) Server at localhost Port 80</address>
+</body></html>
+
+OPTIONS /ftp/folder1/ HTTP/1.1
+Host: localhost
+Accept-Encoding: gzip, deflate
+Accept-Language: ru-ru, ru;q=0.9
+Connection: Keep-Alive
+User-Agent: gvfs/1.12.3
+
+HTTP/1.1 200 OK
+Date: Fri, 03 Aug 2012 06:36:34 GMT
+Server: Apache/2.2.22 (Fedora)
+DAV: 1,2
+DAV: <http://apache.org/dav/propset/fs/1>
+MS-Author-Via: DAV
+Allow: OPTIONS,GET,HEAD,POST,DELETE,TRACE,PROPFIND,PROPPATCH,COPY,MOVE,LOCK,UNLOCK
+Content-Length: 0
+Connection: close
+Content-Type: httpd/unix-directory
+
+PROPFIND /ftp/folder1/ HTTP/1.1
+Host: localhost
+Depth: 0
+Content-Type: application/xml
+Accept-Encoding: gzip, deflate
+User-Agent: gvfs/1.12.3
+Accept-Language: ru-ru, ru;q=0.9
+Connection: Keep-Alive
+Content-Length: 124
+
+<?xml version="1.0" encoding="utf-8" ?>
+ <D:propfind xmlns:D="DAV:">
+  <D:prop>
+<D:resourcetype/>
+  </D:prop>
+ </D:propfind>
+
+HTTP/1.1 207 Multi-Status
+Date: Fri, 03 Aug 2012 06:36:34 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 315
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version="1.0" encoding="utf-8"?>
+<D:multistatus xmlns:D="DAV:" xmlns:ns0="DAV:">
+<D:response xmlns:lp1="DAV:">
+<D:href>/ftp/folder1/</D:href>
+<D:propstat>
+<D:prop>
+<lp1:resourcetype><D:collection/></lp1:resourcetype>
+</D:prop>
+<D:status>HTTP/1.1 200 OK</D:status>
+</D:propstat>
+</D:response>
+</D:multistatus>
+
+OPTIONS /ftp/ HTTP/1.1
+Host: localhost
+Accept-Encoding: gzip, deflate
+Accept-Language: ru-ru, ru;q=0.9
+Connection: Keep-Alive
+User-Agent: gvfs/1.12.3
+
+
+HTTP/1.1 200 OK
+Date: Fri, 03 Aug 2012 06:36:34 GMT
+Server: Apache/2.2.22 (Fedora)
+DAV: 1,2
+DAV: <http://apache.org/dav/propset/fs/1>
+MS-Author-Via: DAV
+Allow: OPTIONS,GET,HEAD,POST,DELETE,TRACE,PROPFIND,PROPPATCH,COPY,MOVE,LOCK,UNLOCK
+Content-Length: 0
+Connection: close
+Content-Type: httpd/unix-directory
+
+
+PROPFIND /ftp/ HTTP/1.1
+Host: localhost
+Depth: 0
+Content-Type: application/xml
+Accept-Encoding: gzip, deflate
+Accept-Language: ru-ru, ru;q=0.9
+Connection: Keep-Alive
+Content-Length: 124
+User-Agent: gvfs/1.12.3
+
+<?xml version="1.0" encoding="utf-8" ?>
+ <D:propfind xmlns:D="DAV:">
+  <D:prop>
+<D:resourcetype/>
+  </D:prop>
+ </D:propfind>
+HTTP/1.1 207 Multi-Status
+Date: Fri, 03 Aug 2012 06:36:34 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 307
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version="1.0" encoding="utf-8"?>
+<D:multistatus xmlns:D="DAV:" xmlns:ns0="DAV:">
+<D:response xmlns:lp1="DAV:">
+<D:href>/ftp/</D:href>
+<D:propstat>
+<D:prop>
+<lp1:resourcetype><D:collection/></lp1:resourcetype>
+</D:prop>
+<D:status>HTTP/1.1 200 OK</D:status>
+</D:propstat>
+</D:response>
+</D:multistatus>
+
+OPTIONS / HTTP/1.1
+Host: localhost
+Accept-Encoding: gzip, deflate
+Accept-Language: ru-ru, ru;q=0.9
+Connection: Keep-Alive
+User-Agent: gvfs/1.12.3
+
+
+HTTP/1.1 200 OK
+Date: Fri, 03 Aug 2012 06:36:34 GMT
+Server: Apache/2.2.22 (Fedora)
+Allow: GET,HEAD,POST,OPTIONS,TRACE
+Content-Length: 0
+Connection: close
+Content-Type: httpd/unix-directory
+
+
+PROPFIND /ftp/folder1 HTTP/1.1
+Host: localhost
+Depth: 0
+Content-Type: application/xml
+Apply-To-Redirect-Ref: T
+Accept-Encoding: gzip, deflate
+User-Agent: gvfs/1.12.3
+Accept-Language: ru-ru, ru;q=0.9
+Connection: Keep-Alive
+Content-Length: 235
+
+<?xml version="1.0" encoding="utf-8" ?>
+ <D:propfind xmlns:D="DAV:">
+  <D:prop>
+<D:creationdate/>
+<D:displayname/>
+<D:getcontentlength/>
+<D:getcontenttype/>
+<D:getetag/>
+<D:getlastmodified/>
+<D:resourcetype/>
+  </D:prop>
+ </D:propfind>
+
+HTTP/1.1 301 Moved Permanently
+Date: Fri, 03 Aug 2012 06:36:34 GMT
+Server: Apache/2.2.22 (Fedora)
+Location: http://localhost/ftp/folder1/
+Content-Length: 312
+Connection: close
+Content-Type: text/html; charset=iso-8859-1
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://localhost/ftp/folder1/">here</a>.</p>
+<hr>
+<address>Apache/2.2.22 (Fedora) Server at localhost Port 80</address>
+</body></html>
+
+PROPFIND /ftp/folder1/ HTTP/1.1
+Host: localhost
+Depth: 0
+Content-Type: application/xml
+Apply-To-Redirect-Ref: T
+Accept-Encoding: gzip, deflate
+Accept-Language: ru-ru, ru;q=0.9
+Connection: Keep-Alive
+Content-Length: 235
+User-Agent: gvfs/1.12.3
+
+<?xml version="1.0" encoding="utf-8" ?>
+ <D:propfind xmlns:D="DAV:">
+  <D:prop>
+<D:creationdate/>
+<D:displayname/>
+<D:getcontentlength/>
+<D:getcontenttype/>
+<D:getetag/>
+<D:getlastmodified/>
+<D:resourcetype/>
+  </D:prop>
+ </D:propfind>
+
+HTTP/1.1 207 Multi-Status
+Date: Fri, 03 Aug 2012 06:36:34 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 747
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version="1.0" encoding="utf-8"?>
+<D:multistatus xmlns:D="DAV:" xmlns:ns0="DAV:">
+<D:response xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/" xmlns:g0="DAV:">
+<D:href>/ftp/folder1/</D:href>
+<D:propstat>
+<D:prop>
+<lp1:creationdate>2012-08-03T06:07:57Z</lp1:creationdate>
+<D:getcontenttype>httpd/unix-directory</D:getcontenttype>
+<lp1:getetag>"4627cc-1000-4c6565976ed50"</lp1:getetag>
+<lp1:getlastmodified>Fri, 03 Aug 2012 06:07:57 GMT</lp1:getlastmodified>
+<lp1:resourcetype><D:collection/></lp1:resourcetype>
+</D:prop>
+<D:status>HTTP/1.1 200 OK</D:status>
+</D:propstat>
+<D:propstat>
+<D:prop>
+<g0:displayname/>
+<g0:getcontentlength/>
+</D:prop>
+<D:status>HTTP/1.1 404 Not Found</D:status>
+</D:propstat>
+</D:response>
+</D:multistatus>
+
+PROPFIND /ftp/ HTTP/1.1
+Host: localhost
+Depth: 0
+Content-Type: application/xml
+Apply-To-Redirect-Ref: T
+Accept-Encoding: gzip, deflate
+User-Agent: gvfs/1.12.3
+Accept-Language: ru-ru, ru;q=0.9
+Connection: Keep-Alive
+Content-Length: 235
+
+<?xml version="1.0" encoding="utf-8" ?>
+ <D:propfind xmlns:D="DAV:">
+  <D:prop>
+<D:creationdate/>
+<D:displayname/>
+<D:getcontentlength/>
+<D:getcontenttype/>
+<D:getetag/>
+<D:getlastmodified/>
+<D:resourcetype/>
+  </D:prop>
+ </D:propfind>
+
+HTTP/1.1 207 Multi-Status
+Date: Fri, 03 Aug 2012 06:36:35 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 739
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version="1.0" encoding="utf-8"?>
+<D:multistatus xmlns:D="DAV:" xmlns:ns0="DAV:">
+<D:response xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/" xmlns:g0="DAV:">
+<D:href>/ftp/</D:href>
+<D:propstat>
+<D:prop>
+<lp1:creationdate>2012-08-03T06:07:45Z</lp1:creationdate>
+<D:getcontenttype>httpd/unix-directory</D:getcontenttype>
+<lp1:getetag>"4622ff-1000-4c65658bbba03"</lp1:getetag>
+<lp1:getlastmodified>Fri, 03 Aug 2012 06:07:45 GMT</lp1:getlastmodified>
+<lp1:resourcetype><D:collection/></lp1:resourcetype>
+</D:prop>
+<D:status>HTTP/1.1 200 OK</D:status>
+</D:propstat>
+<D:propstat>
+<D:prop>
+<g0:displayname/>
+<g0:getcontentlength/>
+</D:prop>
+<D:status>HTTP/1.1 404 Not Found</D:status>
+</D:propstat>
+</D:response>
+</D:multistatus>
+
+PROPFIND /ftp/folder1/ HTTP/1.1
+Host: localhost
+Depth: 1
+Content-Type: application/xml
+Apply-To-Redirect-Ref: T
+Accept-Encoding: gzip, deflate
+User-Agent: gvfs/1.12.3
+Accept-Language: ru-ru, ru;q=0.9
+Connection: Keep-Alive
+Content-Length: 235
+
+<?xml version="1.0" encoding="utf-8" ?>
+ <D:propfind xmlns:D="DAV:">
+  <D:prop>
+<D:creationdate/>
+<D:displayname/>
+<D:getcontentlength/>
+<D:getcontenttype/>
+<D:getetag/>
+<D:getlastmodified/>
+<D:resourcetype/>
+  </D:prop>
+ </D:propfind>sqP{ B   B                E  4ñu@ @¶L     P´ôÅ±>@ñâ†…Ä ˛(  
+v®4v®4sqP5} ]  ]               E Oñv@ @†0     P´ôÅ±>@ñâ†…Ä D  
+v®5v®4HTTP/1.1 207 Multi-Status
+Date: Fri, 03 Aug 2012 06:36:35 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 1383
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version="1.0" encoding="utf-8"?>
+<D:multistatus xmlns:D="DAV:" xmlns:ns0="DAV:">
+<D:response xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/" xmlns:g0="DAV:">
+<D:href>/ftp/folder1/</D:href>
+<D:propstat>
+<D:prop>
+<lp1:creationdate>2012-08-03T06:07:57Z</lp1:creationdate>
+<D:getcontenttype>httpd/unix-directory</D:getcontenttype>
+<lp1:getetag>"4627cc-1000-4c6565976ed50"</lp1:getetag>
+<lp1:getlastmodified>Fri, 03 Aug 2012 06:07:57 GMT</lp1:getlastmodified>
+<lp1:resourcetype><D:collection/></lp1:resourcetype>
+</D:prop>
+<D:status>HTTP/1.1 200 OK</D:status>
+</D:propstat>
+<D:propstat>
+<D:prop>
+<g0:displayname/>
+<g0:getcontentlength/>
+</D:prop>
+<D:status>HTTP/1.1 404 Not Found</D:status>
+</D:propstat>
+</D:response>
+<D:response xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/" xmlns:g0="DAV:">
+<D:href>/ftp/folder1/test.txt</D:href>
+<D:propstat>
+<D:prop>
+<lp1:creationdate>2012-08-03T06:07:57Z</lp1:creationdate>
+<lp1:getcontentlength>50928</lp1:getcontentlength>
+<D:getcontenttype>text/plain</D:getcontenttype>
+<lp1:getetag>"46281f-c6f0-4acfe526712c0"</lp1:getetag>
+<lp1:getlastmodified>Thu, 15 Sep 2011 17:36:51 GMT</lp1:getlastmodified>
+<lp1:resourcetype/>
+</D:prop>
+<D:status>HTTP/1.1 200 OK</D:status>
+</D:propstat>
+<D:propstat>
+<D:prop>
+<g0:displayname/>
+</D:prop>
+<D:status>HTTP/1.1 404 Not Found</D:status>
+</D:propstat>
+</D:response>
+</D:multistatus>
+sqPµ} B   B                E  4ñw@ @¶J     P´ôÅ±D[ñâ†…Ä ˛(  
+v®5v®4sqP ~ B   B                E  46Ò@ @—    ´ô Pñâ†…Å±D[Ä ˛(  
+v®5v®5sqP‹~ B   B                E  46Ú@ @–    ´ô Pñâ†…Å±D\Ä ˛(  
+v®5v®5sqPÍ~ B   B                E  4ñx@ @¶I     P´ôÅ±D\ñâ† Ä ˛(  
+v®5v®5sqP;ú J   J                E  < @ @r±    ´ö Pl—b5    †Ä˛0  @
+v®=    sqPTú J   J                E  <  @ @<∫     P´ö√jíl—b6†Ä ˛0  @
+v®=v®=sqPjú B   B                E  4 	@ @r∏    ´ö Pl—b6√jìÄ˛(  
+v®=v®=sqP‡® @  @               E 2 
+@ @qπ    ´ö Pl—b6√jìÄˇ&  
+v®@v®=PROPFIND /ftp/folder1 HTTP/1.1
+Host: localhost
+Depth: 0
+Content-Type: application/xml
+Apply-To-Redirect-Ref: T
+Accept-Encoding: gzip, deflate
+User-Agent: gvfs/1.12.3
+Accept-Language: ru-ru, ru;q=0.9
+Connection: Keep-Alive
+Content-Length: 235
+
+sqP© B   B                E  4¬”@ @yÓ     P´ö√jìl—c4Ä ˛(  
+v®@v®@sqPı™ -  -               E  @ @qÀ    ´ö Pl—c4√jìÄˇ  
+v®@v®@<?xml version="1.0" encoding="utf-8" ?>
+ <D:propfind xmlns:D="DAV:">
+  <D:prop>
+<D:creationdate/>
+<D:displayname/>
+<D:getcontentlength/>
+<D:getcontenttype/>
+<D:getetag/>
+<D:getlastmodified/>
+<D:resourcetype/>
+  </D:prop>
+ </D:propfind>sqP´ B   B                E  4¬‘@ @yÌ     P´ö√jìl—dÄ ˛(  
+v®@v®@sqPõ´ _  _               E Q¬’@ @wœ     P´ö√jìl—dÄ  F  
+v®@v®@HTTP/1.1 301 Moved Permanently
+Date: Fri, 03 Aug 2012 06:36:35 GMT
+Server: Apache/2.2.22 (Fedora)
+Location: http://localhost/ftp/folder1/
+Content-Length: 312
+Connection: close
+Content-Type: text/html; charset=iso-8859-1
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://localhost/ftp/folder1/">here</a>.</p>
+<hr>
+<address>Apache/2.2.22 (Fedora) Server at localhost Port 80</address>
+</body></html>
+sqPF¨ B   B                E  4¬÷@ @yÎ     P´ö√l∞l—dÄ ˛(  
+v®Av®@sqPè¨ B   B                E  4 @ @rµ    ´ö Pl—d√l∞Ä ˛(  
+v®Av®@sqPÔæ B   B                E  4 @ @r¥    ´ö Pl—d√l±Ä ˛(  
+v®Ev®AsqP	ø B   B                E  4¬◊@ @yÍ     P´ö√l±l—d Ä ˛(  
+v®Ev®EsqP˘¡ J   J                E  <›@ @_∏    ´õ PIFuG    †Ä˛0  @
+v®F    sqP¬ J   J                E  <  @ @<∫     P´õçGY•IFuH†Ä ˛0  @
+v®Fv®FsqP!¬ B   B                E  4›@ @_ø    ´õ PIFuHçGY¶Ä˛(  
+v®Fv®FsqPHÕ A  A               E 3›@ @^ø    ´õ PIFuHçGY¶Äˇ'  
+v®Iv®FPROPFIND /ftp/folder1/ HTTP/1.1
+Host: localhost
+Depth: 0
+Content-Type: application/xml
+Apply-To-Redirect-Ref: T
+Accept-Encoding: gzip, deflate
+Accept-Language: ru-ru, ru;q=0.9
+Connection: Keep-Alive
+Content-Length: 235
+User-Agent: gvfs/1.12.3
+
+sqPmÕ B   B                E  4ÒÔ@ @J“     P´õçGY¶IFvGÄ ˛(  
+v®Iv®IsqPMœ -  -               E ›@ @^“    ´õ PIFvGçGY¶Äˇ  
+v®Jv®I<?xml version="1.0" encoding="utf-8" ?>
+ <D:propfind xmlns:D="DAV:">
+  <D:prop>
+<D:creationdate/>
+<D:displayname/>
+<D:getcontentlength/>
+<D:getcontenttype/>
+<D:getetag/>
+<D:getlastmodified/>
+<D:resourcetype/>
+  </D:prop>
+ </D:propfind>sqP[œ B   B                E  4Ò@ @J—     P´õçGY¶IFw2Ä ˛(  
+v®Jv®JsqP◊ ‡  ‡               E “ÒÒ@ @G2     P´õçGY¶IFw2Ä «  
+v®Lv®JHTTP/1.1 207 Multi-Status
+Date: Fri, 03 Aug 2012 06:36:35 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 747
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version="1.0" encoding="utf-8"?>
+<D:multistatus xmlns:D="DAV:" xmlns:ns0="DAV:">
+<D:response xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/" xmlns:g0="DAV:">
+<D:href>/ftp/folder1/</D:href>
+<D:propstat>
+<D:prop>
+<lp1:creationdate>2012-08-03T06:07:57Z</lp1:creationdate>
+<D:getcontenttype>httpd/unix-directory</D:getcontenttype>
+<lp1:getetag>"4627cc-1000-4c6565976ed50"</lp1:getetag>
+<lp1:getlastmodified>Fri, 03 Aug 2012 06:07:57 GMT</lp1:getlastmodified>
+<lp1:resourcetype><D:collection/></lp1:resourcetype>
+</D:prop>
+<D:status>HTTP/1.1 200 OK</D:status>
+</D:propstat>
+<D:propstat>
+<D:prop>
+<g0:displayname/>
+<g0:getcontentlength/>
+</D:prop>
+<D:status>HTTP/1.1 404 Not Found</D:status>
+</D:propstat>
+</D:response>
+</D:multistatus>
+sqP7◊ B   B                E  4›@ @_º    ´õ PIFw2çG]DÄ ˛(  
+v®Lv®LsqPÿ B   B                E  4›@ @_ª    ´õ PIFw2çG]DÄ ˛(  
+v®Lv®LsqP€ B   B                E  4ÒÚ@ @Jœ     P´õçG]DIFw3Ä ˛(  
+v®Mv®LsqP€ B   B                E  4›@ @_∫    ´õ PIFw3çG]EÄ ˛(  
+v®Mv®MsqPf J   J                E  <f@ @9T    ´ú PB±´‘    †Ä˛0  @
+v®≤    sqP"f J   J                E  <  @ @<∫     P´úr√7B±´’†Ä ˛0  @
+v®≤v®≤sqP7f B   B                E  4g@ @9[    ´ú PB±´’r√8Ä˛(  
+v®≤v®≤sqPg &  &               E h@ @8v    ´ú PB±´’r√8Äˇ  
+v®≤v®≤PROPFIND /ftp/folder1 HTTP/1.1
+Host: localhost
+Depth: 0
+Content-Type: application/xml
+Accept-Encoding: gzip, deflate
+User-Agent: gvfs/1.12.3
+Accept-Language: ru-ru, ru;q=0.9
+Connection: Keep-Alive
+Content-Length: 155
+
+sqP+g B   B                E  4kä@ @—7     P´úr√8B±¨πÄ ˛(  
+v®≤v®≤sqPWg ›   ›                E  œi@ @8æ    ´ú PB±¨πr√8Ä˛√  
+v®≤v®≤<?xml version="1.0" encoding="utf-8" ?>
+ <D:propfind xmlns:D="DAV:">
+  <D:prop>
+<D:quota-available-bytes/>
+<D:quota-used-bytes/>
+  </D:prop>
+ </D:propfind>sqPag B   B                E  4kã@ @—6     P´úr√8B±≠TÄ ˛(  
+v®≤v®≤sqP(r _  _               E Qkå@ @œ     P´úr√8B±≠TÄ  F  
+v®µv®≤HTTP/1.1 301 Moved Permanently
+Date: Fri, 03 Aug 2012 06:36:35 GMT
+Server: Apache/2.2.22 (Fedora)
+Location: http://localhost/ftp/folder1/
+Content-Length: 312
+Connection: close
+Content-Type: text/html; charset=iso-8859-1
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://localhost/ftp/folder1/">here</a>.</p>
+<hr>
+<address>Apache/2.2.22 (Fedora) Server at localhost Port 80</address>
+</body></html>
+sqPCr B   B                E  4j@ @9X    ´ú PB±≠Tr≈UÄ ˛(  
+v®µv®µsqPws B   B                E  4k@ @9W    ´ú PB±≠Tr≈UÄ ˛(  
+v®µv®µsqPu J   J                E  <Øß@ @ç    ´ù Pj‘    †Ä˛0  @
+v®∂    sqPíu J   J                E  <  @ @<∫     P´ùÄ"<j‘†Ä ˛0  @
+v®∂v®∂sqP§u B   B                E  4Ø®@ @ç    ´ù Pj‘Ä"=Ä˛(  
+v®∂v®∂sqPlv '  '               E Ø©@ @å3    ´ù Pj‘Ä"=Äˇ  
+v®∂v®∂PROPFIND /ftp/folder1/ HTTP/1.1
+Host: localhost
+Depth: 0
+Content-Type: application/xml
+Accept-Encoding: gzip, deflate
+Accept-Language: ru-ru, ru;q=0.9
+Connection: Keep-Alive
+Content-Length: 155
+User-Agent: gvfs/1.12.3
+
+sqPÅv B   B                E  4äã@ @≤6     P´ùÄ"=j‘˜Ä ˛(  
+v®∂v®∂sqP´v ›   ›                E  œØ™@ @å|    ´ù Pj‘˜Ä"=Ä˛√  
+v®∂v®∂<?xml version="1.0" encoding="utf-8" ?>
+ <D:propfind xmlns:D="DAV:">
+  <D:prop>
+<D:quota-available-bytes/>
+<D:quota-used-bytes/>
+  </D:prop>
+ </D:propfind>sqP¥v B   B                E  4äå@ @≤5     P´ùÄ"=j‘íÄ ˛(  
+v®∂v®∂sqPvx 4  4               E &äç@ @∞B     P´ùÄ"=j‘íÄ    
+v®∂v®∂HTTP/1.1 207 Multi-Status
+Date: Fri, 03 Aug 2012 06:36:35 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 319
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version="1.0" encoding="utf-8"?>
+<D:multistatus xmlns:D="DAV:" xmlns:ns0="DAV:">
+<D:response xmlns:g0="DAV:">
+<D:href>/ftp/folder1/</D:href>
+<D:propstat>
+<D:prop>
+<g0:quota-available-bytes/>
+<g0:quota-used-bytes/>
+</D:prop>
+<D:status>HTTP/1.1 404 Not Found</D:status>
+</D:propstat>
+</D:response>
+</D:multistatus>

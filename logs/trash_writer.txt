@@ -1,0 +1,1640 @@
+PROPFIND /trash/DasIstTest2.odt HTTP/1.1
+Depth: 0
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+
+HTTP/1.1 207 Multi-Status
+Date: Thu, 30 Aug 2012 07:41:36 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 1288
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:multistatus xmlns:D="DAV:">
+        <D:response xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:" xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/trash/DasIstTest2.odt</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32CreationTime>Thu, 23 Aug 2012 14:31:53 GMT</ns1:Win32CreationTime>
+                                <ns1:Win32LastAccessTime>Thu, 30 Aug 2012 07:23:48 GMT</ns1:Win32LastAccessTime>
+                                <ns1:Win32LastModifiedTime>Thu, 23 Aug 2012 14:31:53 GMT</ns1:Win32LastModifiedTime>
+                                <ns1:Win32FileAttributes>00002020</ns1:Win32FileAttributes>
+                                <lp1:resourcetype/>
+                                <lp1:creationdate>2012-08-30T07:23:48Z</lp1:creationdate>
+                                <lp1:getcontentlength>7272</lp1:getcontentlength>
+                                <lp1:getlastmodified>Thu, 30 Aug 2012 07:23:48 GMT</lp1:getlastmodified>
+                                <lp1:getetag>"4017f-1c68-4c8768e745f42"</lp1:getetag>
+                                <lp2:executable>F</lp2:executable>
+                                <D:supportedlock>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:exclusive/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:shared/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                </D:supportedlock>
+                                <D:lockdiscovery/>
+                                <D:getcontenttype>application/vnd.oasis.opendocument.text</D:getcontenttype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+</D:multistatus>
+
+PROPFIND /trash/ HTTP/1.1
+Depth: 0
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+
+HTTP/1.1 207 Multi-Status
+Date: Thu, 30 Aug 2012 07:41:36 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 843
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version="1.0" encoding="utf-8"?>
+<D:multistatus xmlns:D="DAV:">
+<D:response xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+<D:href>/trash/</D:href>
+<D:propstat>
+<D:prop>
+<lp1:resourcetype><D:collection/></lp1:resourcetype>
+<lp1:creationdate>2012-08-30T07:24:04Z</lp1:creationdate>
+<lp1:getlastmodified>Thu, 30 Aug 2012 07:24:04 GMT</lp1:getlastmodified>
+<lp1:getetag>"3f401-1000-4c8768f6c3c61"</lp1:getetag>
+<D:supportedlock>
+<D:lockentry>
+<D:lockscope><D:exclusive/></D:lockscope>
+<D:locktype><D:write/></D:locktype>
+</D:lockentry>
+<D:lockentry>
+<D:lockscope><D:shared/></D:lockscope>
+<D:locktype><D:write/></D:locktype>
+</D:lockentry>
+</D:supportedlock>
+<D:lockdiscovery/>
+<D:getcontenttype>httpd/unix-directory</D:getcontenttype>
+</D:prop>
+<D:status>HTTP/1.1 200 OK</D:status>
+</D:propstat>
+</D:response>
+</D:multistatus>
+
+GET /trash/DasIstTest2.odt HTTP/1.1
+If-Modified-Since: Thu, 30 Aug 2012 07:23:48 GMT
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 304 Not Modified
+Date: Thu, 30 Aug 2012 07:41:36 GMT
+Server: Apache/2.2.22 (Fedora)
+Connection: close
+ETag: "4017f-1c68-4c8768e745f42"
+
+PROPFIND /trash/ HTTP/1.1
+Depth: 0
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 207 Multi-Status
+Date: Thu, 30 Aug 2012 07:41:39 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 843
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version="1.0" encoding="utf-8"?>
+<D:multistatus xmlns:D="DAV:">
+<D:response xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+<D:href>/trash/</D:href>
+<D:propstat>
+<D:prop>
+<lp1:resourcetype><D:collection/></lp1:resourcetype>
+<lp1:creationdate>2012-08-30T07:24:04Z</lp1:creationdate>
+<lp1:getlastmodified>Thu, 30 Aug 2012 07:24:04 GMT</lp1:getlastmodified>
+<lp1:getetag>"3f401-1000-4c8768f6c3c61"</lp1:getetag>
+<D:supportedlock>
+<D:lockentry>
+<D:lockscope><D:exclusive/></D:lockscope>
+<D:locktype><D:write/></D:locktype>
+</D:lockentry>
+<D:lockentry>
+<D:lockscope><D:shared/></D:lockscope>
+<D:locktype><D:write/></D:locktype>
+</D:lockentry>
+</D:supportedlock>
+<D:lockdiscovery/>
+<D:getcontenttype>httpd/unix-directory</D:getcontenttype>
+</D:prop>
+<D:status>HTTP/1.1 200 OK</D:status>
+</D:propstat>
+</D:response>
+</D:multistatus>
+
+PROPFIND /trash/ HTTP/1.1
+Depth: 1
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 207 Multi-Status
+Date: Thu, 30 Aug 2012 07:41:40 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 4390
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:multistatus xmlns:D="DAV:">
+        <D:response xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/trash/</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <lp1:resourcetype>
+                                        <D:collection/>
+                                </lp1:resourcetype>
+                                <lp1:creationdate>2012-08-30T07:24:04Z</lp1:creationdate>
+                                <lp1:getlastmodified>Thu, 30 Aug 2012 07:24:04 GMT</lp1:getlastmodified>
+                                <lp1:getetag>"3f401-1000-4c8768f6c3c61"</lp1:getetag>
+                                <D:supportedlock>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:exclusive/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:shared/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                </D:supportedlock>
+                                <D:lockdiscovery/>
+                                <D:getcontenttype>httpd/unix-directory</D:getcontenttype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+        <D:response xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:" xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/trash/borsch.txt</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32CreationTime>Mon, 27 Aug 2012 18:34:14 GMT</ns1:Win32CreationTime>
+                                <ns1:Win32LastAccessTime>Tue, 28 Aug 2012 07:08:28 GMT</ns1:Win32LastAccessTime>
+                                <ns1:Win32LastModifiedTime>Mon, 27 Aug 2012 18:34:14 GMT</ns1:Win32LastModifiedTime>
+                                <ns1:Win32FileAttributes>00000020</ns1:Win32FileAttributes>
+                                <lp1:resourcetype/>
+                                <lp1:creationdate>2012-08-28T07:08:28Z</lp1:creationdate>
+                                <lp1:getcontentlength>453</lp1:getcontentlength>
+                                <lp1:getlastmodified>Tue, 28 Aug 2012 07:08:28 GMT</lp1:getlastmodified>
+                                <lp1:getetag>"3f2ef-1c5-4c84e1bee10cd"</lp1:getetag>
+                                <lp2:executable>F</lp2:executable>
+                                <D:supportedlock>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:exclusive/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:shared/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                </D:supportedlock>
+                                <D:lockdiscovery/>
+                                <D:getcontenttype>text/plain</D:getcontenttype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+        <D:response xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:" xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/trash/DasIstTest2.odt</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32CreationTime>Thu, 23 Aug 2012 14:31:53 GMT</ns1:Win32CreationTime>
+                                <ns1:Win32LastAccessTime>Thu, 30 Aug 2012 07:23:48 GMT</ns1:Win32LastAccessTime>
+                                <ns1:Win32LastModifiedTime>Thu, 23 Aug 2012 14:31:53 GMT</ns1:Win32LastModifiedTime>
+                                <ns1:Win32FileAttributes>00002020</ns1:Win32FileAttributes>
+                                <lp1:resourcetype/>
+                                <lp1:creationdate>2012-08-30T07:23:48Z</lp1:creationdate>
+                                <lp1:getcontentlength>7272</lp1:getcontentlength>
+                                <lp1:getlastmodified>Thu, 30 Aug 2012 07:23:48 GMT</lp1:getlastmodified>
+                                <lp1:getetag>"4017f-1c68-4c8768e745f42"</lp1:getetag>
+                                <lp2:executable>F</lp2:executable>
+                                <D:supportedlock>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:exclusive/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:shared/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                </D:supportedlock>
+                                <D:lockdiscovery/>
+                                <D:getcontenttype>application/vnd.oasis.opendocument.text</D:getcontenttype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+        <D:response xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:" xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/trash/DasIstTest1.doc</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32CreationTime>Tue, 28 Aug 2012 10:41:08 GMT</ns1:Win32CreationTime>
+                                <ns1:Win32LastAccessTime>Thu, 30 Aug 2012 07:24:04 GMT</ns1:Win32LastAccessTime>
+                                <ns1:Win32LastModifiedTime>Tue, 28 Aug 2012 10:41:08 GMT</ns1:Win32LastModifiedTime>
+                                <ns1:Win32FileAttributes>00002020</ns1:Win32FileAttributes>
+                                <lp1:resourcetype/>
+                                <lp1:creationdate>2012-08-30T07:37:32Z</lp1:creationdate>
+                                <lp1:getcontentlength>19968</lp1:getcontentlength>
+                                <lp1:getlastmodified>Thu, 30 Aug 2012 07:37:32 GMT</lp1:getlastmodified>
+                                <lp1:getetag>"40180-4e00-4c876bf973788"</lp1:getetag>
+                                <lp2:executable>F</lp2:executable>
+                                <D:supportedlock>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:exclusive/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:shared/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                </D:supportedlock>
+                                <D:lockdiscovery/>
+                                <D:getcontenttype>application/msword</D:getcontenttype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+</D:multistatus>
+
+PROPFIND /trash/.%7Elock.DasIstTest2.odt%23 HTTP/1.1
+Depth: 0
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+
+HTTP/1.1 404 Not Found
+Date: Thu, 30 Aug 2012 07:41:40 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 305
+Connection: close
+Content-Type: text/html; charset=iso-8859-1
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL /trash/.~lock.DasIstTest2.odt# was not found on this server.</p>
+<hr>
+<address>Apache/2.2.22 (Fedora) Server at 192.168.0.38 Port 80</address>
+</body></html>
+
+PROPFIND /trash/ HTTP/1.1
+Depth: 0
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 207 Multi-Status
+Date: Thu, 30 Aug 2012 07:41:40 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 843
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version="1.0" encoding="utf-8"?>
+<D:multistatus xmlns:D="DAV:">
+<D:response xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+<D:href>/trash/</D:href>
+<D:propstat>
+<D:prop>
+<lp1:resourcetype><D:collection/></lp1:resourcetype>
+<lp1:creationdate>2012-08-30T07:24:04Z</lp1:creationdate>
+<lp1:getlastmodified>Thu, 30 Aug 2012 07:24:04 GMT</lp1:getlastmodified>
+<lp1:getetag>"3f401-1000-4c8768f6c3c61"</lp1:getetag>
+<D:supportedlock>
+<D:lockentry>
+<D:lockscope><D:exclusive/></D:lockscope>
+<D:locktype><D:write/></D:locktype>
+</D:lockentry>
+<D:lockentry>
+<D:lockscope><D:shared/></D:lockscope>
+<D:locktype><D:write/></D:locktype>
+</D:lockentry>
+</D:supportedlock>
+<D:lockdiscovery/>
+<D:getcontenttype>httpd/unix-directory</D:getcontenttype>
+</D:prop>
+<D:status>HTTP/1.1 200 OK</D:status>
+</D:propstat>
+</D:response>
+</D:multistatus>
+
+PUT /trash/.%7Elock.DasIstTest2.odt%23 HTTP/1.1
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 201 Created
+Date: Thu, 30 Aug 2012 07:41:40 GMT
+Server: Apache/2.2.22 (Fedora)
+Location: http://192.168.0.38/trash/.~lock.DasIstTest2.odt#
+Content-Length: 282
+Connection: close
+Content-Type: text/html; charset=ISO-8859-1
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>201 Created</title>
+</head><body>
+<h1>Created</h1>
+<p>Resource /trash/.~lock.DasIstTest2.odt# has been created.</p>
+<hr />
+<address>Apache/2.2.22 (Fedora) Server at 192.168.0.38 Port 80</address>
+</body></html>
+
+PUT /trash/.%7Elock.DasIstTest2.odt%23 HTTP/1.1
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 189
+Connection: Keep-Alive
+Pragma: no-cache
+
+,HOST032/root,host032,30.08.2012 11:41,file:///C:/Documents%20and%20Settings/%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%BE%D1%80/Application%20Data/LibreOffice/3;
+
+HTTP/1.1 204 No Content
+Date: Thu, 30 Aug 2012 07:41:40 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 0
+Connection: close
+Content-Type: text/plain; charset=UTF-8
+
+PROPPATCH /trash/.%7Elock.DasIstTest2.odt%23 HTTP/1.1
+translate: f
+Content-Type: text/xml; charset="utf-8"
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 443
+Connection: Keep-Alive
+Pragma: no-cache
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:propertyupdate xmlns:D="DAV:" xmlns:Z="urn:schemas-microsoft-com:">
+        <D:set>
+                <D:prop>
+                        <Z:Win32CreationTime>Thu, 30 Aug 2012 07:41:40 GMT</Z:Win32CreationTime>
+                        <Z:Win32LastAccessTime>Thu, 30 Aug 2012 07:41:40 GMT</Z:Win32LastAccessTime>
+                        <Z:Win32LastModifiedTime>Thu, 30 Aug 2012 07:41:40 GMT</Z:Win32LastModifiedTime>
+                        <Z:Win32FileAttributes>00000020</Z:Win32FileAttributes>
+                </D:prop>
+        </D:set>
+</D:propertyupdate>
+
+HTTP/1.1 207 Multi-Status
+Date: Thu, 30 Aug 2012 07:41:40 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 415
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:multistatus xmlns:D="DAV:" xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:">
+        <D:response>
+                <D:href>/trash/.~lock.DasIstTest2.odt%23</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32CreationTime/>
+                                <ns1:Win32LastAccessTime/>
+                                <ns1:Win32LastModifiedTime/>
+                                <ns1:Win32FileAttributes/>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+</D:multistatus>
+
+PROPFIND /trash/.%7Elock.DasIstTest2.odt%23 HTTP/1.1
+Depth: 0
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 207 Multi-Status
+Date: Thu, 30 Aug 2012 07:41:40 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 1295
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:multistatus xmlns:D="DAV:">
+        <D:response xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:" xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/trash/.~lock.DasIstTest2.odt%23</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32CreationTime>Thu, 30 Aug 2012 07:41:40 GMT</ns1:Win32CreationTime>
+                                <ns1:Win32LastAccessTime>Thu, 30 Aug 2012 07:41:40 GMT</ns1:Win32LastAccessTime>
+                                <ns1:Win32LastModifiedTime>Thu, 30 Aug 2012 07:41:40 GMT</ns1:Win32LastModifiedTime>
+                                <ns1:Win32FileAttributes>00000020</ns1:Win32FileAttributes>
+                                <lp1:resourcetype/>
+                                <lp1:creationdate>2012-08-30T07:41:40Z</lp1:creationdate>
+                                <lp1:getcontentlength>189</lp1:getcontentlength>
+                                <lp1:getlastmodified>Thu, 30 Aug 2012 07:41:40 GMT</lp1:getlastmodified>
+                                <lp1:getetag>"3f98f-bd-4c876ce57208c"</lp1:getetag>
+                                <lp2:executable>F</lp2:executable>
+                                <D:supportedlock>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:exclusive/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:shared/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                </D:supportedlock>
+                                <D:lockdiscovery/>
+                                <D:getcontenttype>application/vnd.oasis.opendocument.text</D:getcontenttype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+</D:multistatus>
+
+PROPPATCH /trash/.%7Elock.DasIstTest2.odt%23 HTTP/1.1
+translate: f
+Content-Type: text/xml; charset="utf-8"
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 215
+Connection: Keep-Alive
+Pragma: no-cache
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:propertyupdate xmlns:D="DAV:" xmlns:Z="urn:schemas-microsoft-com:">
+        <D:set>
+                <D:prop>
+                        <Z:Win32FileAttributes>00000022</Z:Win32FileAttributes>
+                </D:prop>
+        </D:set>
+</D:propertyupdate>
+
+HTTP/1.1 207 Multi-Status
+Date: Thu, 30 Aug 2012 07:41:40 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 331
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:multistatus xmlns:D="DAV:" xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:">
+        <D:response>
+                <D:href>/trash/.~lock.DasIstTest2.odt%23</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32FileAttributes/>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+</D:multistatus>
+
+PROPFIND /trash/ HTTP/1.1
+Depth: 0
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 207 Multi-Status
+Date: Thu, 30 Aug 2012 07:42:00 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 843
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version="1.0" encoding="utf-8"?>
+<D:multistatus xmlns:D="DAV:">
+<D:response xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+<D:href>/trash/</D:href>
+<D:propstat>
+<D:prop>
+<lp1:resourcetype><D:collection/></lp1:resourcetype>
+<lp1:creationdate>2012-08-30T07:41:40Z</lp1:creationdate>
+<lp1:getlastmodified>Thu, 30 Aug 2012 07:41:40 GMT</lp1:getlastmodified>
+<lp1:getetag>"3f401-1000-4c876ce5710eb"</lp1:getetag>
+<D:supportedlock>
+<D:lockentry>
+<D:lockscope><D:exclusive/></D:lockscope>
+<D:locktype><D:write/></D:locktype>
+</D:lockentry>
+<D:lockentry>
+<D:lockscope><D:shared/></D:lockscope>
+<D:locktype><D:write/></D:locktype>
+</D:lockentry>
+</D:supportedlock>
+<D:lockdiscovery/>
+<D:getcontenttype>httpd/unix-directory</D:getcontenttype>
+</D:prop>
+<D:status>HTTP/1.1 200 OK</D:status>
+</D:propstat>
+</D:response>
+</D:multistatus>
+
+GET /trash/.%7Elock.DasIstTest2.odt%23 HTTP/1.1
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 200 OK
+Date: Thu, 30 Aug 2012 07:42:11 GMT
+Server: Apache/2.2.22 (Fedora)
+Last-Modified: Thu, 30 Aug 2012 07:41:40 GMT
+ETag: "3f98f-bd-4c876ce57208c"
+Accept-Ranges: bytes
+Content-Length: 189
+Connection: close
+Content-Type: text/plain; charset=UTF-8
+
+,HOST032/root,host032,30.08.2012 11:41,file:///C:/Documents%20and%20Settings/%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%BE%D1%80/Application%20Data/LibreOffice/3;
+
+DELETE /trash/.%7Elock.DasIstTest2.odt%23 HTTP/1.1
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 204 No Content
+Date: Thu, 30 Aug 2012 07:42:11 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 0
+Connection: close
+Content-Type: text/plain; charset=UTF-8
+
+PROPFIND /trash/ HTTP/1.1
+Depth: 1
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 207 Multi-Status
+Date: Thu, 30 Aug 2012 07:42:11 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 4390
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:multistatus xmlns:D="DAV:">
+        <D:response xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/trash/</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <lp1:resourcetype>
+                                        <D:collection/>
+                                </lp1:resourcetype>
+                                <lp1:creationdate>2012-08-30T07:42:11Z</lp1:creationdate>
+                                <lp1:getlastmodified>Thu, 30 Aug 2012 07:42:11 GMT</lp1:getlastmodified>
+                                <lp1:getetag>"3f401-1000-4c876d0382918"</lp1:getetag>
+                                <D:supportedlock>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:exclusive/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:shared/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                </D:supportedlock>
+                                <D:lockdiscovery/>
+                                <D:getcontenttype>httpd/unix-directory</D:getcontenttype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+        <D:response xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:" xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/trash/borsch.txt</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32CreationTime>Mon, 27 Aug 2012 18:34:14 GMT</ns1:Win32CreationTime>
+                                <ns1:Win32LastAccessTime>Tue, 28 Aug 2012 07:08:28 GMT</ns1:Win32LastAccessTime>
+                                <ns1:Win32LastModifiedTime>Mon, 27 Aug 2012 18:34:14 GMT</ns1:Win32LastModifiedTime>
+                                <ns1:Win32FileAttributes>00000020</ns1:Win32FileAttributes>
+                                <lp1:resourcetype/>
+                                <lp1:creationdate>2012-08-28T07:08:28Z</lp1:creationdate>
+                                <lp1:getcontentlength>453</lp1:getcontentlength>
+                                <lp1:getlastmodified>Tue, 28 Aug 2012 07:08:28 GMT</lp1:getlastmodified>
+                                <lp1:getetag>"3f2ef-1c5-4c84e1bee10cd"</lp1:getetag>
+                                <lp2:executable>F</lp2:executable>
+                                <D:supportedlock>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:exclusive/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:shared/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                </D:supportedlock>
+                                <D:lockdiscovery/>
+                                <D:getcontenttype>text/plain</D:getcontenttype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+        <D:response xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:" xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/trash/DasIstTest2.odt</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32CreationTime>Thu, 23 Aug 2012 14:31:53 GMT</ns1:Win32CreationTime>
+                                <ns1:Win32LastAccessTime>Thu, 30 Aug 2012 07:23:48 GMT</ns1:Win32LastAccessTime>
+                                <ns1:Win32LastModifiedTime>Thu, 23 Aug 2012 14:31:53 GMT</ns1:Win32LastModifiedTime>
+                                <ns1:Win32FileAttributes>00002020</ns1:Win32FileAttributes>
+                                <lp1:resourcetype/>
+                                <lp1:creationdate>2012-08-30T07:23:48Z</lp1:creationdate>
+                                <lp1:getcontentlength>7272</lp1:getcontentlength>
+                                <lp1:getlastmodified>Thu, 30 Aug 2012 07:23:48 GMT</lp1:getlastmodified>
+                                <lp1:getetag>"4017f-1c68-4c8768e745f42"</lp1:getetag>
+                                <lp2:executable>F</lp2:executable>
+                                <D:supportedlock>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:exclusive/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:shared/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                </D:supportedlock>
+                                <D:lockdiscovery/>
+                                <D:getcontenttype>application/vnd.oasis.opendocument.text</D:getcontenttype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+        <D:response xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:" xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/trash/DasIstTest1.doc</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32CreationTime>Tue, 28 Aug 2012 10:41:08 GMT</ns1:Win32CreationTime>
+                                <ns1:Win32LastAccessTime>Thu, 30 Aug 2012 07:24:04 GMT</ns1:Win32LastAccessTime>
+                                <ns1:Win32LastModifiedTime>Tue, 28 Aug 2012 10:41:08 GMT</ns1:Win32LastModifiedTime>
+                                <ns1:Win32FileAttributes>00002020</ns1:Win32FileAttributes>
+                                <lp1:resourcetype/>
+                                <lp1:creationdate>2012-08-30T07:37:32Z</lp1:creationdate>
+                                <lp1:getcontentlength>19968</lp1:getcontentlength>
+                                <lp1:getlastmodified>Thu, 30 Aug 2012 07:37:32 GMT</lp1:getlastmodified>
+                                <lp1:getetag>"40180-4e00-4c876bf973788"</lp1:getetag>
+                                <lp2:executable>F</lp2:executable>
+                                <D:supportedlock>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:exclusive/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:shared/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                </D:supportedlock>
+                                <D:lockdiscovery/>
+                                <D:getcontenttype>application/msword</D:getcontenttype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+</D:multistatus>
+
+PROPFIND /trash/ HTTP/1.1
+Depth: 0
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 207 Multi-Status
+Date: Thu, 30 Aug 2012 07:42:11 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 843
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version="1.0" encoding="utf-8"?>
+<D:multistatus xmlns:D="DAV:">
+<D:response xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+<D:href>/trash/</D:href>
+<D:propstat>
+<D:prop>
+<lp1:resourcetype><D:collection/></lp1:resourcetype>
+<lp1:creationdate>2012-08-30T07:42:11Z</lp1:creationdate>
+<lp1:getlastmodified>Thu, 30 Aug 2012 07:42:11 GMT</lp1:getlastmodified>
+<lp1:getetag>"3f401-1000-4c876d0382918"</lp1:getetag>
+<D:supportedlock>
+<D:lockentry>
+<D:lockscope><D:exclusive/></D:lockscope>
+<D:locktype><D:write/></D:locktype>
+</D:lockentry>
+<D:lockentry>
+<D:lockscope><D:shared/></D:lockscope>
+<D:locktype><D:write/></D:locktype>
+</D:lockentry>
+</D:supportedlock>
+<D:lockdiscovery/>
+<D:getcontenttype>httpd/unix-directory</D:getcontenttype>
+</D:prop>
+<D:status>HTTP/1.1 200 OK</D:status>
+</D:propstat>
+</D:response>
+</D:multistatus>
+
+PUT /trash/.%7Elock.DasIstTest2.odt%23 HTTP/1.1
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 201 Created
+Date: Thu, 30 Aug 2012 07:42:11 GMT
+Server: Apache/2.2.22 (Fedora)
+Location: http://192.168.0.38/trash/.~lock.DasIstTest2.odt#
+Content-Length: 282
+Connection: close
+Content-Type: text/html; charset=ISO-8859-1
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>201 Created</title>
+</head><body>
+<h1>Created</h1>
+<p>Resource /trash/.~lock.DasIstTest2.odt# has been created.</p>
+<hr />
+<address>Apache/2.2.22 (Fedora) Server at 192.168.0.38 Port 80</address>
+</body></html>
+
+PUT /trash/.%7Elock.DasIstTest2.odt%23 HTTP/1.1
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 189
+Connection: Keep-Alive
+Pragma: no-cache
+
+,HOST032/root,host032,30.08.2012 11:42,file:///C:/Documents%20and%20Settings/%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%BE%D1%80/Application%20Data/LibreOffice/3;
+
+HTTP/1.1 204 No Content
+Date: Thu, 30 Aug 2012 07:42:11 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 0
+Connection: close
+Content-Type: text/plain; charset=UTF-8
+
+PROPPATCH /trash/.%7Elock.DasIstTest2.odt%23 HTTP/1.1
+translate: f
+Content-Type: text/xml; charset="utf-8"
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 443
+Connection: Keep-Alive
+Pragma: no-cache
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:propertyupdate xmlns:D="DAV:" xmlns:Z="urn:schemas-microsoft-com:">
+        <D:set>
+                <D:prop>
+                        <Z:Win32CreationTime>Thu, 30 Aug 2012 07:42:11 GMT</Z:Win32CreationTime>
+                        <Z:Win32LastAccessTime>Thu, 30 Aug 2012 07:42:11 GMT</Z:Win32LastAccessTime>
+                        <Z:Win32LastModifiedTime>Thu, 30 Aug 2012 07:42:11 GMT</Z:Win32LastModifiedTime>
+                        <Z:Win32FileAttributes>00000020</Z:Win32FileAttributes>
+                </D:prop>
+        </D:set>
+</D:propertyupdate>
+
+HTTP/1.1 207 Multi-Status
+Date: Thu, 30 Aug 2012 07:42:11 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 415
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:multistatus xmlns:D="DAV:" xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:">
+        <D:response>
+                <D:href>/trash/.~lock.DasIstTest2.odt%23</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32CreationTime/>
+                                <ns1:Win32LastAccessTime/>
+                                <ns1:Win32LastModifiedTime/>
+                                <ns1:Win32FileAttributes/>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+</D:multistatus>
+
+PROPFIND /trash/.%7Elock.DasIstTest2.odt%23 HTTP/1.1
+Depth: 0
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 207 Multi-Status
+Date: Thu, 30 Aug 2012 07:42:11 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 1295
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:multistatus xmlns:D="DAV:">
+        <D:response xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:" xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/trash/.~lock.DasIstTest2.odt%23</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32CreationTime>Thu, 30 Aug 2012 07:42:11 GMT</ns1:Win32CreationTime>
+                                <ns1:Win32LastAccessTime>Thu, 30 Aug 2012 07:42:11 GMT</ns1:Win32LastAccessTime>
+                                <ns1:Win32LastModifiedTime>Thu, 30 Aug 2012 07:42:11 GMT</ns1:Win32LastModifiedTime>
+                                <ns1:Win32FileAttributes>00000020</ns1:Win32FileAttributes>
+                                <lp1:resourcetype/>
+                                <lp1:creationdate>2012-08-30T07:42:11Z</lp1:creationdate>
+                                <lp1:getcontentlength>189</lp1:getcontentlength>
+                                <lp1:getlastmodified>Thu, 30 Aug 2012 07:42:11 GMT</lp1:getlastmodified>
+                                <lp1:getetag>"3f98f-bd-4c876d038aa01"</lp1:getetag>
+                                <lp2:executable>F</lp2:executable>
+                                <D:supportedlock>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:exclusive/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:shared/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                </D:supportedlock>
+                                <D:lockdiscovery/>
+                                <D:getcontenttype>application/vnd.oasis.opendocument.text</D:getcontenttype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+</D:multistatus>
+
+PROPPATCH /trash/.%7Elock.DasIstTest2.odt%23 HTTP/1.1
+translate: f
+Content-Type: text/xml; charset="utf-8"
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 215
+Connection: Keep-Alive
+Pragma: no-cache
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:propertyupdate xmlns:D="DAV:" xmlns:Z="urn:schemas-microsoft-com:">
+        <D:set>
+                <D:prop>
+                        <Z:Win32FileAttributes>00000022</Z:Win32FileAttributes>
+                </D:prop>
+        </D:set>
+</D:propertyupdate>
+
+HTTP/1.1 207 Multi-Status
+Date: Thu, 30 Aug 2012 07:42:11 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 331
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:multistatus xmlns:D="DAV:" xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:">
+        <D:response>
+                <D:href>/trash/.~lock.DasIstTest2.odt%23</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32FileAttributes/>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+</D:multistatus>
+
+PUT /trash/DasIstTest2.odt HTTP/1.1
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 204 No Content
+Date: Thu, 30 Aug 2012 07:42:12 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 0
+Connection: close
+Content-Type: application/vnd.oasis.opendocument.text
+
+PROPPATCH /trash/DasIstTest2.odt HTTP/1.1
+translate: f
+Content-Type: text/xml; charset="utf-8"
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 443
+Connection: Keep-Alive
+Pragma: no-cache
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:propertyupdate xmlns:D="DAV:" xmlns:Z="urn:schemas-microsoft-com:">
+        <D:set>
+                <D:prop>
+                        <Z:Win32CreationTime>Thu, 23 Aug 2012 14:31:53 GMT</Z:Win32CreationTime>
+                        <Z:Win32LastAccessTime>Thu, 30 Aug 2012 07:42:12 GMT</Z:Win32LastAccessTime>
+                        <Z:Win32LastModifiedTime>Thu, 30 Aug 2012 07:42:12 GMT</Z:Win32LastModifiedTime>
+                        <Z:Win32FileAttributes>00002020</Z:Win32FileAttributes>
+                </D:prop>
+        </D:set>
+</D:propertyupdate>
+
+HTTP/1.1 207 Multi-Status
+Date: Thu, 30 Aug 2012 07:42:12 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 405
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:multistatus xmlns:D="DAV:" xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:">
+        <D:response>
+                <D:href>/trash/DasIstTest2.odt</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32CreationTime/>
+                                <ns1:Win32LastAccessTime/>
+                                <ns1:Win32LastModifiedTime/>
+                                <ns1:Win32FileAttributes/>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+</D:multistatus>
+
+PROPFIND /trash HTTP/1.1
+Depth: 1
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 301 Moved Permanently
+Date: Thu, 30 Aug 2012 07:42:12 GMT
+Server: Apache/2.2.22 (Fedora)
+Location: http://192.168.0.38/trash/
+Content-Length: 312
+Connection: close
+Content-Type: text/html; charset=iso-8859-1
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://192.168.0.38/trash/">here</a>.</p>
+<hr>
+<address>Apache/2.2.22 (Fedora) Server at 192.168.0.38 Port 80</address>
+</body></html>
+
+PROPFIND /trash/ HTTP/1.1
+Depth: 1
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 207 Multi-Status
+Date: Thu, 30 Aug 2012 07:42:12 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 5592
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:multistatus xmlns:D="DAV:">
+        <D:response xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/trash/</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <lp1:resourcetype>
+                                        <D:collection/>
+                                </lp1:resourcetype>
+                                <lp1:creationdate>2012-08-30T07:42:11Z</lp1:creationdate>
+                                <lp1:getlastmodified>Thu, 30 Aug 2012 07:42:11 GMT</lp1:getlastmodified>
+                                <lp1:getetag>"3f401-1000-4c876d0389679"</lp1:getetag>
+                                <D:supportedlock>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:exclusive/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:shared/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                </D:supportedlock>
+                                <D:lockdiscovery/>
+                                <D:getcontenttype>httpd/unix-directory</D:getcontenttype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+        <D:response xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:" xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/trash/.~lock.DasIstTest2.odt%23</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32CreationTime>Thu, 30 Aug 2012 07:42:11 GMT</ns1:Win32CreationTime>
+                                <ns1:Win32LastAccessTime>Thu, 30 Aug 2012 07:42:11 GMT</ns1:Win32LastAccessTime>
+                                <ns1:Win32LastModifiedTime>Thu, 30 Aug 2012 07:42:11 GMT</ns1:Win32LastModifiedTime>
+                                <ns1:Win32FileAttributes>00000022</ns1:Win32FileAttributes>
+                                <lp1:resourcetype/>
+                                <lp1:creationdate>2012-08-30T07:42:11Z</lp1:creationdate>
+                                <lp1:getcontentlength>189</lp1:getcontentlength>
+                                <lp1:getlastmodified>Thu, 30 Aug 2012 07:42:11 GMT</lp1:getlastmodified>
+                                <lp1:getetag>"3f98f-bd-4c876d038aa01"</lp1:getetag>
+                                <lp2:executable>F</lp2:executable>
+                                <D:supportedlock>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:exclusive/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:shared/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                </D:supportedlock>
+                                <D:lockdiscovery/>
+                                <D:getcontenttype>application/vnd.oasis.opendocument.text</D:getcontenttype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+        <D:response xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:" xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/trash/borsch.txt</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32CreationTime>Mon, 27 Aug 2012 18:34:14 GMT</ns1:Win32CreationTime>
+                                <ns1:Win32LastAccessTime>Tue, 28 Aug 2012 07:08:28 GMT</ns1:Win32LastAccessTime>
+                                <ns1:Win32LastModifiedTime>Mon, 27 Aug 2012 18:34:14 GMT</ns1:Win32LastModifiedTime>
+                                <ns1:Win32FileAttributes>00000020</ns1:Win32FileAttributes>
+                                <lp1:resourcetype/>
+                                <lp1:creationdate>2012-08-28T07:08:28Z</lp1:creationdate>
+                                <lp1:getcontentlength>453</lp1:getcontentlength>
+                                <lp1:getlastmodified>Tue, 28 Aug 2012 07:08:28 GMT</lp1:getlastmodified>
+                                <lp1:getetag>"3f2ef-1c5-4c84e1bee10cd"</lp1:getetag>
+                                <lp2:executable>F</lp2:executable>
+                                <D:supportedlock>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:exclusive/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:shared/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                </D:supportedlock>
+                                <D:lockdiscovery/>
+                                <D:getcontenttype>text/plain</D:getcontenttype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+        <D:response xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:" xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/trash/DasIstTest2.odt</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32CreationTime>Thu, 23 Aug 2012 14:31:53 GMT</ns1:Win32CreationTime>
+                                <ns1:Win32LastAccessTime>Thu, 30 Aug 2012 07:42:12 GMT</ns1:Win32LastAccessTime>
+                                <ns1:Win32LastModifiedTime>Thu, 30 Aug 2012 07:42:12 GMT</ns1:Win32LastModifiedTime>
+                                <ns1:Win32FileAttributes>00002020</ns1:Win32FileAttributes>
+                                <lp1:resourcetype/>
+                                <lp1:creationdate>2012-08-30T07:42:12Z</lp1:creationdate>
+                                <lp1:getcontentlength>0</lp1:getcontentlength>
+                                <lp1:getlastmodified>Thu, 30 Aug 2012 07:42:12 GMT</lp1:getlastmodified>
+                                <lp1:getetag>"4017f-0-4c876d03b2e8a"</lp1:getetag>
+                                <lp2:executable>F</lp2:executable>
+                                <D:supportedlock>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:exclusive/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:shared/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                </D:supportedlock>
+                                <D:lockdiscovery/>
+                                <D:getcontenttype>application/vnd.oasis.opendocument.text</D:getcontenttype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+        <D:response xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:" xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/trash/DasIstTest1.doc</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32CreationTime>Tue, 28 Aug 2012 10:41:08 GMT</ns1:Win32CreationTime>
+                                <ns1:Win32LastAccessTime>Thu, 30 Aug 2012 07:24:04 GMT</ns1:Win32LastAccessTime>
+                                <ns1:Win32LastModifiedTime>Tue, 28 Aug 2012 10:41:08 GMT</ns1:Win32LastModifiedTime>
+                                <ns1:Win32FileAttributes>00002020</ns1:Win32FileAttributes>
+                                <lp1:resourcetype/>
+                                <lp1:creationdate>2012-08-30T07:37:32Z</lp1:creationdate>
+                                <lp1:getcontentlength>19968</lp1:getcontentlength>
+                                <lp1:getlastmodified>Thu, 30 Aug 2012 07:37:32 GMT</lp1:getlastmodified>
+                                <lp1:getetag>"40180-4e00-4c876bf973788"</lp1:getetag>
+                                <lp2:executable>F</lp2:executable>
+                                <D:supportedlock>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:exclusive/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:shared/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                </D:supportedlock>
+                                <D:lockdiscovery/>
+                                <D:getcontenttype>application/msword</D:getcontenttype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+</D:multistatus>
+
+PROPFIND /trash/DasIstTest2.odt HTTP/1.1
+Depth: 0
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+
+HTTP/1.1 207 Multi-Status
+Date: Thu, 30 Aug 2012 07:42:12 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 1282
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:multistatus xmlns:D="DAV:">
+        <D:response xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:" xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/trash/DasIstTest2.odt</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32CreationTime>Thu, 23 Aug 2012 14:31:53 GMT</ns1:Win32CreationTime>
+                                <ns1:Win32LastAccessTime>Thu, 30 Aug 2012 07:42:12 GMT</ns1:Win32LastAccessTime>
+                                <ns1:Win32LastModifiedTime>Thu, 30 Aug 2012 07:42:12 GMT</ns1:Win32LastModifiedTime>
+                                <ns1:Win32FileAttributes>00002020</ns1:Win32FileAttributes>
+                                <lp1:resourcetype/>
+                                <lp1:creationdate>2012-08-30T07:42:12Z</lp1:creationdate>
+                                <lp1:getcontentlength>0</lp1:getcontentlength>
+                                <lp1:getlastmodified>Thu, 30 Aug 2012 07:42:12 GMT</lp1:getlastmodified>
+                                <lp1:getetag>"4017f-0-4c876d03b2e8a"</lp1:getetag>
+                                <lp2:executable>F</lp2:executable>
+                                <D:supportedlock>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:exclusive/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:shared/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                </D:supportedlock>
+                                <D:lockdiscovery/>
+                                <D:getcontenttype>application/vnd.oasis.opendocument.text</D:getcontenttype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+</D:multistatus>
+
+PROPFIND /trash/DasIstTest2.odt HTTP/1.1
+Depth: 0
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+
+HTTP/1.1 207 Multi-Status
+Date: Thu, 30 Aug 2012 07:42:12 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 1282
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:multistatus xmlns:D="DAV:">
+        <D:response xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:" xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/trash/DasIstTest2.odt</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32CreationTime>Thu, 23 Aug 2012 14:31:53 GMT</ns1:Win32CreationTime>
+                                <ns1:Win32LastAccessTime>Thu, 30 Aug 2012 07:42:12 GMT</ns1:Win32LastAccessTime>
+                                <ns1:Win32LastModifiedTime>Thu, 30 Aug 2012 07:42:12 GMT</ns1:Win32LastModifiedTime>
+                                <ns1:Win32FileAttributes>00002020</ns1:Win32FileAttributes>
+                                <lp1:resourcetype/>
+                                <lp1:creationdate>2012-08-30T07:42:12Z</lp1:creationdate>
+                                <lp1:getcontentlength>0</lp1:getcontentlength>
+                                <lp1:getlastmodified>Thu, 30 Aug 2012 07:42:12 GMT</lp1:getlastmodified>
+                                <lp1:getetag>"4017f-0-4c876d03b2e8a"</lp1:getetag>
+                                <lp2:executable>F</lp2:executable>
+                                <D:supportedlock>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:exclusive/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:shared/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                </D:supportedlock>
+                                <D:lockdiscovery/>
+                                <D:getcontenttype>application/vnd.oasis.opendocument.text</D:getcontenttype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+</D:multistatus>
+
+GET /trash/DasIstTest2.odt HTTP/1.1
+If-Modified-Since: Thu, 30 Aug 2012 07:23:48 GMT
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 200 OK
+Date: Thu, 30 Aug 2012 07:42:12 GMT
+Server: Apache/2.2.22 (Fedora)
+Last-Modified: Thu, 30 Aug 2012 07:42:12 GMT
+ETag: W/"4017f-0-4c876d03b2e8a"
+Accept-Ranges: bytes
+Content-Length: 0
+Connection: close
+Content-Type: application/vnd.oasis.opendocument.text
+
+PUT /trash/DasIstTest2.odt HTTP/1.1
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 8870
+Connection: Keep-Alive
+Pragma: no-cache
+[file body]
+
+HTTP/1.1 204 No Content
+Date: Thu, 30 Aug 2012 07:42:12 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 0
+Connection: close
+Content-Type: application/vnd.oasis.opendocument.text
+
+PROPPATCH /trash/DasIstTest2.odt HTTP/1.1
+translate: f
+Content-Type: text/xml; charset="utf-8"
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 443
+Connection: Keep-Alive
+Pragma: no-cache
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:propertyupdate xmlns:D="DAV:" xmlns:Z="urn:schemas-microsoft-com:">
+        <D:set>
+                <D:prop>
+                        <Z:Win32CreationTime>Thu, 23 Aug 2012 14:31:53 GMT</Z:Win32CreationTime>
+                        <Z:Win32LastAccessTime>Thu, 30 Aug 2012 07:42:12 GMT</Z:Win32LastAccessTime>
+                        <Z:Win32LastModifiedTime>Thu, 30 Aug 2012 07:42:12 GMT</Z:Win32LastModifiedTime>
+                        <Z:Win32FileAttributes>00002020</Z:Win32FileAttributes>
+                </D:prop>
+        </D:set>
+</D:propertyupdate>
+
+HTTP/1.1 207 Multi-Status
+Date: Thu, 30 Aug 2012 07:42:12 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 405
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:multistatus xmlns:D="DAV:" xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:">
+        <D:response>
+                <D:href>/trash/DasIstTest2.odt</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32CreationTime/>
+                                <ns1:Win32LastAccessTime/>
+                                <ns1:Win32LastModifiedTime/>
+                                <ns1:Win32FileAttributes/>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+</D:multistatus>
+
+PROPFIND /trash/DasIstTest2.odt HTTP/1.1
+Depth: 0
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+
+HTTP/1.1 207 Multi-Status
+Date: Thu, 30 Aug 2012 07:42:12 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 1288
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version='1.0' encoding='utf-8'?>
+<D:multistatus xmlns:D="DAV:">
+        <D:response xmlns:ns0="DAV:" xmlns:ns1="urn:schemas-microsoft-com:" xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+                <D:href>/trash/DasIstTest2.odt</D:href>
+                <D:propstat>
+                        <D:prop>
+                                <ns1:Win32CreationTime>Thu, 23 Aug 2012 14:31:53 GMT</ns1:Win32CreationTime>
+                                <ns1:Win32LastAccessTime>Thu, 30 Aug 2012 07:42:12 GMT</ns1:Win32LastAccessTime>
+                                <ns1:Win32LastModifiedTime>Thu, 30 Aug 2012 07:42:12 GMT</ns1:Win32LastModifiedTime>
+                                <ns1:Win32FileAttributes>00002020</ns1:Win32FileAttributes>
+                                <lp1:resourcetype/>
+                                <lp1:creationdate>2012-08-30T07:42:12Z</lp1:creationdate>
+                                <lp1:getcontentlength>8870</lp1:getcontentlength>
+                                <lp1:getlastmodified>Thu, 30 Aug 2012 07:42:12 GMT</lp1:getlastmodified>
+                                <lp1:getetag>"4017f-22a6-4c876d03c3ffa"</lp1:getetag>
+                                <lp2:executable>F</lp2:executable>
+                                <D:supportedlock>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:exclusive/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                        <D:lockentry>
+                                                <D:lockscope>
+                                                        <D:shared/>
+                                                </D:lockscope>
+                                                <D:locktype>
+                                                        <D:write/>
+                                                </D:locktype>
+                                        </D:lockentry>
+                                </D:supportedlock>
+                                <D:lockdiscovery/>
+                                <D:getcontenttype>application/vnd.oasis.opendocument.text</D:getcontenttype>
+                        </D:prop>
+                        <D:status>HTTP/1.1 200 OK</D:status>
+                </D:propstat>
+        </D:response>
+</D:multistatus>
+
+GET /trash/DasIstTest2.odt HTTP/1.1
+If-Modified-Since: Thu, 30 Aug 2012 07:42:12 GMT
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 304 Not Modified
+Date: Thu, 30 Aug 2012 07:42:12 GMT
+Server: Apache/2.2.22 (Fedora)
+Connection: close
+ETag: W/"4017f-22a6-4c876d03c3ffa"
+
+GET /trash/.%7Elock.DasIstTest2.odt%23 HTTP/1.1
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 200 OK
+Date: Thu, 30 Aug 2012 07:42:17 GMT
+Server: Apache/2.2.22 (Fedora)
+Last-Modified: Thu, 30 Aug 2012 07:42:11 GMT
+ETag: "3f98f-bd-4c876d038aa01"
+Accept-Ranges: bytes
+Content-Length: 189
+Connection: close
+Content-Type: text/plain; charset=UTF-8
+
+,HOST032/root,host032,30.08.2012 11:42,file:///C:/Documents%20and%20Settings/%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%BE%D1%80/Application%20Data/LibreOffice/3;
+
+DELETE /trash/.%7Elock.DasIstTest2.odt%23 HTTP/1.1
+translate: f
+User-Agent: Microsoft-WebDAV-MiniRedir/5.1.2600
+Host: 192.168.0.38
+Content-Length: 0
+Connection: Keep-Alive
+Pragma: no-cache
+
+HTTP/1.1 204 No Content
+Date: Thu, 30 Aug 2012 07:42:17 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 0
+Connection: close
+Content-Type: text/plain; charset=UTF-8
+

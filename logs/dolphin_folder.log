@@ -1,0 +1,1 @@
+127.0.0.1 - - [03/Aug/2012:10:24:03 +0400] "PROPFIND /ftp/folder1/ HTTP/1.1" 207 1993 "-" "Mozilla/5.0 (X11) KHTML/4.8.4 (like Gecko) Konqueror/4.8 Fedora/4.8.4-8.fc17"

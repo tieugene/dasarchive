@@ -1,0 +1,111 @@
+PROPFIND /inbox/test.txt HTTP/1.1
+User-Agent: wdfs/1.4.2 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: localhost
+Depth: 0
+Content-Length: 211
+Content-Type: application/xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<propfind xmlns="DAV:"><prop>
+<resourcetype xmlns="DAV:"/>
+<getcontentlength xmlns="DAV:"/>
+<getlastmodified xmlns="DAV:"/>
+<creationdate xmlns="DAV:"/>
+</prop></propfind>
+
+HTTP/1.1 207 Multi-Status
+Date: Tue, 14 Aug 2012 09:26:31 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 505
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version="1.0" encoding="utf-8"?>
+<D:multistatus xmlns:D="DAV:" xmlns:ns0="DAV:">
+<D:response xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/">
+<D:href>/inbox/test.txt</D:href>
+<D:propstat>
+<D:prop>
+<lp1:resourcetype/>
+<lp1:getcontentlength>139</lp1:getcontentlength>
+<lp1:getlastmodified>Tue, 14 Aug 2012 09:25:35 GMT</lp1:getlastmodified>
+<lp1:creationdate>2012-08-14T09:25:44Z</lp1:creationdate>
+</D:prop>
+<D:status>HTTP/1.1 200 OK</D:status>
+</D:propstat>
+</D:response>
+</D:multistatus>
+
+GET /inbox/test.txt HTTP/1.1
+User-Agent: wdfs/1.4.2 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: localhost
+
+HTTP/1.1 200 OK
+Date: Tue, 14 Aug 2012 09:26:31 GMT
+Server: Apache/2.2.22 (Fedora)
+Last-Modified: Tue, 14 Aug 2012 09:25:35 GMT
+ETag: "46298e-8b-4c73664825a6e"
+Accept-Ranges: bytes
+Content-Length: 139
+Connection: close
+Content-Type: text/plain; charset=UTF-8
+
+192.168.0.3 - - [03/Aug/2012:10:00:18 +0400] "PROPFIND /ftp HTTP/1.1" 207 947 "-" "Microsoft Data Access Internet Publishing Provider DAV"
+
+GET /inbox/test.txt HTTP/1.1
+User-Agent: wdfs/1.4.2 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: localhost
+
+HTTP/1.1 200 OK
+Date: Tue, 14 Aug 2012 09:26:31 GMT
+Server: Apache/2.2.22 (Fedora)
+Last-Modified: Tue, 14 Aug 2012 09:25:35 GMT
+ETag: "46298e-8b-4c73664825a6e"
+Accept-Ranges: bytes
+Content-Length: 139
+Connection: close
+Content-Type: text/plain; charset=UTF-8
+
+192.168.0.3 - - [03/Aug/2012:10:00:18 +0400] "PROPFIND /ftp HTTP/1.1" 207 947 "-" "Microsoft Data Access Internet Publishing Provider DAV"
+
+GET /inbox/test.txt HTTP/1.1
+User-Agent: wdfs/1.4.2 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: localhost
+
+HTTP/1.1 200 OK
+Date: Tue, 14 Aug 2012 09:26:31 GMT
+Server: Apache/2.2.22 (Fedora)
+Last-Modified: Tue, 14 Aug 2012 09:25:35 GMT
+ETag: "46298e-8b-4c73664825a6e"
+Accept-Ranges: bytes
+Content-Length: 139
+Connection: close
+Content-Type: text/plain; charset=UTF-8
+
+192.168.0.3 - - [03/Aug/2012:10:00:18 +0400] "PROPFIND /ftp HTTP/1.1" 207 947 "-" "Microsoft Data Access Internet Publishing Provider DAV"
+
+GET /inbox/test.txt HTTP/1.1
+User-Agent: wdfs/1.4.2 neon/0.29.6
+Connection: TE
+TE: trailers
+Host: localhost
+
+HTTP/1.1 200 OK
+Date: Tue, 14 Aug 2012 09:26:31 GMT
+Server: Apache/2.2.22 (Fedora)
+Last-Modified: Tue, 14 Aug 2012 09:25:35 GMT
+ETag: "46298e-8b-4c73664825a6e"
+Accept-Ranges: bytes
+Content-Length: 139
+Connection: close
+Content-Type: text/plain; charset=UTF-8
+
+192.168.0.3 - - [03/Aug/2012:10:00:18 +0400] "PROPFIND /ftp HTTP/1.1" 207 947 "-" "Microsoft Data Access Internet Publishing Provider DAV"

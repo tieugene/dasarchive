@@ -1,0 +1,34 @@
+<!-- File -->
+{% extends "base.html" %}
+{% block body_main %}
+<a href="{% url file_edit object.pk %}"> <button type="button"> Редактировать </button> </a>
+{% if object.deleted %}
+<a href="{% url file_undelete object.pk %}"> <button type="button"> Восстановить </button> </a>
+{% else %}
+<a href="{% url file_delete object.pk %}"> <button type="button"> Удалить </button> </a>
+{% endif %}
+<a href="{% url file_remove object.pk %}"> <button type="button"> Совсем удалить </button> </a>
+<div class="table">
+ <div class="row"> <div class="cell br"> Удален </div> <div class="cell"> {{ object.deleted }} </div> </div>
+ <div class="row"> <div class="cell br"> Наименование </div> <div class="cell"> {{ object.fname }} </div> </div>
+ <div class="row"> <div class="cell br"> Mime </div> <div class="cell"> {{ object.mime }} </div> </div>
+ <div class="row"> <div class="cell br"> Размер </div> <div class="cell"> {{ object.size }} </div> </div>
+ <div class="row"> <div class="cell br"> Ctime </div> <div class="cell"> {{ object.ctime }} </div> </div>
+ <div class="row"> <div class="cell br"> Mtime </div> <div class="cell"> {{ object.mtime }} </div> </div>
+ <div class="row"> <div class="cell br"> Updated </div> <div class="cell"> {{ object.updated }} </div> </div>
+ <div class="row"> <div class="cell br"> MD5 </div> <div class="cell"> {{ object.md5 }} </div> </div>
+ <div class="row"> <div class="cell br"> Comment </div> <div class="cell"> {{ object.comment }} </div> </div>
+ <div class="row"> <div class="cell br"> Теги </div> <div class="cell">
+ {% for tag in object.tags.all %}
+  <p style="color: {{ tag.get_fgcolor_html }};background-color: {{ tag.get_bgcolor_html }};"> {{ tag }} </p>
+ {% endfor %}
+ </div> </div>
+ <div class="row"> <div class="cell br"> Ссылки </div> <div class="cell">
+  <p> <a href="{% url file_download object.pk %}"> Скачать </a> </p>
+  <p> Konqueror: <a href="webdav://{{ base_url }}{% url dav object.get_fn %}/{{ object }}"> файл </a>,  <a href="webdav{{ base_url }}{% url dav object.get_fn %}/"> папка </a> </p>
+  <p> Epiphany: <a href="dav://{{ base_url }}{% url dav object.get_fn %}/{{ object }}"> файл </a>, <a href="dav{{ base_url }}{% url dav object.get_fn %}/"> папка </a> </p>
+  <p> Windows&reg;: <a href="file://///{{ base_url }}{% url dav object.get_fn %}/{{ object }}"> файл </a>, <a href="file://localhost/T:/{{ object.get_fn }}/"> папка </a> </p>
+  <p> Mac OS&reg;: <a href="http://{{ base_url }}{% url dav object.get_fn %}/{{ object }}"> файл </a>, <a href="http{{ base_url }}{% url dav object.get_fn %}/"> папка </a> </p>
+ </div> </div>
+</div>
+{% endblock %}

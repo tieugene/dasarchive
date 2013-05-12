@@ -1,0 +1,76 @@
+PROPFIND /ftp HTTP/1.1
+Content-Language: en-us
+Accept-Language: ru, en-us;q=0.2
+Content-Type: text/xml
+Translate: f
+Depth: 1
+Content-Length: 489
+User-Agent: Microsoft Data Access Internet Publishing Provider DAV
+Host: 192.168.0.2
+Connection: Keep-Alive
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<a:propfind xmlns:a="DAV:" xmlns:b="urn:schemas-microsoft-com:datatypes">
+<a:prop>
+<a:name/>
+<a:parentname/>
+<a:href/>
+<a:ishidden/>
+<a:isreadonly/>
+<a:getcontenttype/>
+<a:contentclass/>
+<a:getcontentlanguage/>
+<a:creationdate/>
+<a:lastaccessed/>
+<a:getlastmodified/>
+<a:getcontentlength/>
+<a:iscollection/>
+<a:isstructureddocument/>
+<a:defaultdocument/>
+<a:displayname/>
+<a:isroot/>
+<a:resourcetype/>
+</a:prop>
+</a:propfind>
+
+HTTP/1.1 207 Multi-Status
+Date: Fri, 03 Aug 2012 06:00:18 GMT
+Server: Apache/2.2.22 (Fedora)
+Content-Length: 947
+Connection: close
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version="1.0" encoding="utf-8"?>
+<D:multistatus xmlns:D="DAV:" xmlns:ns1="urn:schemas-microsoft-com:datatypes" xmlns:ns0="DAV:">
+<D:response xmlns:lp1="DAV:" xmlns:lp2="http://apache.org/dav/props/" xmlns:g0="DAV:">
+<D:href>/ftp/</D:href>
+<D:propstat>
+<D:prop>
+<D:getcontenttype>httpd/unix-directory</D:getcontenttype>
+<lp1:creationdate>2012-08-03T05:58:05Z</lp1:creationdate>
+<lp1:getlastmodified>Fri, 03 Aug 2012 05:58:05 GMT</lp1:getlastmodified>
+<lp1:resourcetype><D:collection/></lp1:resourcetype>
+</D:prop>
+<D:status>HTTP/1.1 200 OK</D:status>
+</D:propstat>
+<D:propstat>
+<D:prop>
+<g0:name/>
+<g0:parentname/>
+<g0:href/>
+<g0:ishidden/>
+<g0:isreadonly/>
+<g0:contentclass/>
+<g0:getcontentlanguage/>
+<g0:lastaccessed/>
+<g0:getcontentlength/>
+<g0:iscollection/>
+<g0:isstructureddocument/>
+<g0:defaultdocument/>
+<g0:displayname/>
+<g0:isroot/>
+</D:prop>
+<D:status>HTTP/1.1 404 Not Found</D:status>
+</D:propstat>
+</D:response>
+</D:multistatus>

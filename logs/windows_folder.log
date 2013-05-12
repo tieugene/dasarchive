@@ -1,0 +1,2 @@
+192.168.0.3 - - [03/Aug/2012:10:21:35 +0400] "PROPFIND /ftp/folder1 HTTP/1.1" 207 850 "-" "Microsoft Data Access Internet Publishing Provider DAV"
+192.168.0.3 - - [03/Aug/2012:10:21:35 +0400] "PROPFIND /ftp/folder1 HTTP/1.1" 207 1751 "-" "Microsoft Data Access Internet Publishing Provider DAV"
