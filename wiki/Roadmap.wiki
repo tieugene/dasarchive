@@ -1,0 +1,12 @@
+#summary Roadmap.
+
+= Roadmap =
+
+|| *Ver* || *Name* || *Aim* || *Coments* ||
+|| 0.1 || Just4Lulz || Working somehow || just works ||
+|| 0.2 || StdReady || Starting production-like development || Pylint, Epydoc, Unittests ||
+|| 0.3 || Barbie || UI ||  ||
+|| 0.4 || Belaz || Working always || production-level stress-protected ||
+|| 0.5 || FeatureRich || Like a Product ||  ||
+|| 0.6 || Turbo || Speedups || etag, caching etc ||
+|| X.Y || Yummies || No comments || ||
