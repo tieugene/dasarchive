@@ -4,10 +4,38 @@
 
 Add your content here.
 
+= Princip =
+  * Context tags
+  * Context metadata
+  * Hierarchical tags
 
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+= UI =
+  * Preview:
+    * txt
+    * html
+    * wiki
+    * odf
+    * pictures
+    * pdf
+  * Online edit:
+    * txt
+    * wiki
+    * html
+  * Server-side converting ("Download as"):
+    * wiki
+    * images
+  * Direct Open File (WebDAV)
+  * Versions
+  * Smart archiving
+  * X-links
+  * Sequences
+  * Distibuted backup (to gdive+dopbox+...)
+  * Partial local snapshot
+  * Partial/splited tarball/iso
+  * Merging archives
+= Services =
+  * Contacts
+  * Tasks
+  * Media (audio/video/image)
+  * Email archive
+  * DoxGen
