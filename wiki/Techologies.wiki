@@ -2,8 +2,10 @@
 
 = Core =
 
-  * Add your content here.
+  * python
+  * graph database (neo4j)
+  * or semaweb one (but need scheme editor)
 
 = WebUI =
 
-  * Taglists: show used tags only
+  * [http://kylescholz.com/projects/wordnet/ Graph] selector
