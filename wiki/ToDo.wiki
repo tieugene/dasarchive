@@ -1,0 +1,18 @@
+#summary ToDo list.
+
+= Scheme =
+
+  # View
+  # Edit
+    # Create
+    # Update
+    # Delete
+    # Move
+    # Merge
+  # Maintain:
+    # backup
+    # restore
+
+= Data =
+
+LCRUD
