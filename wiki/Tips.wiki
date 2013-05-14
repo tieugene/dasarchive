@@ -1,5 +1,9 @@
 #summary Tips and tricks.
 
+= Core =
+  * Achive handling (as foldes)
+
 = WebUI =
 
   * Taglists: show used tags only
+  * Visual scheme view and edit

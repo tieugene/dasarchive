@@ -21,6 +21,7 @@ Add your content here.
     * odf
     * pictures
     * pdf
+    * archive content
   * Online edit:
     * txt
     * wiki
