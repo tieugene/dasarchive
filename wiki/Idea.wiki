@@ -1,0 +1,7 @@
+#summary Key ideas.
+
+  * Each file has pe-file metadata and links to tags
+  * tags are:
+    * hiearchical
+    * in taggroup
+    * taggroup are context
