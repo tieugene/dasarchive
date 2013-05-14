@@ -2,9 +2,10 @@
 
 = Core =
 
-  * python
-  * graph database (neo4j)
-  * or semaweb one (but need scheme editor)
+  * Lang: python
+  * Web: flask
+  * DB: graph database (neo4j) or semaweb one (but need scheme editor)
+  * Files: FS (XX/XX/XX/XX/filename.ext)
 
 = WebUI =
 
