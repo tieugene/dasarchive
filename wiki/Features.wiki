@@ -4,12 +4,16 @@
 
 Add your content here.
 
-= Princip =
-  * Context tags
+= Core =
+  * Faceted classification
   * Context metadata
+  * Context tags
   * Hierarchical tags
-
+  * X-links
+  * Sequences
 = UI =
+  * Views: tree/table/icon
+  * Navigate: taglists/graph/...
   * Preview:
     * txt
     * html
@@ -21,14 +25,15 @@ Add your content here.
     * txt
     * wiki
     * html
+= Desktop =
   * Server-side converting ("Download as"):
     * wiki
     * images
   * Direct Open File (WebDAV)
+  * Filemanager integration (?)
+= Maintaining =
   * Versions
   * Smart archiving
-  * X-links
-  * Sequences
   * Distibuted backup (to gdive+dopbox+...)
   * Partial local snapshot
   * Partial/splited tarball/iso
@@ -39,3 +44,6 @@ Add your content here.
   * Media (audio/video/image)
   * Email archive
   * DoxGen
+
+= Analogs =
+  * MS SharePoint server
