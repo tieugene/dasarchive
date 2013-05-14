@@ -7,5 +7,5 @@
   * [http://habrahabr.ru/post/176897/ bootstrap-wisywyg]
   * archves: patool
   * odfpy: odf2xhtml
-  * OOO+DAV https://help.libreoffice.org/Common/Opening_a_Document_Using_WebDAV_over_HTTPS
-http://extensions.libreoffice.org/extension-center/webdav-integration
+  * [https://help.libreoffice.org/Common/Opening_a_Document_Using_WebDAV_over_HTTPS OOO+DAV] ([http://extensions.libreoffice.org/extension-center/webdav-integration or].
+  * register [web]dav:// for webdav-client (like winSCP)
