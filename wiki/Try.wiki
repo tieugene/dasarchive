@@ -1,0 +1,9 @@
+#summary Things to try.
+
+= Wiki =
+
+  * [https://fedoraproject.org/wiki/Converting_wiki_to_DocBook_XML wiki2docbook]
+  * [http://johnmacfarlane.net/pandoc/ pandoc]
+  * [http://habrahabr.ru/post/176897/ bootstrap-wisywyg]
+  * archves: patool
+  * odfpy: odf2xhtml
