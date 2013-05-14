@@ -2,6 +2,7 @@
 
 = Core =
   * Achive handling (as foldes)
+  * DB independency
 
 = WebUI =
 
