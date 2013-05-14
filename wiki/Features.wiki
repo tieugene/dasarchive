@@ -9,6 +9,7 @@ Add your content here.
   * Context metadata
   * Context tags
   * Hierarchical tags
+  * Global/user tags
   * X-links
   * Sequences
 = UI =
