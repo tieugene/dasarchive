@@ -100,5 +100,6 @@ Compatibility matrix:
 == UI ==
 
 = Ideas =
+  * Node/Edge "processors" = _nodename_.py - parms handle, triggers etc.
   * folder parm: "OnlyFor": list of folders (with or without children) == Tag -> Facet
   * Other nodes: contact, task, address

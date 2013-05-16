@@ -10,7 +10,7 @@
     # Move
     # Merge
   # Maintain:
-    # backup (do, graphml)
+    # backup (dot, graphml)
     # restore
 
 = Data =
