@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title> CMS4j {% block title %} {% endblock %} </title>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+	<script type="text/javascript"> $(document).ready(function () { {% block jsready %} {% endblock %} }) </script>
+	<link type="text/css" href="{{ url_for('static', filename='css/base.css') }}" rel="stylesheet"/>
+	<style type="text/css" > {% block css %} {% endblock %} </style>
+</head>
+<body>
+<table id="topmenu"> <tr>
+	<td> <div id="tm_home"> <a href="{{ url_for('index') }}"> Home </a> </div> </td>
+	<td> <div id="tm_registry"> <a href="{{ url_for('registry') }}"> Регистратура </a> </div> </td>
+	<td> <div id="tm_employee"> <a href="{{ url_for('employee') }}"> Сотрудники </a> </div> </td>
+	<td> <div id="tm_service"> <a href="{{ url_for('service') }}"> Сервис </a> </div> </td>
+	<td style="width: 100%"> <div> <b> CMS </b> </div> </td>
+</tr> </table>
+<div>
+{% block main %} {% endblock %}
+</div>
+</body>
+</html>

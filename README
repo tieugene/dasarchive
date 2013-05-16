@@ -1,0 +1,15 @@
+DasArchive v.0.1.0
+Based on graph db
+
+Requires:
+* python-flask (> python-jinja2)
+* python-flask-wtf (> python-wtforms)
+* python-bulbs (> python-omnijson)
+* neo4j
+* apache 2.2, 2.4
+* mod_wsgi
+
+Localhost start:
+* JAVA_HOME=/usr/lib/jre/jvm neo4j
+* ./dasarchive.py
+* http://localhost:5000

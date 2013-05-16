@@ -1,0 +1,22 @@
+{% extends "service_base.html" %}
+{% block main %}
+<form action="" method="post">
+{{ form.csrf_token }}
+<table>
+	{% for field in form %}
+	<tr>
+		<td> {{ field.label }} </td>
+		<td> {{ field }} 
+			{% for error in field.errors %} <br/>
+				<span style="color: red;">[{{error}}]</span>
+			{% endfor %}
+		</td>
+	</tr>
+	{% endfor %}
+</table>
+<p>
+	<button type="submit"> Ok </button>
+	<button type="button"> Cancel </button>
+</p>
+</form>
+{% endblock %}
