@@ -6,15 +6,15 @@ graph DasArchive {
     node  	[shape="circle", style="filled", fillcolor="grey"];
     n0		[label="1C"];
   }
-  /* AttrGroup */
+  /* Facet */
   {
     node  	[shape="ellipse", style="filled"];
-    /* AttrGroup.Mselect */
+    /* Facet.Mselect */
     {
       node  	[fillcolor="lightgreen"];
       os	[label="ОС"];
     }
-    /* AttrGroup.Sselect */
+    /* Facet.Sselect */
     {
       node  	[fillcolor="lightyellow"];
       onesver	[label="Версия"];
@@ -24,10 +24,9 @@ graph DasArchive {
       quarter	[label="Квартал"];
     }
   }
-  /* AttrItem */
+  /* Tag */
   {
     node  	[shape="rectangle", style="rounded, filled", fillcolor="white"];
-    ones	[label="1С"];
     v7		[label="7.7"];
     v7cfg	[label="Конфигурация"];
     v7rpt	[label="Отчетность"];
@@ -46,40 +45,22 @@ graph DasArchive {
     linux	[label="Linux"];
   }
   /* go */
-  /* 1. AttrGroup definitions */
-  n0		-- { ftype; };
+  /* 1. Facet definitions */
   onesver	-- { v7; v8; }
   v7part	-- { v7cfg; v7rpt; }
   v8part	-- { v8platf; v8cfg; }
   year		-- { year2010; year2011; year2012; year2013; };
   quarter	-- { quarter1; quarter2; quarter3; quarter4; };
   os		-- { windows; linux; };
-  /* 2. AttrItem's groups */
+  /* 2. Tag's facets */
   {
     edge	[style="dashed"];
-    ones	-- { onesver; };
+    n0	-- { onesver; };
     v7		-- { v7part; };
     v8		-- { v8part; };
+    v7rpt -- { year; quarter; }
+    v8platf -- os;
   }
-  /* 3. AttrItem Hierarchy */
-  ftype		-- { ones; };
-}
-/*
-Complex hw:
-- MB
-- Notebook
-- MFU
-HW Vendor
+  /* 3. Tag Hierarchy */
 
-= App type: =
-web-browser
-mailer
-archiver
-antivirus
-editor
-filemanager
-imageviewer
-office suite
-ocr
-sysutil (undelete; registry; partition; sysinfo)
-*/
+}

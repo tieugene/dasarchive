@@ -16,11 +16,18 @@ Simpler:
 = Specification =
 
 == Queries ==
+=== UI > Core ===
   * set current tag (!ro)
-  * get used facets
-  * get available facets
-  * get used sub-tags
-  * get available sub-tags
+    * get used facets and facet tags
+    * get available facets and facet tags
+    * get used sub-tags
+    * get available sub-tags
+    * get files
+  * set current file
+    * get used tags
+    * get available faces and facet tags (???)
+=== Core -> DB ===
+  * GetNode(id): Node
 
 == DB structure ==
 
@@ -37,7 +44,7 @@ Simpler:
   * *Tag*:
     * _parms_:
       * name:str
-      * ro:bool - Tue=can't contains File
+      * ro:bool - True=can't contains File
     * _constraints_:
       * oncreate & ro: add 2+ edges of self->Tag
       * name: unique in its parent (Facet/Tag)
@@ -51,12 +58,15 @@ Simpler:
 === Edges ===
 Compatibility matrix:
 || F\T   || / || Facet || Tag || File ||
-|| /     || - ||       ||     || 1:M  ||
+|| /     || - ||  ?  || ? || 1:M  ||
 || Facet || - ||   -   || 1:M ||  -   ||
 || Tag   || - ||  M:M  || 1:M || -/M:M ||
 || File  || - ||   -   ||  -  || ?:?  ||
 
-  * / -> Facet: the only edge from /; name = 'facet'.
+  * / -> *: ...
+  * / -> file: unsorted files.
+    * _constraints_:
+      * File name must be unique.
   * Facet -> Tag: the only edge to Tag; name = 'include'.
   * Tag -> Facet:
     * _parms_:
