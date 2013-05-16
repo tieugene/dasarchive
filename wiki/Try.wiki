@@ -9,3 +9,6 @@
   * odfpy: odf2xhtml
   * [https://help.libreoffice.org/Common/Opening_a_Document_Using_WebDAV_over_HTTPS OOO+DAV] ([http://extensions.libreoffice.org/extension-center/webdav-integration or].
   * register [web]dav:// for webdav-client (like winSCP)
+  * in-memory DB ([http://www.boost.org/doc/libs/1_53_0/libs/graph/doc/index.html BGL])
+  * Find key-value based graph database
+  * http://schema.org
