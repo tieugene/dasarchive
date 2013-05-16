@@ -1,7 +1,5 @@
 #summary Key ideas.
 
-#sidebar Roadmap
-
   * Each file has per-file metadata and links to tags
   * tags are:
     * hiearchical
