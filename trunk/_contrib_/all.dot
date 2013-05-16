@@ -1,0 +1,7 @@
+graph DasArchive {
+  overlap="false";
+  rankdir="LR";
+  root="n0";
+  n0 -- { file; task; contact; };
+  file -- { dox; ftp; ones; };
+}

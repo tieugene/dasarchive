@@ -1,0 +1,85 @@
+graph DasArchive {
+  overlap="false";
+  rankdir="LR";
+  /* defaults */
+  {
+    node  	[shape="circle", style="filled", fillcolor="grey"];
+    n0		[label="1C"];
+  }
+  /* AttrGroup */
+  {
+    node  	[shape="ellipse", style="filled"];
+    /* AttrGroup.Mselect */
+    {
+      node  	[fillcolor="lightgreen"];
+      os	[label="ОС"];
+    }
+    /* AttrGroup.Sselect */
+    {
+      node  	[fillcolor="lightyellow"];
+      onesver	[label="Версия"];
+      v7part	[label="Тип"];
+      v8part	[label="Тип"];
+      year	[label="Год"];
+      quarter	[label="Квартал"];
+    }
+  }
+  /* AttrItem */
+  {
+    node  	[shape="rectangle", style="rounded, filled", fillcolor="white"];
+    ones	[label="1С"];
+    v7		[label="7.7"];
+    v7cfg	[label="Конфигурация"];
+    v7rpt	[label="Отчетность"];
+    v8		[label="8.x"];
+    v8platf	[label="Платформа"];
+    v8cfg	[label="Конфигурация"];
+    year2010	[label="2010"];
+    year2011	[label="2011"];
+    year2012	[label="2012"];
+    year2013	[label="2013"];
+    quarter1	[label="1"];
+    quarter2	[label="2"];
+    quarter3	[label="3"];
+    quarter4	[label="4"];
+    windows	[label="Windows"];
+    linux	[label="Linux"];
+  }
+  /* go */
+  /* 1. AttrGroup definitions */
+  n0		-- { ftype; };
+  onesver	-- { v7; v8; }
+  v7part	-- { v7cfg; v7rpt; }
+  v8part	-- { v8platf; v8cfg; }
+  year		-- { year2010; year2011; year2012; year2013; };
+  quarter	-- { quarter1; quarter2; quarter3; quarter4; };
+  os		-- { windows; linux; };
+  /* 2. AttrItem's groups */
+  {
+    edge	[style="dashed"];
+    ones	-- { onesver; };
+    v7		-- { v7part; };
+    v8		-- { v8part; };
+  }
+  /* 3. AttrItem Hierarchy */
+  ftype		-- { ones; };
+}
+/*
+Complex hw:
+- MB
+- Notebook
+- MFU
+HW Vendor
+
+= App type: =
+web-browser
+mailer
+archiver
+antivirus
+editor
+filemanager
+imageviewer
+office suite
+ocr
+sysutil (undelete; registry; partition; sysinfo)
+*/
