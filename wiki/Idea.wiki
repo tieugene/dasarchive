@@ -1,10 +1,11 @@
+#sidebar TableOfContents
 #summary Key ideas.
 
   * Each file has per-file metadata and links to tags
   * tags are:
     * hiearchical
-    * in taggroup
-    * taggroup are context
+    * in facets
+    * facets are context
 
 Simpler:
 
@@ -16,9 +17,11 @@ Simpler:
 = Specification =
 
 == Queries ==
-  * set current folder
+  * set current tag (!ro)
   * get used facets
-  * get available subfolders
+  * get available facets
+  * get used sub-tags
+  * get available sub-tags
 
 == DB structure ==
 
@@ -48,11 +51,11 @@ Simpler:
 
 === Edges ===
 Compatibility matrix:
-|| F\T   || / || Facet || Tag ||  File ||
-|| /     || - ||       ||     ||       ||
-|| Facet || - ||   -   || 1:M ||   -   ||
+|| F\T   || / || Facet || Tag || File ||
+|| /     || - ||       ||     || 1:M  ||
+|| Facet || - ||   -   || 1:M ||  -   ||
 || Tag   || - ||  M:M  || 1:M || -/M:M ||
-|| File  || - ||   -   ||  -  ||  ?:?  ||
+|| File  || - ||   -   ||  -  || ?:?  ||
 
   * / -> Facet: the only edge from /; name = 'facet'.
   * Facet -> Tag: the only edge to Tag; name = 'include'.
