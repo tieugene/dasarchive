@@ -1,6 +1,6 @@
 #summary Key ideas.
 
-#sidebar TableOfContents
+#sidebar Roadmap
 
   * Each file has per-file metadata and links to tags
   * tags are:
