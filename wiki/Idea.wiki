@@ -6,8 +6,8 @@
     * in taggroup
     * taggroup are context
 
-= Another sight =
 Simpler:
+
   * tags == folders
   * folders are nestable
   * some folders can't contain files
@@ -21,49 +21,58 @@ Simpler:
   * get available subfolders
 
 == DB structure ==
+
 === Nodes ===
   * */*
     * _parms_: None
     * _constraints_: None
-  * *Facet*: _must_ contain Branch/Folder (1:M)
+  * *Facet*: _must_ contain Tag
     * _parms_:
+      * name:str
       * multiple:bool - multiple tags of this Facets can be applied to File
       * mandatory:bool=True
     * _constraints_: None
-  * *Branch*: (fork/cross/junk/branch/intermediate) - _must_ contain Branch(1:M)/Folder(1:M).
+  * *Tag*:
     * _parms_:
-    * _constraints_: None
-      * oncreate: add 2+ edges of ...
-  * *Folder*: _can_ contain File(M:M)/Facet(M:M)/Branch(1:M)/Folder(1:M)
-    * _parms_: None
-    * _constraints_: None
+      * name:str
+      * ro:bool - Tue=can't contains File
+    * _constraints_:
+      * oncreate & ro: add 2+ edges of self->Tag
+      * name: unique in its parent (Facet/Tag)
   * *File*:
     * _parms_:
       * size:int
       * md5:uint128
       * filename:str
     * _constraints_: None
+
 === Edges ===
 Compatibility matrix:
-|| F\T    || / || Facet || Branch || Folder || File ||
-|| /      || - ||       ||        ||        ||      ||
-|| Facet  || - ||   -   ||  1:M   ||  1:M   ||  -   ||
-|| Branch || - ||  M:M  ||  1:M   ||  1:M   ||  -   ||
-|| Folder || - ||  M:M  ||  1:M   ||  1:M   || M:M  ||
-|| File   || - ||   -   ||   -    ||   -    ||  +   ||
+|| F\T   || / || Facet || Tag ||  File ||
+|| /     || - ||       ||     ||       ||
+|| Facet || - ||   -   || 1:M ||   -   ||
+|| Tag   || - ||  M:M  || 1:M || -/M:M ||
+|| File  || - ||   -   ||  -  ||  ?:?  ||
 
-  * / -> Facet (1:M): the only edge from /; name = 'facet'.
-  * Facet -> Tag (1:M): the only edge to Tag; name = 'include'.
-  * Tag -> Tag (1:M): nested tags if File can be as in parent as in child tag (e.g. DocType -> DocSubType).
-  * Tag -> Facet (?:M (!)): qualification; name='...' (or Facet -> Tag name="OnlyFor")
-  * Tag -> File (M:M): name='tag (or file)'
-=== Constraints ===
-  * Tags structure is srictly hierachical.
-  * Tag name is unique in its parent (TagGroup/Tag)
-  * for multitags: File can't has as Tag as it's child/parent simultaneously
-  * File can has any Tag from:
-    * / childen Tags
-    * sub-TagGroup from / to applied
+  * / -> Facet: the only edge from /; name = 'facet'.
+  * Facet -> Tag: the only edge to Tag; name = 'include'.
+  * Tag -> Facet:
+    * _parms_:
+      * onlyfor:bool - facet appliable for this Folder but not for children
+    * _constraints_: None
+  * Tag -> Tag: nested tags if File can be as in parent as in child tag (e.g. DocType -> DocSubType).
+  * Tag -> File:
+    * _parms_: None
+    * _constraints_:
+      * File can't has as Tag as it's child/parent simultaneously
+    * File can has any Tag from:
+      * / childen Tags
+      * sub-TagGroup from / to applied
+  * File -> File: sequience and/or X-link
+    * _constraints_:
+      * File sequence/X-links can't contain loops (a File can't be twice in sequence/X-links chains)
+      * => File can be in one sequence and one X-links group (?)
+
 === Questions ===
   * Move TagGroup through hierarchy (up-down)
   * / is Tag?
@@ -79,11 +88,5 @@ Compatibility matrix:
 == UI ==
 
 = Ideas =
-  * TagGroup+Tag => Tag with "file=False" parm
-  * TagGroup>Tag; Tag>TagGroup; Tag>Tag => Tag>Tag
-  * File -> File (M:M): sequence.
-  * File <-> File (M:M): X-link.
-  * File sequence/X-links can't contain loops (a File can't be twice in sequence/X-links chains)
-  * => File can be in one sequence and one X-links group (?)
-  * folder parm: "OnlyFor": list of folders (with or without children) == Tag -> TagGroup
+  * folder parm: "OnlyFor": list of folders (with or without children) == Tag -> Facet
   * Other nodes: contact, task, address
