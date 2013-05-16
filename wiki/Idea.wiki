@@ -1,5 +1,6 @@
-#sidebar TableOfContents
 #summary Key ideas.
+
+#sidebar TableOfContents
 
   * Each file has per-file metadata and links to tags
   * tags are:
