@@ -25,16 +25,16 @@ Simpler:
   * */*
     * _parms_: None
     * _constraints_: None
-  * *Facet*: _must_ contain Dummy/Ordinar (1:M)
+  * *Facet*: _must_ contain Branch/Folder (1:M)
     * _parms_:
-      * multiple:bool - multiple tags of this taggroup can be applied to File
-      * mandatory:bool[?]=<default>
+      * multiple:bool - multiple tags of this Facets can be applied to File
+      * mandatory:bool=True
     * _constraints_: None
-  * *Branch*: (fork/cross/junk/branch/intermediate) - _must_ contain Dummy(1:M)/Ordinar(1:M).
+  * *Branch*: (fork/cross/junk/branch/intermediate) - _must_ contain Branch(1:M)/Folder(1:M).
     * _parms_:
     * _constraints_: None
       * oncreate: add 2+ edges of ...
-  * *Folder*: _can_ contain File(M:M)/Group(M:M)/Dummy(1:M)/Ordinar(1:M)
+  * *Folder*: _can_ contain File(M:M)/Facet(M:M)/Branch(1:M)/Folder(1:M)
     * _parms_: None
     * _constraints_: None
   * *File*:
@@ -44,9 +44,13 @@ Simpler:
       * filename:str
     * _constraints_: None
 === Edges ===
-  * compatibility matrix (frm>to)
-  * _parms_
-  * _constraints_: None
+Compatibility matrix:
+|| F\T    || / || Facet || Branch || Folder || File ||
+|| /      || - || - || - || - || - ||
+|| Facet  || - || - || - || - || - ||
+|| Branch || - || - || - || - || - ||
+|| Folder || - || - || - || - || - ||
+|| File   || - || - || - || - || - ||
   ? / -> Tag
   * / -> TagGroup (1:M): the only edge from /; name = 'taggroup' (???).
   * TagGroup -> Tag (1:M): the only edge to Tag; name = 'include'.
