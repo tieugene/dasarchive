@@ -1,3 +1,4 @@
+/* neato -Tsvg -o dox.svg dox.dot */
 graph DasArchive {
   overlap="false";
   rankdir="LR";
@@ -7,17 +8,17 @@ graph DasArchive {
     node  	[shape="circle", style="filled", fillcolor="grey"];
     n0		[label="dox"];
   }
-  /* AttrGroup */
+  /* Facet */
   {
     node  	[shape="ellipse", style="filled"];
-    /* AttrGroup.Mselect */
+    /* Facet.Mselect */
     {
       node  	[fillcolor="lightgreen"];
       depart	[label="Отдел"];
       doer	[label="Исполнитель"];
       partner	[label="Контрагент"];
     }
-    /* AttrGroup.Sselect */
+    /* Facet.Sselect */
     {
       node  	[fillcolor="lightyellow"];
       year	[label="Год"];
@@ -25,7 +26,7 @@ graph DasArchive {
       doctype	[label="Тип"];
     }
   }
-  /* AttrItem */
+  /* Tag */
   {
     node  	[shape="rectangle", style="rounded, filled", fillcolor="white"];
     year2010	[label="2010"];
@@ -64,19 +65,20 @@ graph DasArchive {
     doc613	[label="прибыль"];
   }
   /* go */
-  /* 1. AttrGroup definitions */
+  /* 1. Facet definitions */
   year		-- { year2010; year2011; year2012; year2013; };
   quarter	-- { quarter1; quarter2; quarter3; quarter4; };
   depart	-- { depart1; depart2; depart3; depart4; };
   doer		-- { doer1; doer2; doer3; };
   partner	-- { partner1; partner2; };
   doctype	-- { doc1; doc2; doc3; doc4; doc5; doc6; };
-  /* 2. AttrItem's groups */
+  /* 2. Tag's groups */
   {
     edge	[style="dashed"];
-  n0		-- { doctype; depart; doer; partner; year; quarter; };
+  n0		-- { doctype; depart; doer; partner; };
+  doc6		-- { year; quarter; };
   }
-  /* 3. AttrItem Hierarchy */
+  /* 3. Tag Hierarchy */
   doc4		-- { doc41; doc42; doc43; doc44; doc45; doc46; doc47; };
   doc6		-- { doc61; };
   doc61		-- { doc611; doc612; doc613; };
