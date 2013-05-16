@@ -47,11 +47,12 @@ Simpler:
 Compatibility matrix:
 || F\T    || / || Facet || Branch || Folder || File ||
 || /      || - ||       ||        ||        ||      ||
-|| Facet  || - ||   -   ||   +    ||   +    ||  -   ||
-|| Branch || - ||       ||   +    ||   +    ||  -   ||
-|| Folder || - ||   +   ||   +    ||   +    ||  +   ||
+|| Facet  || - ||   -   ||  1:M   ||  1:M   ||  -   ||
+|| Branch || - ||  M:M  ||  1:M   ||  1:M   ||  -   ||
+|| Folder || - ||  M:M  ||  1:M   ||  1:M   || M:M  ||
 || File   || - ||   -   ||   -    ||   -    ||  +   ||
-  * / -> Facet (1:M): the only edge from /; name = 'taggroup' (???).
+
+  * / -> Facet (1:M): the only edge from /; name = 'facet'.
   * Facet -> Tag (1:M): the only edge to Tag; name = 'include'.
   * Tag -> Tag (1:M): nested tags if File can be as in parent as in child tag (e.g. DocType -> DocSubType).
   * Tag -> Facet (?:M (!)): qualification; name='...' (or Facet -> Tag name="OnlyFor")
@@ -68,7 +69,7 @@ Compatibility matrix:
   * / is Tag?
   * Super-node Class? (Tag/File etc)
   * Really srict hierarchy of tags?
-  * Must depricate X-tags upper then defined leveel (like - music tags and documens ones)
+  * Must depricate X-tags upper then defined level (like - music tags and documens ones)
   * Maybe - tags have "compatibility table"?
   * == a kind of "scheme"
   * what about "SubClassOf" and "ChildOf" parameters? (RTFM RDF/OWL)
