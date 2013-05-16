@@ -3,10 +3,8 @@
 = Core =
 
   * Lang: python
-  * Web: flask
+  * Web engine: flask
+  * Templater: jinja2
+  * JS: [https://github.com/ralphbean/apps.fp.o FedoaApps] and/or [http://philogb.github.io/ jit]
   * DB: graph database (neo4j) or semaweb one (but need scheme editor)
   * Files: FS (XX/XX/XX/XX/filename.ext)
-
-= WebUI =
-
-  * [http://kylescholz.com/projects/wordnet/ Graph] selector

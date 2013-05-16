@@ -87,7 +87,7 @@ Compatibility matrix:
 
 === Questions ===
   * Move TagGroup through hierarchy (up-down)
-  * / is Tag?
+  * / = Tag | Facet?
   * Super-node Class? (Tag/File etc)
   * Really srict hierarchy of tags?
   * Must depricate X-tags upper then defined level (like - music tags and documens ones)

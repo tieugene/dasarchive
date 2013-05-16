@@ -1,13 +1,27 @@
 #summary Things to try.
 
-  * [https://github.com/ralphbean/apps.fp.o Fedora Apps]
-  * [https://fedoraproject.org/wiki/Converting_wiki_to_DocBook_XML wiki2docbook]
-  * [http://johnmacfarlane.net/pandoc/ pandoc]
-  * [http://habrahabr.ru/post/176897/ bootstrap-wisywyg]
-  * archves: patool
-  * odfpy: odf2xhtml
-  * [https://help.libreoffice.org/Common/Opening_a_Document_Using_WebDAV_over_HTTPS OOO+DAV] ([http://extensions.libreoffice.org/extension-center/webdav-integration or].
-  * register [web]dav:// for webdav-client (like winSCP)
-  * in-memory DB ([http://www.boost.org/doc/libs/1_53_0/libs/graph/doc/index.html BGL])
-  * Find key-value based graph database
+  * python graph:
+    * http://stackoverflow.com/questions/606516/python-graph-library
+    * git://github.com/erwinvaneijk/bgl-python.git
+  * Graph JS:
+    * [https://github.com/ralphbean/apps.fp.o FedoraApps]
+    * [http://philogb.github.io/ jit]
+    * [http://kylescholz.com/projects/wordnet/ Graph] selector
+  * Preview:
+    * Wiki:
+      * [https://fedoraproject.org/wiki/Converting_wiki_to_DocBook_XML wiki2docbook]
+      * [http://johnmacfarlane.net/pandoc/ pandoc]
+      * [http://habrahabr.ru/post/176897/ bootstrap-wisywyg]
+    * archves:
+      * patool
+    * odf:
+      * odfpy: odf2xhtml
+    * pdf:
+      * PDF.js
+  * WebDAV:
+    * [https://help.libreoffice.org/Common/Opening_a_Document_Using_WebDAV_over_HTTPS OOO+DAV] ([http://extensions.libreoffice.org/extension-center/webdav-integration or].
+    * register [web]dav:// for webdav-client (like winSCP)
+  * GraphDB:
+    * in-memory DB ([http://www.boost.org/doc/libs/1_53_0/libs/graph/doc/index.html BGL] + [http://osl.iu.edu/~dgregor/bgl-python/ bgl-python])
+    * Find key-value based graph database
   * http://schema.org
