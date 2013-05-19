@@ -1,4 +1,4 @@
-{% extends "service_base.html" %}
+{% extends "base.html" %}
 {% block main %}
 <form action="" method="post">
 {{ form.csrf_token }}
@@ -6,7 +6,7 @@
 	{% for field in form %}
 	<tr>
 		<td> {{ field.label }} </td>
-		<td> {{ field }} 
+		<td> {{ field }}
 			{% for error in field.errors %} <br/>
 				<span style="color: red;">[{{error}}]</span>
 			{% endfor %}

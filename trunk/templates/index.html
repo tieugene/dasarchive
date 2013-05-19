@@ -1,5 +1,8 @@
 {% extends "base.html" %}
-{% block jsready %} $('#tm_home').addClass('active'); {% endblock %}
 {% block main %}
-<center> Велкам чо </center>
+	<a href="{{ url_for('inbox', path='') }}"> <button type="button"> Входящие </button> </a>
+	<a href="{{ url_for('file') }}"> <button type="button"> Архив </button> </a>
+	<a href="{{ url_for('tag') }}"> <button type="button"> Теги </button> </a>
+	<a href=""> <button type="button"> Backup </button> </a>
+	<a href=""> <button type="button"> Restore </button> </a>
 {% endblock %}
