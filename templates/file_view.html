@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block main %}
+<p>
+	<a href="{{ url_for('file') }}"> Файл: </a>
+	[ <a href="{{ url_for('file_del', item_id=file.eid) }}" title="Delete"> - </a> ]
+	[ <a href="{{ url_for('file_edit', item_id=file.eid) }}" title="*"> * </a> ]
+</p>
+<table border="1">
+	<tr> <th> ID </th> <td> {{ file.eid }} </td> <tr>
+	<tr> <th> Фамилия </th> <td> {{ file.lastname }} </td> <tr>
+	<tr> <th> Имя </th> <td> {{ file.firstname }} </td> <tr>
+</table>
+{% endblock %}

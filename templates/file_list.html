@@ -1,6 +1,6 @@
-{% extends "service_base.html" %}
+{% extends "base.html" %}
 {% block main %}
-Люди: [ <a href="{{ url_for('person_add') }}"> + </a> ]
+Файлы: [ <a href="{{ url_for('file_add') }}"> + </a> ]
 {% for person in persons %}
 <p> <a href="{{ url_for('person_view', item_id=person.eid) }}"> {{ person.lastname }} {{ person.firstname }} {{ person.get('midname', '') }} </a> </p>
 {% endfor %}

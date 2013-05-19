@@ -158,36 +158,28 @@ td {
 	padding: 2pt;
 }*/
 #topmenu {
-	border-collapse: collapse;
+  border-collapse: collapse;
 	width: 100%;
 	text-align: center;
-	border-top: 3px solid #EBEFF9;	/* topest line  (lite, EBEFF9)*/
-	border-bottom: none;
 }
 #topmenu td {
-	background-color: #EBEFF9;	/* main not selected (66B2E3) */
-	border: none;
-	padding: 0;
+  background-color: #EBEFF9;
+  border: none;
+	/*padding: 5px;*/
 	white-space: nowrap;
 }
-#topmenu div {
-	padding: 3px 1em;
-	border-bottom: 1px solid #2F84C6;	/* ? (was 6B90DA) */
-}
-#topmenu div.active {
-	border-top: 1px solid #2F84C6;
-	border-left: 1px solid #2F84C6;
-	border-right: 1px solid #2F84C6;
-	border-bottom: 1px solid white;
-	background-color: white;
-}
 #topmenu a:link {
-	color: #2F84C6;
-	text-decoration: none;
+	color: black;
+  text-decoration: none;
 }
 #topmenu a:visited {
-	color: #2F84C6;
-	text-decoration: none;
+  color: black;
+  text-decoration: none;
+}
+#topmenu img {
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 5px;
 }
 button.rounded {
 	-webkit-border-radius: 5px;
