@@ -18,7 +18,7 @@ import gv
 # 2. my
 import utils
 # 3. system
-import sys, os, collections
+import sys, os, collections, pprint, StringIO, json
 # 4. const
 
 DEBUG = True
@@ -32,55 +32,10 @@ try:
 except ImportError:
         pass
 
-class	FacetModel(Node):
-    element_type = 'facet'	# predefined key 'element_type':str
-    name    = String(nullable=False)
-
-class	TagModel(Node):
-    element_type = 'tag'
-    name    = String(nullable=False)
-
-class	FileModel(Node):
-    element_type = 'file'
-    name    = String(nullable=False)
-    fname   = String(nullable=False)
-    comment = String()
-    mime    = String()
-    size    = Integer(nullable=False)
-    md5     = String()
-    ctime   = DateTime(nullable=False)
-    mtime   = DateTime(nullable=False)
-    updated = DateTime(nullable=False)
-    #deleted = models.BooleanField(default=False, editable=False, verbose_name=u'Удален')
-
-class TagEdge(Relationship):
-    label = 'tag'
-
-class FacetEdge(Relationship):
-    label = 'facet'
-
-class FileEdge(Relationship):
-    label = 'file'
-
-class	TagForm(Form):
-    name	= TextField('Наименование', validators=[Required()])
-
-class	FacetForm(Form):
-    name	= TextField('Наименование', validators=[Required()])
-
-class	FileForm(Form):
-    name	= TextField('Наименование', validators=[Required()])
-    fname	= TextField('Имя файла', validators=[Required()])
-    comment	= TextField('Комментарии')
-    mime	= TextField('Mime')
-
 app = flask.Flask(__name__)
 app.config.from_object(__name__)
 
 g = Graph()
-g.add_proxy('facets', FacetModel)
-g.add_proxy('tags', TagModel)
-g.add_proxy('file', FileModel)
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -178,7 +133,7 @@ def tag_add_tag(tag_id):
     Add new subtag to given tag/facet.
     '''
     parent = g.vertices.get(tag_id)
-    form = TagForm()
+    form = TagNodeForm()
     if form.validate_on_submit():
         child = g.tags.create(name=form.name.data)
         g.edges.create(parent, 'tag', child)
@@ -191,7 +146,7 @@ def tag_add_facet(tag_id):
     Add new facet to given tag.
     '''
     parent = g.vertices.get(tag_id)
-    form = FacetForm()
+    form = FacetNodeForm()
     if form.validate_on_submit():
         child = g.facets.create(name=form.name.data)
         g.edges.create(parent, 'facet', child)
@@ -201,7 +156,7 @@ def tag_add_facet(tag_id):
 @app.route('/tag/<int:tag_id>/edit/', methods=['GET', 'POST'])
 def tag_edit(tag_id):
 	tag = g.vertices.get(tag_id)
-	form = TagForm()
+	form = TagNodeForm()
 	if flask.request.method == 'POST':
 		if form.validate_on_submit():
 			tag.name = form.name.data
@@ -266,6 +221,32 @@ def file_edit(item_id):
 		form.lastname.data = item.lastname
 		form.firstname.data = item.firstname
 	return flask.render_template('file_form.html', form=form)
+
+@app.route('/export/')
+def tags_export():
+    dump = list()
+    # 1. nodes
+    for node in g.V:
+        d = [0, node.eid]
+        if node.data():
+            d.append(node.data())
+        dump.append(d)
+    # 2. edges
+    for edge in g.E:
+        d = [1, edge.outV().eid, edge.inV().eid, edge.label()]
+        if edge.data():
+            d.append(edge.data())
+        dump.append(d)
+    # 3. convert
+    return flask.send_file(StringIO.StringIO(json.dumps(dump, indent=1)), mimetype='application/json', as_attachment=True, attachment_filename='dasarchive.json')
+
+@app.route('/clean/')
+def tags_clean():
+    pass
+
+@app.route('/import/', methods=['POST', 'GET'])
+def tags_import():
+    pass
 
 # Go
 # - standalone
