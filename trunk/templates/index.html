@@ -1,9 +1,16 @@
 {% extends "base.html" %}
 {% block main %}
-	<a href="{{ url_for('inbox', path='') }}"> <button type="button"> Входящие </button> </a>
-	<a href="{{ url_for('file') }}"> <button type="button"> Архив </button> </a>
-	<a href="{{ url_for('tag', tag_id=0) }}"> <button type="button"> Ярлыки </button> </a>
-	<a href="{{ url_for('tagmap') }}"> <button type="button"> Карта ярлыков </button> </a>
-	<a href=""> <button type="button"> Backup </button> </a>
-	<a href=""> <button type="button"> Restore </button> </a>
+<p> Files:
+    <a href="{{ url_for('inbox', path='') }}"> <button type="button"> Входящие </button> </a>
+    <a href="{{ url_for('file') }}"> <button type="button"> Архив </button> </a>
+</p>
+<p> Tags:
+    <a href="{{ url_for('tag', tag_id=0) }}"> <button type="button"> Ярлыки </button> </a>
+    <a href="{{ url_for('tagmap') }}"> <button type="button"> Карта ярлыков </button> </a>
+</p>
+<p> Maintain:
+    <a href="{{ url_for('tags_export') }}"> <button type="button"> Backup </button> </a>
+    <a href="{{ url_for('tags_clean') }}"> <button type="button"> Clean </button> </a>
+    <a href="{{ url_for('tags_import') }}"> <button type="button"> Restore </button> </a>
+</p>
 {% endblock %}
