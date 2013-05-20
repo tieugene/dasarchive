@@ -138,13 +138,20 @@ def tagmap():
     N = gv.protonode(G)
     gv.setv(N, 'shape', 'rectangle')
     gv.setv(N, 'style', 'rounded,filled')
+    gv.setv(N, 'fillcolor', '#F0F0F0')
+    gv.setv(N, 'width', '0')
+    gv.setv(N, 'height', '0')
+    gv.setv(N, 'margin', '0.05,0.025')
     for node in g.V:
         gnode = gv.node(G, 'n%d' % node.eid)
         gv.setv(gnode, 'URL', '/tag/%d/' % node.eid)
         if (node.eid):  # not root
             gv.setv(gnode, 'label', node.name.encode('utf8'))
             if (node.element_type == 'facet'):
-                gv.setv(gnode, 'fillcolor', 'yellow')
+                gv.setv(gnode, 'fillcolor', 'lightgreen')
+        else:
+            gv.setv(gnode, 'label', '/')
+            gv.setv(gnode, 'fillcolor', 'silver')
         gdict[node.eid] = gnode
     for node in g.V:
         if node.outV():
