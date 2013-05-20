@@ -4,9 +4,9 @@
     <a href="{{ url_for('inbox', path='') }}"> <button type="button"> Входящие </button> </a>
     <a href="{{ url_for('file') }}"> <button type="button"> Архив </button> </a>
 </p>
-<p> Tags:
-    <a href="{{ url_for('tag', tag_id=0) }}"> <button type="button"> Ярлыки </button> </a>
-    <a href="{{ url_for('tagmap') }}"> <button type="button"> Карта ярлыков </button> </a>
+<p> Ярлыки:
+    <a href="{{ url_for('tag', tag_id=0) }}"> <button type="button"> Управление </button> </a>
+    <a href="{{ url_for('tagmap') }}"> <button type="button"> Карта </button> </a>
 </p>
 <p> Maintain:
     <a href="{{ url_for('tags_export') }}"> <button type="button"> Backup </button> </a>

@@ -6,8 +6,9 @@
 # 1. 3rd parties
 # - flask
 import flask
-from flask.ext.wtf import Form, TextField, DateField, SelectField, Required
+from flask.ext.wtf import Form, TextField, DateField, SelectField, Required, FileField
 #from flask.ext.wtf.html5 import DateField
+from werkzeug import secure_filename
 # - graph
 from bulbs.model import Node, Relationship
 from bulbs.property import String, Integer, DateTime
@@ -34,6 +35,21 @@ except ImportError:
 
 app = flask.Flask(__name__)
 app.config.from_object(__name__)
+
+class	TagNodeForm(Form):
+    name	= TextField('Наименование', validators=[Required()])
+
+class	FacetNodeForm(Form):
+    name	= TextField('Наименование', validators=[Required()])
+
+class	FileNodeForm(Form):
+    name	= TextField('Наименование', validators=[Required()])
+    fname	= TextField('Имя файла', validators=[Required()])
+    comment	= TextField('Комментарии')
+    mime	= TextField('Mime')
+
+class	TagsImportForm(Form):
+    name	= FileField('File', validators=[Required()])
 
 g = Graph()
 
@@ -238,15 +254,42 @@ def tags_export():
             d.append(edge.data())
         dump.append(d)
     # 3. convert
+    #return flask.jsonify(dump)
     return flask.send_file(StringIO.StringIO(json.dumps(dump, indent=1)), mimetype='application/json', as_attachment=True, attachment_filename='dasarchive.json')
 
 @app.route('/clean/')
 def tags_clean():
-    pass
+    if (g.E):
+        for edge in g.E:
+            g.edges.delete(edge.eid)
+    for node in g.V:
+        if (node.eid):
+            g.vertices.delete(node.eid)
+    return flask.redirect(flask.url_for('index'))
 
-@app.route('/import/', methods=['POST', 'GET'])
+@app.route('/import/', methods=('GET', 'POST'))
 def tags_import():
-    pass
+    form = TagsImportForm()
+    if form.validate_on_submit():
+        data = json.loads(form.name.data.read())
+        nodes = {0: g.vertices.get(0)}	# map node id from file to created ones
+        for i in data:
+            if (i[0] == 0):	    # node
+                if (i[1] != 0): # don't touch root!
+                    node = g.vertices.create(element_type=i[2]['element_type'], name=i[2]['name'])
+                    #if len(i) > 2:	# parms
+                    #    for k, v in i[2].iteritems():
+                    #        node[k] = v
+                    nodes[i[1]] = node
+            else:		        # edge
+                edge = g.edges.create(nodes[i[1]], i[3], nodes[i[2]])
+                #if len(i) > 4:	# parms
+                #	for k, v in i[4].iteritems():
+                #		edge[k] = v
+        return flask.redirect(flask.url_for('index'))
+    else:
+        filename = None
+    return flask.render_template('import_form.html', form=form, filename=filename)
 
 # Go
 # - standalone
