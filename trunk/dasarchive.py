@@ -13,6 +13,8 @@ from bulbs.model import Node, Relationship
 from bulbs.property import String, Integer, DateTime
 from bulbs.neo4jserver import Graph
 # from neo4jrestclient import client
+# - graphviz
+import gv
 # 2. my
 import utils
 # 3. system
@@ -20,7 +22,7 @@ import sys, os, collections
 # 4. const
 
 DEBUG = True
-CSRF_ENABLED = True
+CSRF_ENABLED = False
 SECRET_KEY = 'tratata'
 INBOX_ROOT = '/mnt/shares/ftp/pub'
 
@@ -32,9 +34,11 @@ except ImportError:
 
 class	FacetModel(Node):
     element_type = 'facet'	# predefined key 'element_type':str
+    name    = String(nullable=False)
 
 class	TagModel(Node):
     element_type = 'tag'
+    name    = String(nullable=False)
 
 class	FileModel(Node):
     element_type = 'file'
@@ -48,6 +52,21 @@ class	FileModel(Node):
     mtime   = DateTime(nullable=False)
     updated = DateTime(nullable=False)
     #deleted = models.BooleanField(default=False, editable=False, verbose_name=u'Удален')
+
+class TagEdge(Relationship):
+    label = 'tag'
+
+class FacetEdge(Relationship):
+    label = 'facet'
+
+class FileEdge(Relationship):
+    label = 'file'
+
+class	TagForm(Form):
+    name	= TextField('Наименование', validators=[Required()])
+
+class	FacetForm(Form):
+    name	= TextField('Наименование', validators=[Required()])
 
 class	FileForm(Form):
     name	= TextField('Наименование', validators=[Required()])
@@ -111,9 +130,98 @@ def inbox(path=''):
         response.write(open(fullpath).read())
         return response
 
-@app.route('/tag/')
-def tag():
-    return flask.render_template('tag_list.html')
+@app.route('/tagmap/')
+def tagmap():
+    gdict = dict()
+    G = gv.digraph('dasarchive')
+    gv.setv( G, 'size', '100,100' )
+    N = gv.protonode(G)
+    gv.setv(N, 'shape', 'rectangle')
+    gv.setv(N, 'style', 'rounded,filled')
+    for node in g.V:
+        gnode = gv.node(G, 'n%d' % node.eid)
+        gv.setv(gnode, 'URL', '/tag/%d/' % node.eid)
+        if (node.eid):  # not root
+            gv.setv(gnode, 'label', node.name.encode('utf8'))
+            if (node.element_type == 'facet'):
+                gv.setv(gnode, 'fillcolor', 'yellow')
+        gdict[node.eid] = gnode
+    for node in g.V:
+        if node.outV():
+            for out in node.outV():
+                gedge = gv.edge(gdict[node.eid], gdict[out.eid])
+    gv.layout(G, 'neato')
+    svg = gv.renderdata(G, 'svg')
+    return flask.render_template('tag_map.html', svg=svg)
+
+#app.route('/tag/')
+@app.route('/tag/<int:tag_id>/')
+def tag(tag_id=0):
+    '''
+    Retrieve all linked tags and facets - as parent as sub.
+    @param tag_id - tag id to retrieve
+    '''
+    #g.files.get_all()
+    tag = g.vertices.get(tag_id)
+    return flask.render_template('tag_index.html', tag=tag)
+
+@app.route('/tag/<int:tag_id>/addtag/', methods=['GET', 'POST'])
+def tag_add_tag(tag_id):
+    '''
+    Add new subtag to given tag/facet.
+    '''
+    parent = g.vertices.get(tag_id)
+    form = TagForm()
+    if form.validate_on_submit():
+        child = g.tags.create(name=form.name.data)
+        g.edges.create(parent, 'tag', child)
+        return flask.redirect(flask.url_for('tag', tag_id=tag_id))
+    return flask.render_template('tag_form.html', form=form, tag=parent)
+
+@app.route('/tag/<int:tag_id>/addfacet/', methods=['GET', 'POST'])
+def tag_add_facet(tag_id):
+    '''
+    Add new facet to given tag.
+    '''
+    parent = g.vertices.get(tag_id)
+    form = FacetForm()
+    if form.validate_on_submit():
+        child = g.facets.create(name=form.name.data)
+        g.edges.create(parent, 'facet', child)
+        return flask.redirect(flask.url_for('tag', tag_id=tag_id))
+    return flask.render_template('tag_form.html', form=form, tag=parent)
+
+@app.route('/tag/<int:tag_id>/edit/', methods=['GET', 'POST'])
+def tag_edit(tag_id):
+	tag = g.vertices.get(tag_id)
+	form = TagForm()
+	if flask.request.method == 'POST':
+		if form.validate_on_submit():
+			tag.name = form.name.data
+			tag.save()
+			return flask.redirect(flask.url_for('tag', tag_id=tag_id))
+	else:
+		form.name.data = tag.name
+	return flask.render_template('tag_form.html', form=form, tag=tag)
+
+@app.route('/tag/<int:tag_id>/del/')
+def tag_del(tag_id):
+    tag = g.vertices.get(tag_id)
+    if (tag.outV()):
+        return flask.redirect(flask.url_for('tag_del_err', tag_id=tag_id))
+    ins = tag.inE()
+    if ins:
+        parent = tag.inV().next()
+        for edge in ins:
+            g.edges.delete(edge.eid)
+    else:
+        parent = g.vertices.get(0)
+    g.vertices.delete(tag_id)
+    return flask.redirect(flask.url_for('tag', tag_id=parent.eid))
+
+@app.route('/tag/<int:tag_id>/delerr/')
+def tag_del_err(tag_id):
+    return flask.render_template('tag_del_err.html', tag=g.vertices.get(tag_id))
 
 @app.route('/file/')
 def file():
