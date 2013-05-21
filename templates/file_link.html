@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block main %}
+<form action="" method="post">
+<table>
+	{% for field in form %}
+	<tr>
+		<td> {{ field.label }} </td>
+		<td> {{ field }}
+			{% for error in field.errors %} <br/>
+				<span style="color: red;">[{{error}}]</span>
+			{% endfor %}
+		</td>
+	</tr>
+	{% endfor %}
+</table>
+<p>
+	<button type="submit"> Ok </button>
+	<a href="{{ url_for('file_view', item_id=file.eid) }}"> <button type="button"> Cancel </button> </a>
+</p>
+</form>
+{% endblock %}

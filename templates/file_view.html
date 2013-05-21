@@ -4,6 +4,7 @@
 	<a href="{{ url_for('file') }}"> Файл: </a>
 	[ <a href="{{ url_for('file_del', item_id=file.eid) }}" title="Delete"> - </a> ]
 	[ <a href="{{ url_for('file_edit', item_id=file.eid) }}" title="*"> * </a> ]
+	[ <a href="{{ url_for('file_link', item_id=file.eid) }}" title="*"> link </a> ]
 </p>
 <table border="1" style="border-collapse: collapse">
 	<tr> <th> ID </th> <td> {{ file.eid }} </td> <tr>
