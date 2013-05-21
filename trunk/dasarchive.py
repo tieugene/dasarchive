@@ -285,8 +285,17 @@ def file_view(item_id):
 
 @app.route('/file/<int:item_id>/del/')
 def file_del(item_id):
-	g.files.delete(int(item_id))
-	return flask.redirect(flask.url_for('file'))
+    item = g.files.get(item_id)
+    # 1. links
+    edges = item.inE()
+    if (edges):
+        for edge in edges:
+            g.edges.delete(edge.eid)
+    # 2. file
+    os.remove(os.path.join(OUTBOX_ROOT, '%08X' % item.eid))
+    # 3. node
+    g.files.delete(item_id)
+    return flask.redirect(flask.url_for('file'))
 
 @app.route('/file/<int:item_id>/edit/', methods=['POST', 'GET'])
 def file_edit(item_id):
