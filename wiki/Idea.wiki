@@ -96,7 +96,8 @@ Compatibility matrix:
   * == a kind of "scheme"
   * what about "SubClassOf" and "ChildOf" parameters? (RTFM RDF/OWL)
   * => SemaWeb :-)
-  * Однако - DB independen
+  * DB independen
+  * Organizations - clients or not => tags can have tags/metadata too (!) => semaweb
 
 == UI ==
 
