@@ -5,9 +5,16 @@
 	[ <a href="{{ url_for('file_del', item_id=file.eid) }}" title="Delete"> - </a> ]
 	[ <a href="{{ url_for('file_edit', item_id=file.eid) }}" title="*"> * </a> ]
 </p>
-<table border="1">
+<table border="1" style="border-collapse: collapse">
 	<tr> <th> ID </th> <td> {{ file.eid }} </td> <tr>
-	<tr> <th> Фамилия </th> <td> {{ file.lastname }} </td> <tr>
-	<tr> <th> Имя </th> <td> {{ file.firstname }} </td> <tr>
+	<tr> <th> Наименование </th> <td> {{ file.name }} </td> <tr>
+	<tr> <th> Имя файла </th> <td> {{ file.fname }} </td> <tr>
+	<tr> <th> Каменты </th> <td> {{ file.comment }} </td> <tr>
+	<tr> <th> Mime </th> <td> {{ file.mime }} </td> <tr>
+	<tr> <th> Size </th> <td> {{ file.size }} </td> <tr>
+	<tr> <th> MD5 </th> <td> {{ file.MD5 }} </td> <tr>
+	<tr> <th> CTime </th> <td> {{ file.ctime }} </td> <tr>
+	<tr> <th> MTime </th> <td> {{ file.mtime }} </td> <tr>
+	<tr> <th> Updated </th> <td> {{ file.updated }} </td> <tr>
 </table>
 {% endblock %}
