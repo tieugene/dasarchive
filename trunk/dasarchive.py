@@ -281,7 +281,7 @@ def file_add(path):
 
 @app.route('/file/<int:item_id>/')
 def file_view(item_id):
-	return flask.render_template('file_view.html', file=g.files.get(int(item_id)))
+	return flask.render_template('file_view.html', file=g.files.get(item_id))
 
 @app.route('/file/<int:item_id>/del/')
 def file_del(item_id):
@@ -316,6 +316,18 @@ def file_edit(item_id):
 		form.comment.data = item.comment if 'comment' in item.data() else ''
 		form.mime.data = item.mime
 	return flask.render_template('file_form.html', form=form)
+
+@app.route('/file/<int:item_id>/link/', methods=['POST', 'GET'])
+def file_link(item_id):
+    item=g.files.get(item_id)
+    form = FileNodeForm()
+    if flask.request.method == 'POST':
+        if form.validate_on_submit():
+            pass
+    else:
+        pass
+    return flask.render_template('file_link.html', fom=form, file=item)
+
 
 @app.route('/export/')
 def tags_export():
