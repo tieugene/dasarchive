@@ -19,13 +19,14 @@ import gv
 # 2. my
 import utils
 # 3. system
-import sys, os, collections, pprint, StringIO, json
+import sys, os, collections, pprint, StringIO, json, datetime
 # 4. const
 
 DEBUG = True
 CSRF_ENABLED = False
 SECRET_KEY = 'tratata'
 INBOX_ROOT = '/mnt/shares/ftp/pub'
+OUTBOX_ROOT = '/mnt/shares/tmp/da'
 
 # 5. local
 try:
@@ -35,6 +36,27 @@ except ImportError:
 
 app = flask.Flask(__name__)
 app.config.from_object(__name__)
+
+class	TagNodeModel(Node):
+    element_type = 'tag'
+    name    = String(nullable=False)
+
+class	FacetNodeModel(Node):
+    element_type = 'facet'	# predefined key 'element_type':str
+    name    = String(nullable=False)
+
+class	FileNodeModel(Node):
+    element_type = 'file'
+    name    = String(nullable=False)
+    fname   = String(nullable=False)
+    comment = String()
+    mime    = String()
+    size    = Integer(nullable=False)
+    md5     = String()
+    ctime   = DateTime(nullable=False)
+    mtime   = DateTime(nullable=False)
+    updated = DateTime(nullable=False)
+    #deleted = models.BooleanField(default=False, editable=False, verbose_name=u'Удален')
 
 class	TagNodeForm(Form):
     name	= TextField('Наименование', validators=[Required()])
@@ -51,7 +73,13 @@ class	FileNodeForm(Form):
 class	TagsImportForm(Form):
     name	= FileField('File', validators=[Required()])
 
+class	FileUploadForm(Form):
+    name	= FileField('File', validators=[Required()])
+
 g = Graph()
+g.add_proxy('tags',     TagNodeModel)
+g.add_proxy('facets',   FacetNodeModel)
+g.add_proxy('files',    FileNodeModel)
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -206,6 +234,43 @@ def file():
 	files = g.files.get_all()
 	return flask.render_template('file_list.html', files=files if files else [])
 
+@app.route('/file/upload/', methods=['GET', 'POST'])
+def file_upload():
+    '''
+    name    = String(nullable=False)
+    fname   = String(nullable=False)
+    comment = String()
+    mime    = String()                  form.name.data.mimetype
+    size    = Integer(nullable=False)   form.name.data.content_length - err
+    md5     = String()
+    ctime   = DateTime(nullable=False)
+    mtime   = DateTime(nullable=False)
+    updated = DateTime(nullable=False)
+    '''
+    form = FileUploadForm()
+    if form.validate_on_submit():
+        filename = secure_filename(form.name.data.filename)
+        # 1. create node
+        now = datetime.datetime.now()
+        gfile = g.files.create(
+            name=filename,
+            fname=filename,
+            mime=str(form.name.data.mimetype),
+            size=form.name.data.content_length,
+            ctime=now,
+            mtime=now,
+            updated=now
+        )
+        # 2. save file
+        form.name.data.save(os.path.join(OUTBOX_ROOT, '%08X' % gfile.eid))
+        form.name.data.close()
+        # 3. post-save actions: size, md5
+        # X. the end
+        return flask.redirect(flask.url_for('file'))    # FIXME: file_view
+    else:
+        filename = None
+    return flask.render_template('file_upload_form.html', form=form, filename=filename)
+
 @app.route('/file/add/<path>', methods=['GET', 'POST'])
 def file_add(path):
 	form = PersonForm()
@@ -275,7 +340,7 @@ def tags_import():
         nodes = {0: g.vertices.get(0)}	# map node id from file to created ones
         for i in data:
             if (i[0] == 0):	    # node
-                if (i[1] != 0): # don't touch root!
+                if (i[1] != 0): # skip root!
                     node = g.vertices.create(element_type=i[2]['element_type'], name=i[2]['name'])
                     #if len(i) > 2:	# parms
                     #    for k, v in i[2].iteritems():
