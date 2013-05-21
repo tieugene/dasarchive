@@ -264,7 +264,7 @@ def file_upload():
         # 2. save file
         form.name.data.save(os.path.join(OUTBOX_ROOT, '%08X' % gfile.eid))
         form.name.data.close()
-        # 3. post-save actions: size, md5
+        # 3. post-save actions: size, md5 (FIXME: !!!)
         # X. the end
         return flask.redirect(flask.url_for('file'))    # FIXME: file_view
     else:
@@ -290,17 +290,22 @@ def file_del(item_id):
 
 @app.route('/file/<int:item_id>/edit/', methods=['POST', 'GET'])
 def file_edit(item_id):
-	item=g.files.get(int(item_id))
-	form = PersonForm()
+	item=g.files.get(item_id)
+	form = FileNodeForm()
 	if flask.request.method == 'POST':
 		if form.validate_on_submit():
-			item.lastname=form.lastname.data
-			item.firstname=form.firstname.data
+			item.name=form.name.data
+			item.fname=form.fname.data
+			item.comment=form.comment.data
+			item.mime=form.mime.data
+            # FIXME: updated
 			item.save()
 			return flask.redirect(flask.url_for('file_view', item_id=item.eid))
 	else:
-		form.lastname.data = item.lastname
-		form.firstname.data = item.firstname
+		form.name.data = item.name
+		form.fname.data = item.fname
+		form.comment.data = item.comment if 'comment' in item.data() else ''
+		form.mime.data = item.mime
 	return flask.render_template('file_form.html', form=form)
 
 @app.route('/export/')
