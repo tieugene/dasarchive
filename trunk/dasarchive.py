@@ -1,6 +1,7 @@
 #!/bin/env python
 # -*- coding: utf-8 -*-
 '''
+
 '''
 
 # 1. 3rd parties
@@ -340,6 +341,7 @@ def tags_export():
         dump.append(d)
     # 2. edges
     for edge in g.E:
+        #print edge
         d = [1, edge.outV().eid, edge.inV().eid, edge.label()]
         if edge.data():
             d.append(edge.data())
