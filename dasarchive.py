@@ -181,7 +181,7 @@ def tag_add_tag(tag_id):
     form = TagNodeForm()
     if form.validate_on_submit():
         child = g.tags.create(name=form.name.data)
-        g.edges.create(parent, 'tag', child)
+        g.edges.create(parent, 'has_tag', child)
         return flask.redirect(flask.url_for('tag', tag_id=tag_id))
     return flask.render_template('tag_form.html', form=form, tag=parent)
 
@@ -194,7 +194,7 @@ def tag_add_facet(tag_id):
     form = FacetNodeForm()
     if form.validate_on_submit():
         child = g.facets.create(name=form.name.data)
-        g.edges.create(parent, 'facet', child)
+        g.edges.create(parent, 'has_facet', child)
         return flask.redirect(flask.url_for('tag', tag_id=tag_id))
     return flask.render_template('tag_form.html', form=form, tag=parent)
 
