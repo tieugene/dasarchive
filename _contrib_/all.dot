@@ -1,6 +1,0 @@
-graph DasArchive {
-  overlap="false";
-  rankdir="LR";
-  root="n0";
-  n0 -- { dox; ftp; ones; };
-}
