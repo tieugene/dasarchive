@@ -9,7 +9,7 @@ graph DasArchive {
   }
   /* AttrGroup */
   {
-    node  	[shape="ellipse", style="filled"];
+    node  	[shape="hexagon", style="filled", height="0.2"];
     /* AttrGroup.Mselect */
     {
       node  	[fillcolor="lightgreen"];
@@ -27,7 +27,7 @@ graph DasArchive {
   }
   /* AttrItem */
   {
-    node  	[shape="rectangle", style="rounded, filled", fillcolor="white"];
+    node  	[shape="rectangle", style="rounded, filled", fillcolor="white", height="0.2"];
     year2010	[label="2010"];
     year2011	[label="2011"];
     year2012	[label="2012"];
