@@ -1,4 +1,4 @@
-#summary Techologies.
+#summary Technologies.
 
 = Core =
 
