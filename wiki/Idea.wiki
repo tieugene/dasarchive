@@ -32,7 +32,7 @@ Simpler:
 == DB structure ==
 
 === Nodes ===
-  * */*
+  * `<all>`
     * _parms_: None
     * _constraints_: None
   * *Facet*: _must_ contain Tag
@@ -63,7 +63,7 @@ Compatibility matrix:
 || Tag   || - ||  M:M  || 1:M || -/M:M ||
 || File  || - ||   -   ||  -  || ?:?  ||
 
-  * / -> *: ...
+  * / -> `<all>`: ...
   * / -> file: unsorted files.
     * _constraints_:
       * File name must be unique.
