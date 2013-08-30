@@ -1,11 +1,12 @@
 #summary Table of contents
 
-  * [Roadmap]
   * [Idea]
   * [Description]
-  * [RDF_n_OWL]
+= Contrib =
   * [Techologies]
-  * [Try]
+  * [Roadmap]
   * [ToDo]
-  * [Tips]
+= Misc =
   * [Features]
+  * [Tips]
+  * [Try]
