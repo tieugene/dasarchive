@@ -47,13 +47,16 @@ Resriction: 1-level tags
   * Graph:
     * get_node(id):Node
   * Node:
+    * name:str
     * get_parent():Node
     * get_children():Node
     * add_child(Node)
     * del_child(Node)
     * get_name()
     * set_name(str)
-  * Facet(Node)
+  * Facet(Node):
+    * multiple:bool=False
+    * mandatory:bool=False
   * Tag(Node)
 
 = 4. Storage =
