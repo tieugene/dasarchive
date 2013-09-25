@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %} Node {% endblock %}
+{% block body_main %}
+<table>
+ <tr>
+  <td> <a href="{% url da.views.node_path object.pk %}"> <button type="button"> Path </button> </a> </td>
+  <td> <a href="{% url da.views.node_tree object.pk %}"> <button type="button"> Tree </button> </a> </td>
+  <td> <a href="{% url da.views.node_graph object.pk %}"> <button type="button"> Graph </button> </a> </td>
+ </tr>
+</table>
+
+{{ object.name }}
+<ul>
+{% for child in object.childen %}
+ <li> <a href="{% url da.views.node_path object.pk %}"> {{ child.name }} </a> </li>
+{% endfor %}
+</ul>
+{% endblock %}
