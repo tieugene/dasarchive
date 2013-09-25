@@ -1,0 +1,62 @@
+#summary Tech project.
+
+Resriction: 1-level tags
+
+= 1. UI =
+
+  * Tags: tree, graph, ...
+  * Filter: dropdowns, tree with checkboxes/radios
+  * Files; ...
+
+= 2. Modes =
+
+== 2.1. CRUD tags ==
+
+=== Create ===
+
+  * Tag: facet (uniq name through sibling facets)
+  * Facet: tag (the same)
+
+=== Update ===
+
+  * Tag, Facet: rename (uniq)
+  * Tag, facet: move
+  * Tag, Facet: merge
+
+=== Delete ===
+
+== 2.2. CRUD files ==
+
+  * Add file (enable root)
+  * Add tag (enable children facets)
+  * Add tag recursively
+  * Change tag
+  * Del tag (del all childen)
+
+== 2.3. Filter ==
+
+  * Add tag
+  * Add tag recursively
+  * Change tag
+  * Del tag
+
+= 3. API =
+
+== 3.1. Data struct ==
+
+  * Graph:
+    * get_node(id):Node
+  * Node:
+    * get_parent():Node
+    * get_children():Node
+    * add_child(Node)
+    * del_child(Node)
+    * get_name()
+    * set_name(str)
+  * Facet(Node)
+  * Tag(Node)
+
+= 4. Storage =
+
+  * Neo4j
+  * SQL
