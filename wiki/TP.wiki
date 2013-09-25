@@ -4,8 +4,8 @@ Resriction: 1-level tags
 
 = 1. UI =
 
-  * Tags: tree, graph, ...
-  * Filter: dropdowns, tree with checkboxes/radios
+  * Tags: path, tree, graph
+  * Filter: path w/ dropdowns, tree with checkboxes/radios
   * Files; ...
 
 = 2. Modes =
