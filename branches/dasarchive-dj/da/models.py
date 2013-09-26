@@ -42,6 +42,10 @@ class   Node(models.Model):
 		retvalue.reverse()
 		return retvalue
 
+	@staticmethod
+	def	paint_tree(id):
+		pass
+
 	#@models.permalink
 	#def get_absolute_url(self):
 	#	return ('da.views.node_path', [str(self.id)])
