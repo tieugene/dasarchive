@@ -1,0 +1,37 @@
+#summary Алгоритмы.
+
+Prerequisite: root == permanent Facet.
+
+= CRUD tags =
+
+Args: Node(id)
+
+== Show ==
+
+=== Path ===
+
+Out all Nodes from root to current.
+
+=== Tree, Path ===
+
+Trivial
+
+= CRUD file =
+
+== Read ==
+
+=== Tree ===
+
+Out all tree checking Nodes - who is it: Selected_Node/Selected_Facet/Available_Facet/Available_Node
+
+  * check_node(Node):enum
+
+So, need:
+
+  * selected 
+
+=== Path ===
+
+Wanted:
+
+  * get_full_path() - get path from root to Node - as list/iterable.
