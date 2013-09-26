@@ -35,7 +35,7 @@ def	__node_detail(request, id, tpl):
 
 def	node_path(request, id):
 	node = models.Node.objects.get(pk=int(id))
-	if (node.pk == 1) or (node.facet):
+	if (node.isfacet()):
 		form = forms.TagForm(initial={'parent': node})
 	else:
 		form = forms.FacetForm(initial={'parent': node})
@@ -56,14 +56,14 @@ def	node_add(request):
 	#return redirect(next)
 	if request.method == 'POST':
 		parent = models.Node.objects.get(pk=int(request.POST['parent']))
-		if (parent.pk == 1) or (parent.facet):
+		if (parent.isfacet()):
 			form = forms.TagForm(request.POST)
 		else:
 			form = forms.FacetForm(request.POST)
 		if form.is_valid():
 			form.save()
 			return HttpResponseRedirect(next)
-		else:
+		else:	# FIXME
 			return render_to_response(next, context_instance=RequestContext(request, {
 				'object': parent,
 				'form': form,
@@ -71,3 +71,9 @@ def	node_add(request):
 			}))
 	else:
 		return HttpResponseRedirect(next)
+
+def	node_del(request, id):
+	pass
+
+def	node_edit(request, id):
+	pass

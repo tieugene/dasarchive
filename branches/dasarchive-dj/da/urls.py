@@ -11,4 +11,6 @@ urlpatterns = patterns('da.views',
 	url(r'^node/(?P<id>\d+)/t/$',	'node_tree'),
 	url(r'^node/(?P<id>\d+)/g/$',	'node_graph'),
 	url(r'^node/add/$',		'node_add'),
+	url(r'^node/(?P<id>\d+)/del/$',	'node_del'),
+	url(r'^node/(?P<id>\d+)/edit/$',	'node_edit'),
 )

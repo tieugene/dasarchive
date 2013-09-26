@@ -11,8 +11,15 @@
  </tr>
 </table>
 
-<p> {{ object.name }} </p>
-<p> Children: </p>
+<p>
+ {% for i in object.get_fullpath %}
+  <a href="{% url da.views.node_path i.pk %}"> {{ i.name }} </a>
+  {% if not forloop.first %} / {% endif %}
+ {% endfor %}
+ {{ object.name }}:
+ <button type="button"> Rename </button>
+ <button type="button"> Delete </button>
+</p>
 <ul>
 {% for child in object.children.all %}
  <li> <a href="{% url da.views.node_path child.pk %}"> {{ child.name }} </a> </li>
@@ -20,9 +27,9 @@
 </ul>
 <form method='post', action='{% url da.views.node_add %}?next={{ next }}'>
  {% csrf_token %}
- {{ form.as_p }}
- <button type="submit"> Add </button>
+ <table>
+ {{ form.as_table }}
+ <tr> <td/> <td align="center"> <button type="submit" width="100%"> Add </button> </td> </tr>
+ </table>
 </form>
-<button type="button"> Delete </button>
-<button type="button"> Rename </button>
 {% endblock %}

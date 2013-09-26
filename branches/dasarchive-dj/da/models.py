@@ -23,6 +23,25 @@ class   Node(models.Model):
 	def     __unicode__(self):
 		return self.name
 
+	def     isfacet(self):
+		if self.pk == 1:
+			return True
+		try:
+			return bool(self.facet)
+		except:
+			return False
+
+		return self.name
+
+	def     get_fullpath(self):
+		retvalue = list()
+		parent = self.parent
+		while (parent):
+			retvalue.append(parent)
+			parent = parent.parent
+		retvalue.reverse()
+		return retvalue
+
 	#@models.permalink
 	#def get_absolute_url(self):
 	#	return ('da.views.node_path', [str(self.id)])
