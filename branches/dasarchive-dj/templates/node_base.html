@@ -3,16 +3,26 @@
 {% block body_main %}
 <table>
  <tr>
+  {% block node_buttons %}
   <td> <a href="{% url da.views.node_path object.pk %}"> <button type="button"> Path </button> </a> </td>
   <td> <a href="{% url da.views.node_tree object.pk %}"> <button type="button"> Tree </button> </a> </td>
   <td> <a href="{% url da.views.node_graph object.pk %}"> <button type="button"> Graph </button> </a> </td>
+  {% endblock %}
  </tr>
 </table>
 
-{{ object.name }}
+<p> {{ object.name }} </p>
+<p> Children: </p>
 <ul>
-{% for child in object.childen %}
- <li> <a href="{% url da.views.node_path object.pk %}"> {{ child.name }} </a> </li>
+{% for child in object.children.all %}
+ <li> <a href="{% url da.views.node_path child.pk %}"> {{ child.name }} </a> </li>
 {% endfor %}
 </ul>
+<form method='post', action='{% url da.views.node_add %}?next={{ next }}'>
+ {% csrf_token %}
+ {{ form.as_p }}
+ <button type="submit"> Add </button>
+</form>
+<button type="button"> Delete </button>
+<button type="button"> Rename </button>
 {% endblock %}

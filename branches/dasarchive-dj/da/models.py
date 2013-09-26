@@ -13,7 +13,10 @@ import datetime
 
 
 class   Node(models.Model):
-	#id		= models.BigIntegerField(primary_key=True, verbose_name=u'ID')
+	'''
+	Hidden fields:
+	* id
+	'''
 	parent		= models.ForeignKey('self', related_name='children', null=True, db_index=True, verbose_name=u'Parent')
 	name		= models.CharField(null=False, db_index=True, max_length=64, verbose_name=u'Name')
 
@@ -27,12 +30,17 @@ class   Node(models.Model):
 	class   Meta:
 		db_table = 'node'
 		ordering                = ('name',)
+		unique_together		= ('parent', 'name')
 		verbose_name            = u'Узел'
 		verbose_name_plural     = u'Узлы'
 
 class   Facet(Node):
+	'''
+	Hidden fields:
+	* node_ptr_id
+	'''
 	multiple	= models.BooleanField(null=False, blank=False, default=False, verbose_name=u'Мн')
-	multiple	= models.BooleanField(null=False, blank=False, default=False, verbose_name=u'Мн')
+	mandatory	= models.BooleanField(null=False, blank=False, default=False, verbose_name=u'Обязательно')
 
 	def     __unicode__(self):
 		return self.name

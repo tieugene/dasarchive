@@ -3,5 +3,20 @@
 $("#tm_index").addClass("active");
 {% endblock %}
 {% block body_main %}
-<center> DasArchive </center>
+<table>
+ <thead>
+  <tr> <th> Files </th> <th> Filter </th> <th> Tags </th> </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td/>
+   <td/>
+   <td>
+    <a href="{% url da.views.node_path 1 %}"> Path </a>
+    <a href="{% url da.views.node_tree 1 %}"> Tree </a>
+    <a href="{% url da.views.node_graph 1 %}"> Graph </a>
+   </td>
+  </tr>
+ </tbody>
+<table>
 {% endblock %}

@@ -1,1 +1,6 @@
 {% extends "node_base.html" %}
+{% block node_buttons %}
+  <td> <a href="{% url da.views.node_path object.pk %}"> <button type="button"> Path </button> </a> </td>
+  <td> <a href="{% url da.views.node_tree object.pk %}"> <button type="button"> Tree </button> </a> </td>
+  <td> <a href="{% url da.views.node_graph object.pk %}"> <button type="button" disabled="disabled"> Graph </button> </a> </td>
+{% endblock %}

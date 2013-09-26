@@ -4,7 +4,8 @@ from django.views.generic.simple import direct_to_template
 from django.conf import settings
 
 def	index(request):
-	return redirect('da.views.index')
+	return direct_to_template(request, 'index.html')
+	#return redirect('da.views.index')
 
 def	about(request):
 	return direct_to_template(request, 'about.html')

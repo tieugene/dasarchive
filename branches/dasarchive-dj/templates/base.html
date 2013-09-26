@@ -116,7 +116,7 @@
 </head>
 <body>
 <div id="topmenu">
-	<div id="tm_index" class=""> <a href="{% url da.views.index %}"> <img src="{{ STATIC_URL }}img/icon-home.png" alt="Главная" title="Главная"/> </a> </div>
+	<div id="tm_index" class=""> <a href="{% url views.index %}"> <img src="{{ STATIC_URL }}img/icon-home.png" alt="Главная" title="Главная"/> </a> </div>
 	<div style="width: 100%"> <b> DasArchive </b> </div>
 	{% if user.is_authenticated %}
 		<div> {{ user.username }} : </div>
