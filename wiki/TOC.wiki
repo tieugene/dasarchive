@@ -3,6 +3,7 @@
   * [Idea]
   * [Description]
   * [TP Tech project]
+  * [Algo Algorythms]
 
 = Contrib =
 
