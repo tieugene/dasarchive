@@ -26,24 +26,19 @@ def	index(request):
         return redirect('da.views.node_path', id=1)
 
 def	__node_detail(request, id, tpl):
-        return  object_detail (
-                request,
-                queryset = models.Node.objects.all(),
-                object_id = id,
-                template_name = tpl,
-        )
-
-def	node_path(request, id):
 	node = models.Node.objects.get(pk=int(id))
 	if (node.isfacet()):
 		form = forms.TagForm(initial={'parent': node})
 	else:
 		form = forms.FacetForm(initial={'parent': node})
-        return render_to_response('node_path.html', context_instance=RequestContext(request, {
+        return render_to_response(tpl, context_instance=RequestContext(request, {
 		'object': node,
 		'form': form,
 		'next': reverse('da.views.node_path', args=[id]),
 	}))
+
+def	node_path(request, id):
+	return  __node_detail (request, id, 'node_path.html')
 
 def	node_tree(request, id):
         return  __node_detail (request, id, 'node_tree.html')
