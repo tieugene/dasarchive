@@ -1,4 +1,5 @@
 {% extends "node_base.html" %}
+{% load node_tree %}
 {% block csslink %}
 <link type="text/css" href="{{ STATIC_URL }}css/nodetree.css" rel="stylesheet">
 {% endblock %}
@@ -23,8 +24,11 @@
  <button type="button"> Rename </button>
  <button type="button"> Delete </button>
 </p>
+
 <ul class="nodetree">
- {{ object.paint_tree|safe|escape }}
+    {% for node in object.children.all %}
+	{% node_tree node %}
+    {% endfor %}
 </ul>
 <form method='post', action='{% url da.views.node_add %}?next={{ next }}'>
  {% csrf_token %}

@@ -44,20 +44,6 @@ class   Node(models.Model):
 		retvalue.reverse()
 		return retvalue
 
-	def	__paint_branch(self, node, space):
-		css = 'me' if (node.pk == self.pk) else ''
-		retvalue = space + ' <li> <a href="%s" class="%s"> %s </a>' % (reverse('da.views.node_tree', args=[node.pk]), css, node.name)
-		children = node.children.all()
-		if (children.count() > 0):
-			retvalue += '<ul>\n'
-			for i in children:
-				retvalue = retvalue + self.__paint_branch(i, space + ' ')
-			retvalue = retvalue + space + '</ul>'
-		return retvalue + '</li>\n'
-
-	def	paint_tree(self):
-		return self.__paint_branch(Node.objects.get(pk=1), ' ')
-
 	#@models.permalink
 	#def get_absolute_url(self):
 	#	return ('da.views.node_path', [str(self.id)])
