@@ -15,3 +15,8 @@ class   FacetForm(forms.ModelForm):
 class   TagForm(forms.ModelForm):
     class   Meta:
         model = Tag
+
+class   FileForm(forms.ModelForm):
+    class   Meta:
+        model = File
+	exclude = ['tags']

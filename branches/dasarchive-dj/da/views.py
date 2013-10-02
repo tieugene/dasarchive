@@ -72,3 +72,24 @@ def	node_del(request, id):
 
 def	node_edit(request, id):
 	pass
+
+def	file_create(request):
+	if request.method == 'POST':
+		form = forms.FileForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return render_to_response('index.html', context_instance=RequestContext(request, {}))
+	else:
+		form = forms.FileForm()
+        return render_to_response('file_form.html', context_instance=RequestContext(request, {
+		'form': form,
+	}))
+
+def	file_read(request, id):
+	pass
+
+def	file_update(request, id):
+	pass
+
+def	file_delete(request, id):
+	pass

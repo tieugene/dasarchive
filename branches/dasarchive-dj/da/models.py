@@ -19,6 +19,8 @@ class   Node(models.Model):
 	'''
 	parent		= models.ForeignKey('self', related_name='children', null=True, db_index=True, verbose_name=u'Parent')
 	name		= models.CharField(null=False, db_index=True, max_length=64, verbose_name=u'Name')
+	#comment = models.TextField(blank=True, verbose_name=u'Комментарии')
+	#mtime   = models.DateTimeField(editable=False, verbose_name=u'Изменен')
 
 	def     __unicode__(self):
 		return self.name
@@ -72,8 +74,9 @@ class   Facet(Node):
 	Hidden fields:
 	* node_ptr_id
 	'''
-	multiple	= models.BooleanField(null=False, blank=False, default=False, verbose_name=u'Мн')
-	mandatory	= models.BooleanField(null=False, blank=False, default=False, verbose_name=u'Обязательно')
+	#multiple	= models.BooleanField(null=False, blank=False, default=False, verbose_name=u'Мн')
+	#mandatory	= models.BooleanField(null=False, blank=False, default=False, verbose_name=u'Обязательно')
+	pass
 
 	def     __unicode__(self):
 		return self.name
@@ -95,3 +98,23 @@ class   Tag(Node):
 		ordering                = ('name',)
 		verbose_name            = u'Ярлык'
 		verbose_name_plural     = u'Ярлыки'
+
+class   File(models.Model):
+	name    = models.CharField(max_length=255, db_index=True, blank=False, verbose_name=u'Наименование')
+	#fname   = models.CharField(max_length=255, db_index=True, blank=False, verbose_name=u'Имя файла')
+	##comment = models.TextField(blank=True, verbose_name=u'Комментарии')
+	#comment = models.CharField(max_length=255, db_index=True, blank=True, verbose_name=u'Комментарии')
+	#mime    = models.CharField(max_length=64, editable=True, db_index=True, verbose_name=u'Тип')
+	#size    = models.PositiveIntegerField(editable=False, verbose_name=u'Размер')
+	#md5     = models.CharField(max_length=32, editable=False, verbose_name=u'MD5')
+	#ctime   = models.DateTimeField(editable=False, verbose_name=u'Создан')
+	#mtime   = models.DateTimeField(editable=False, verbose_name=u'Изменен')
+	#updated = models.DateTimeField(auto_now=True, editable=False, verbose_name=u'Изменена информация')
+	#deleted = models.BooleanField(default=False, editable=False, verbose_name=u'Удален')
+	tags    = models.ManyToManyField(Tag, blank=True, null=True, related_name='files', verbose_name=u'Теги')
+
+	class   Meta:
+		db_table = 'file'
+		#ordering                = ('name',)
+		verbose_name            = u'Файл'
+		verbose_name_plural     = u'Файлы'

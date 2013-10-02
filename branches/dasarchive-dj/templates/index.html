@@ -5,12 +5,14 @@ $("#tm_index").addClass("active");
 {% block body_main %}
 <table>
  <thead>
-  <tr> <th> Files </th> <th> Filter </th> <th> Tags </th> </tr>
+  <tr> <th> Filter </th> <th> Files </th> <th> Tags </th> </tr>
  </thead>
  <tbody>
   <tr>
    <td/>
-   <td/>
+   <td>
+    <a href="{% url da.views.file_create %}"> Add </a>
+   </td>
    <td>
     <a href="{% url da.views.node_path 1 %}"> Path </a>
     <a href="{% url da.views.node_tree 1 %}"> Tree </a>
