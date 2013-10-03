@@ -111,6 +111,9 @@ def	file_tags(request, id):
 def	file_update(request, id):
 	pass
 
+def	file_tag_switch(request, id, tag_id):
+	pass
+
 def	file_delete(request, id):
 	pass
 
