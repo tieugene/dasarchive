@@ -61,6 +61,7 @@ def	node_read(request, id):
 		'mode': mode,
 		#'next': reverse('da.views.node_read', args=[id]),
 	}))
+	# FIXME: don't set existant cookie
 	response.set_cookie('node_mode', mode)
 	return response
 
