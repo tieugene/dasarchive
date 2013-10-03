@@ -105,3 +105,6 @@ def	file_update(request, id):
 
 def	file_delete(request, id):
 	pass
+
+def	filter(request):
+	return direct_to_template(request, 'filter_base.html')
