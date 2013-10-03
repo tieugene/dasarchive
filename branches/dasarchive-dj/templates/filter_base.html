@@ -6,6 +6,11 @@
 <p> tags </p>
 <hr/>
 <p> files </p>
+<ul>
+{% for file in files %}
+ <li> <a href="{% url da.views.file_read file.pk %}"> {{ file.name }} </a> </li>
+{% endfor %}
+</ul>
 <hr/>
 <p> File add </p>
    <td> <a href="{% url da.views.file_create %}"> Add </a> </td>

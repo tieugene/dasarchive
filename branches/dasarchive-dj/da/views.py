@@ -94,12 +94,19 @@ def	file_create(request):
 			return render_to_response('index.html', context_instance=RequestContext(request, {}))
 	else:
 		form = forms.FileForm()
-        return render_to_response('file_form.html', context_instance=RequestContext(request, {
+        return render_to_response('file/form.html', context_instance=RequestContext(request, {
 		'form': form,
 	}))
 
 def	file_read(request, id):
-	pass
+	return render_to_response('file/read.html', context_instance=RequestContext(request, {
+		'object': models.File.objects.get(pk=int(id)),
+	}))
+
+def	file_tags(request, id):
+	return render_to_response('file/tags.html', context_instance=RequestContext(request, {
+		'object': models.File.objects.get(pk=int(id)),
+	}))
 
 def	file_update(request, id):
 	pass
@@ -108,4 +115,6 @@ def	file_delete(request, id):
 	pass
 
 def	filter(request):
-	return direct_to_template(request, 'filter_base.html')
+	return render_to_response('filter_base.html', context_instance=RequestContext(request, {
+		'files': models.File.objects.all(),
+	}))

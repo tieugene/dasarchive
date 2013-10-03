@@ -1,0 +1,4 @@
+{% extends "file/base.html" %}
+{% block body_main %}
+<p> File: <a href="{% url da.views.file_read object.pk %}"> {{ object.name }} </a> </p>
+{% endblock %}

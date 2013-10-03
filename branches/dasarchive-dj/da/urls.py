@@ -17,6 +17,7 @@ urlpatterns = patterns('da.views',
 	url(r'^file/c/$',		'file_create'),
 	url(r'^file/(?P<id>\d+)/r/$',	'file_read'),
 	url(r'^file/(?P<id>\d+)/u/$',	'file_update'),
+	url(r'^file/(?P<id>\d+)/t/$',	'file_tags'),
 	url(r'^file/(?P<id>\d+)/d/$',	'file_delete'),
 	url(r'^filter/$',		'filter'),
 )
