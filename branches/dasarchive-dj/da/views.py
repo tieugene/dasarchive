@@ -23,28 +23,7 @@ import forms, models
 PAGE_SIZE = 20
 
 def	index(request):
-        return redirect('da.views.node_path', id=1)
-
-def	__node_detail(request, id, tpl):
-	node = models.Node.objects.get(pk=int(id))
-	if (node.isfacet()):
-		form = forms.TagForm(initial={'parent': node})
-	else:
-		form = forms.FacetForm(initial={'parent': node})
-        return render_to_response(tpl, context_instance=RequestContext(request, {
-		'object': node,
-		'form': form,
-		'next': reverse('da.views.node_path', args=[id]),
-	}))
-
-def	node_path(request, id):
-	return  __node_detail (request, id, 'node_path.html')
-
-def	node_tree(request, id):
-        return  __node_detail (request, id, 'node_tree.html')
-
-def	node_graph(request, id):
-        return  __node_detail (request, id, 'node_graph.html')
+        return redirect('da.views.node_read', id=1)
 
 def	node_add(request):
 	next = request.REQUEST.get('next', request.META['HTTP_REFERER'])
@@ -66,6 +45,39 @@ def	node_add(request):
 			}))
 	else:
 		return HttpResponseRedirect(next)
+
+def	node_read(request, id):
+	mode = request.COOKIES.get('node_mode', 0)
+	#print 'mode:', mode
+	tpl = ('node_path.html', 'node_tree.html', 'node_graph.html')[int(mode)]
+	node = models.Node.objects.get(pk=int(id))
+	if (node.isfacet()):
+		form = forms.TagForm(initial={'parent': node})
+	else:
+		form = forms.FacetForm(initial={'parent': node})
+        response = render_to_response(tpl, context_instance=RequestContext(request, {
+		'object': node,
+		'form': form,
+		'mode': mode,
+		#'next': reverse('da.views.node_read', args=[id]),
+	}))
+	response.set_cookie('node_mode', mode)
+	return response
+
+def	__node_detail(request, id, mode):
+	response = redirect('da.views.node_read', id=id)
+	#print 'mode=', mode
+	response.set_cookie('node_mode', mode)
+	return response
+
+def	node_read_path(request, id):
+	return  __node_detail (request, id, 0)
+
+def	node_read_tree(request, id):
+	return  __node_detail (request, id, 1)
+
+def	node_read_graph(request, id):
+	return  __node_detail (request, id, 2)
 
 def	node_del(request, id):
 	pass

@@ -4,37 +4,10 @@
 <link type="text/css" href="{{ STATIC_URL }}css/nodetree.css" rel="stylesheet">
 {% endblock %}
 
-{% block body_main %}
-<table>
- <tr>
-{% block node_buttons %}
-  <td> <a href="{% url da.views.node_path object.pk %}"> <button type="button"> Path </button> </a> </td>
-  <td> <a href="{% url da.views.node_tree object.pk %}"> <button type="button" disabled="disabled"> Tree </button> </a> </td>
-  <td> <a href="{% url da.views.node_graph object.pk %}"> <button type="button"> Graph </button> </a> </td>
-{% endblock %}
- </tr>
-</table>
-
-<p>
- {% for i in object.get_fullpath %}
-  <a href="{% url da.views.node_tree i.pk %}"> {{ i.name }} </a>
-  {% if not forloop.first %} / {% endif %}
- {% endfor %}
- {{ object.name }}:
- <button type="button"> Rename </button>
- <button type="button"> Delete </button>
-</p>
-
+{% block node_draw %}
 <ul class="nodetree">
     {% for node in object.children.all %}
 	{% node_tree node %}
     {% endfor %}
 </ul>
-<form method='post', action='{% url da.views.node_add %}?next={{ next }}'>
- {% csrf_token %}
- <table>
- {{ form.as_table }}
- <tr> <td/> <td align="center"> <button type="submit" width="100%"> Add </button> </td> </tr>
- </table>
-</form>
 {% endblock %}
