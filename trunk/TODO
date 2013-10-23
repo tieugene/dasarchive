@@ -3,3 +3,22 @@
 + Tags Path/Tree/Graph => cookie
 
 Note: node tries: node_*, filter, file_tags
+
+* CRUD tags (see wiki/TP.wiki):
+** Tree:
+*** Browse
+*** Read (select)
+*** Create
+*** Update:
+**** rename (simple)
+**** move (todo)
+****  merge (todo)
+*** Delete (todo?)
+** Graph:
+*** ...
+* CRUD Files:
+** Create
+** Read
+** Update (meta, add tag, del tag)
+** Delete (trivial)
+* Filter
