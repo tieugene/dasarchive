@@ -1,0 +1,86 @@
+= Что =
+== Objects =
+* nodes->tags,facets
+* entries->files
+
+== Actions
+* tags (CRUD)
+* filter (retrieve) (+/- tag)
+* file (CRUD, +/- tag)
+
+== Modules =
+* UI (view)
+* Render
+* View (controller)
+* Model (DB backend)
+* DB (neo4j, BDB (secondary key), k-v DB, SQL)
+
+=== UI ==
+Собсно уеб-страница (см. Actions).
+Запрос - в controll, ответ - от render
+
+=== Render ==
+* Tuning:
+** отображение узлов на определенную глубину
+** определение - какой узел как отображать
+
+=== Contoller ==
+Логика работы.
+
+=== Model ==
+Внешнее представление графа.
+
+=== DB ==
+Реализация базы.
+
+= Как =
+Алгоритмы работы каждого Object.Action.
+
+== Filter ==
+=== Add tag ===
+* UI => Controller: selected tags, tag to add
+* Controller: check tag can be added
+* Controller: add tag
+* ?: get tags and edges:
+-- selected
+-- through
+-- available (not selected and not through)
+
+=== Del tag ===
+* check multiplicity
+
+== Tags ==
+Tags/facets walk and edit (graph/hierarchy).
+TODO: [+]/[-]
+
+=== Select ===
+* UI => Controller: id
+* Controller => Model: get all nodes and edges
+* Render: create graph | render
+
+=== Read ===
+(on select) -
+*
+=== Create tag ===
+* Check uniqueness (in facet): get parents, get facet, get all names, check
+
+=== Create facet ===
+* Check uniqueness (in tag): get all parents, get all facets
+
+=== Update ===
+* check uniqueness
+
+=== Delete tag ===
+=== Delete facet ===
+
+----
+= Tags/facets =
+UI:
+*
+Actions:
+* Tag.create_sub_tag
+* Tag.creaet_sub_facet
+* Facet.create_sub_tag
+* Facet/Tag.rename
+* Facet/Tag.delete
+

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block main %}
+Файлы: [ <a href="{{ url_for('file_upload') }}"> + </a> ]
+{% for file in files %}
+  <p> <a href="{{ url_for('file_view', item_id=file.eid) }}"> {{ file.name }} </a> </p>
+{% endfor %}
+{% endblock %}

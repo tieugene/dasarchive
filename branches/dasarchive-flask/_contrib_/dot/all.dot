@@ -1,0 +1,136 @@
+/* neato -Tsvg -o all.svg all.dot */
+graph DasArchive {
+  overlap="false";
+  rankdir="LR";
+  root="n0";
+  /* defaults */
+  node  		[width="0", height="0", margin="0.05,0.025", style="filled"];
+  /* root */
+  n0			[label="." shape="circle", margin="0,0" fillcolor="grey"];
+  /* Facet */
+  {
+    node  		[shape="ellipse"];
+    /* Mselect */
+    {
+      node  		[fillcolor="lightgreen"];
+      /* dox */
+      depart		[label="Отдел"];
+      doer		[label="Исполнитель"];
+      partner		[label="Контрагент"];
+      /* ftp */
+      os_ftp		[label="ОС"];
+      hwtype		[label="HW type"];
+      artist		[label="Исполнитель"];
+      genre		[label="Жанр"];
+      /* 1C */
+      os_1c		[label="ОС"];
+    }
+    /* Sselect */
+    {
+      node  		[fillcolor="lightyellow"];
+      /* dox */
+      year_dox		[label="Год"];
+      quarter_dox	[label="Квартал"];
+      type_dox		[label="Тип"];
+      /* ftp */
+      type_ftp		[label="Тип"];
+      vendor		[label="Vendor"];
+      hwmodel		[label="HW model"];
+      mediatype		[label="Тип"];
+      /* 1C */
+      ver_1c		[label="Версия"];
+      v7part		[label="Тип"];
+      v8part		[label="Тип"];
+      year_1c		[label="Год"];
+      quarter_1c	[label="Квартал"];
+    }
+  }
+  /* Tag */
+  {
+    node  	[shape="rectangle", style="rounded", fillcolor="white"];
+    /* dox */
+    year2010	[label="2010"];
+    year2011	[label="2011"];
+    year2012	[label="2012"];
+    year2013	[label="2013"];
+    quarter1	[label="1"];
+    quarter2	[label="2"];
+    quarter3	[label="3"];
+    quarter4	[label="4"];
+    depart1	[label="Юр"];
+    depart2	[label="Бух"];
+    depart3	[label="ОК"];
+    depart4	[label="ИТ"];
+    doer1	[label="Иванов"];
+    doer2	[label="Петров"];
+    doer3	[label="Сидоров"];
+    partner1	[label="Ромашка, ООО"];
+    partner2	[label="Вектор, ЗАО"];
+    doc1	[label="Образец"];
+    doc2	[label="Инструкция"];
+    doc3	[label="Учредиловка"];
+    doc4	[label="Первичка"];
+    doc5	[label="Отчет"];
+    doc6	[label="Отчетность"];
+    doc41	[label="Акт"];
+    doc42	[label="Доверка"];
+    doc43	[label="Договор"];
+    doc44	[label="Счет"];
+    doc45	[label="Накладная"];
+    doc46	[label="СФ"];
+    doc47	[label="ТТН"];
+    doc61	[label="Декларация"];
+    doc611	[label="имущество"];
+    doc612	[label="НДС"];
+    doc613	[label="прибыль"];
+    /* ftp */
+    app		[label="Программа"];
+    windows	[label="Windows"];
+    linux	[label="Linux"];
+    driver	[label="Driver"];
+    hwchipset	[label="Chipset"];
+    hwnic	[label="NIC"];
+    hwvideo	[label="Video"];
+    hwaudio	[label="Audio"];
+    hwprinter	[label="Printer"];
+    hwscanner	[label="Scanner"];
+    hwups	[label="UPS"];
+    hwmodem	[label="Modem"];
+    hwtoken	[label="Токен"];
+    vendor1	[label="Intel"];
+    vendor2	[label="AMD"];
+    vendor3	[label="VIA"];
+    vendor4	[label="Nvidia"];
+    vendor5	[label="SiS"];
+    vendor6	[label="S3"];
+    book	[label="Книга"];
+    media	[label="Media"];
+    image	[label="Image"];
+    video	[label="Video"];
+    audio	[label="Audio"];
+    /* 1C */
+  }
+  /* go */
+  /* 1. Facet definitions */
+  edge		[style="dashed"];
+  n0		-- { dox; ftp; ones; };
+  dox		-- { type_dox; depart; doer; partner; };
+  ftp		-- { ftype; }
+  year_dox	-- { year2010; year2011; year2012; year2013; };
+  quarter_dox	-- { quarter1; quarter2; quarter3; quarter4; };
+  depart	-- { depart1; depart2; depart3; depart4; };
+  doer		-- { doer1; doer2; doer3; };
+  partner	-- { partner1; partner2; };
+  type_dox	-- { doc1; doc2; doc3; doc4; doc5; doc6; };
+  type_ftp	-- { app; book; media; };
+  app		-- { driver; };
+  doc6		-- { year_dox; quarter_dox; };
+  mediatype	-- { image; video; audio; };
+  os		-- { windows; linux; };
+  vendor	-- { vendor1; vendor2; vendor3; vendor4; vendor5; vendor6; };
+  hwtype	-- { hwchipset; hwnic; hwvideo; hwaudio; hwprinter; hwscanner; hwups; hwmodem; hwtoken; };
+  /* 3. Tag Hierarchy */
+  doc4		-- { doc41; doc42; doc43; doc44; doc45; doc46; doc47; };
+  doc6		-- { doc61; };
+  doc61		-- { doc611; doc612; doc613; };
+}

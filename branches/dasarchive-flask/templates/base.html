@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title> DasArchive {% block title %} {% endblock %} </title>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+	<script type="text/javascript"> $(document).ready(function () { {% block jsready %} {% endblock %} }) </script>
+	<link type="text/css" href="{{ url_for('static', filename='css/base.css') }}" rel="stylesheet"/>
+	<style type="text/css" > {% block css %} {% endblock %} </style>
+</head>
+<body>
+<table id="topmenu"> <tr>
+  <td> <a href="{{ url_for('index') }}"> <img src="{{ url_for('static', filename='img/16/icon-home.png') }}" alt="Home" title="Go Home"/> </a> </td>
+  <td style="width: 100%"> {% block header %} <b> DasArchive </b> {% endblock %} </td>
+  <td> <a href="" rel="nofollow"> <img src="{{ url_for('static', filename='img/16/icon-enter.png') }}" alt="Login" title="Вход"/> </a> </td>
+  <td> <a href=""> <img src="{{ url_for('static', filename='img/16/icon-info-sign.png')}}" alt="Help" title="Помощь"/> </a> </td>
+</tr> </table>
+<div>
+{% block main %}
+{% endblock %}
+</div>
+</body>
+</html>

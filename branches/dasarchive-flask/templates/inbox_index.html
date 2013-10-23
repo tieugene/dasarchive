@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block main %}
+<a href="{{ url_for('inbox') }}"> Входящие </a>
+<p>
+{% if path %}
+	<a href="{{ url_for('inbox') }}"> <button type="button"> <img src="{{ url_for('static', filename='img/go-home.png') }}" alt="Home"/> </button> </a>
+	{% for p in pathurls %}
+		/ {{ p|safe }}
+	{% endfor %}
+{% else %}
+&nbsp;
+{% endif %}
+</p>
+{% if data %}
+<table class="bt bl" style="border-collapse: collapse">
+ <tr class="bold center bb">
+  <td class="bold center bb"> &nbsp; </td>
+  <td class="bold center bb"> Name </td>
+  <td class="bold center bb"> Size </td>
+  <!--td class="bold center bb"> Mtime </td>
+  <td class="bold center bb"> Ctime </td-->
+ </tr>
+{% for k, v in data.iteritems() %}
+ <tr>
+{% if v.isdir %}
+  <td class="bb br"> <img src="{{ url_for('static', filename='img/22/folder.png') }}" alt="folder" title="Папка"/> </td>
+  <td class="bb br" colspan="2"> <a href="{{ url_for('inbox', path=v.path) }}"> {{ k }} </a> </td>
+{% else %}
+  <td class="bb br"> <a href="{{ url_for('file_add', path=v.path) }}" title="Add to archive"> <img src="{{ url_for('static', filename='img/22/list-add.png') }}" alt="+" title="Добавить"/> </td>
+  <td class="bb br"> <a href="{{ url_for('inbox', path=v.path) }}"> {{ k }} </a> </td>
+  <td class="bb br right"> {{ v.size }} </td>
+{% endif %}
+  <!--td class="bb br"> {{ v.mtime }} </td>
+  <td class="bb br"> {{ v.ctime }} </td-->
+ </tr>
+{% endfor %}
+</table>
+{% else %}
+<p> Нет ништо </p>
+{% endif %}
+{% endblock %}

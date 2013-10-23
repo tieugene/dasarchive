@@ -1,0 +1,14 @@
+* UI - побоку (фильтры или хрень)
+*
+
+Requires:
+* django
+* memcached
+* python-memcached
+* MySQL-python
+* mod_wsgi
+* python-pytc?
+* python-magic
+
+= Idea =
+* Boost-graph (https://www.google.com/search?q=boost-graph)
