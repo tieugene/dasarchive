@@ -1,0 +1,66 @@
+graph DasArchive {
+  overlap="false";
+  rankdir="LR";
+  /* defaults */
+  {
+    node  	[shape="circle", style="filled", fillcolor="grey"];
+    n0		[label="1C"];
+  }
+  /* Facet */
+  {
+    node  	[shape="ellipse", style="filled"];
+    /* Facet.Mselect */
+    {
+      node  	[fillcolor="lightgreen"];
+      os	[label="ОС"];
+    }
+    /* Facet.Sselect */
+    {
+      node  	[fillcolor="lightyellow"];
+      onesver	[label="Версия"];
+      v7part	[label="Тип"];
+      v8part	[label="Тип"];
+      year	[label="Год"];
+      quarter	[label="Квартал"];
+    }
+  }
+  /* Tag */
+  {
+    node  	[shape="rectangle", style="rounded, filled", fillcolor="white"];
+    v7		[label="7.7"];
+    v7cfg	[label="Конфигурация"];
+    v7rpt	[label="Отчетность"];
+    v8		[label="8.x"];
+    v8platf	[label="Платформа"];
+    v8cfg	[label="Конфигурация"];
+    year2010	[label="2010"];
+    year2011	[label="2011"];
+    year2012	[label="2012"];
+    year2013	[label="2013"];
+    quarter1	[label="1"];
+    quarter2	[label="2"];
+    quarter3	[label="3"];
+    quarter4	[label="4"];
+    windows	[label="Windows"];
+    linux	[label="Linux"];
+  }
+  /* go */
+  /* 1. Facet definitions */
+  onesver	-- { v7; v8; }
+  v7part	-- { v7cfg; v7rpt; }
+  v8part	-- { v8platf; v8cfg; }
+  year		-- { year2010; year2011; year2012; year2013; };
+  quarter	-- { quarter1; quarter2; quarter3; quarter4; };
+  os		-- { windows; linux; };
+  /* 2. Tag's facets */
+  {
+    edge	[style="dashed"];
+    n0	-- { onesver; };
+    v7		-- { v7part; };
+    v8		-- { v8part; };
+    v7rpt -- { year; quarter; }
+    v8platf -- os;
+  }
+  /* 3. Tag Hierarchy */
+
+}

@@ -99,6 +99,19 @@ class   File(models.Model):
 	#deleted = models.BooleanField(default=False, editable=False, verbose_name=u'Удален')
 	tags    = models.ManyToManyField(Tag, blank=True, null=True, related_name='files', verbose_name=u'Теги')
 
+	def	__init__(self, *args, **kwargs):
+		super(File, self).__init__(*args, **kwargs)
+		self.__selected_nodes = set()
+		self.__enabled_nodes = set()
+		self.__cached = False
+
+	def	__cache_nodes(self):
+		if (not self.__cached):
+			self.__cached = True
+
+	def     get_selected_tags(self):
+		self.__cache_nodes()
+
 	class   Meta:
 		db_table = 'file'
 		#ordering                = ('name',)

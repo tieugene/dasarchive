@@ -106,6 +106,7 @@ def	file_read(request, id):
 def	file_tags(request, id):
 	return render_to_response('file/tags.html', context_instance=RequestContext(request, {
 		'object': models.File.objects.get(pk=int(id)),
+		'root': models.Node.objects.get(pk=1),
 	}))
 
 def	file_update(request, id):
