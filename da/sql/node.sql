@@ -1,0 +1,1 @@
+INSERT INTO "node" VALUES(1,NULL,'/');

@@ -1,0 +1,15 @@
+{% load node_tree %}
+<li>
+{% if node.isfacet %}
+ {{ node.name }}:
+{% else %}
+ <a href="{% url da.views.file_tag_switch node.pk object.pk %}"> {{ node.name }} </a>
+{% endif %}
+{% if node.children.all.count %}
+ <ul>
+ {% for child in node.children.all %}
+  {% tags_tree child object %}
+ {% endfor %}
+ </ul>
+{% endif %}
+</li>

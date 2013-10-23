@@ -1,0 +1,2 @@
+{% load node_tree %}
+<li> <a href="{% url da.views.node_read node.pk %}"> {{ node.name }} </a> {% if node.children.all.count %}<ul>{% for child in node.children.all %}{% node_tree child %}{% endfor %}</ul>{% endif %}</li>

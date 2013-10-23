@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block jsready %}
+$("#tm_index").addClass("active");
+{% endblock %}
+{% block body_main %}
+<table>
+ <thead>
+  <tr> <th> Filter </th> <th> Files </th> <th> Tags </th> </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td> <a href="{% url da.views.filter %}"> View </a> </td>
+   <td> <a href="{% url da.views.node_read 1 %}"> View </a> </td>
+  </tr>
+ </tbody>
+<table>
+{% endblock %}

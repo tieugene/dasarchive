@@ -1,0 +1,5 @@
+* Node.add() - hide parent
++ Filter == file list
++ Tags Path/Tree/Graph => cookie
+
+Note: node tries: node_*, filter, file_tags

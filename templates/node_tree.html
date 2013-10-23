@@ -1,0 +1,13 @@
+{% extends "node_base.html" %}
+{% load node_tree %}
+{% block csslink %}
+<link type="text/css" href="{{ STATIC_URL }}css/nodetree.css" rel="stylesheet">
+{% endblock %}
+
+{% block node_draw %}
+<ul class="nodetree">
+    {% for node in object.children.all %}
+	{% node_tree node %}
+    {% endfor %}
+</ul>
+{% endblock %}

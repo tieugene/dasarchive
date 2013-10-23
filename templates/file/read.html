@@ -1,0 +1,15 @@
+{% extends "file/base.html" %}
+{% block body_main %}
+<a href="{% url da.views.file_update object.pk %}"> <button type="button"> Edit </button> </a>
+<a href="{% url da.views.file_tags   object.pk %}"> <button type="button"> Tags </button> </a>
+<a href="{% url da.views.file_delete object.pk %}"> <button type="button"> Delete </button> </a>
+<table>
+ <tr> <th> Name: </th> <td> {{ object.name }} </td> </tr>
+ <tr> <th> Tags: </th> <td> <ul>
+ {% for tag in object.tag_set.all %}
+  <li> {{ tag.name }} </li>
+ {% endfor %}
+ </ul> </td>
+</tr>
+</table>
+{% endblock %}

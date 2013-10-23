@@ -1,0 +1,23 @@
+#!/bin/sh
+# script to maintain django project
+
+RETVAL=0
+
+MGR="./manage.py"
+#DBNAME=`python -c "import settings; print settings.DATABASE_NAME;"`
+#DBUSER=`python -c "import settings; print settings.DATABASE_USER;"`
+#DBPASS=`python -c "import settings; print settings.DATABASE_PASSWORD;"`
+
+case "$1" in
+cleanpyc)
+	find . -type f -name "*.pyc" -delete
+	;;
+help)
+	echo "Das ist help"
+	;;
+*)
+	echo $"Usage: $0 {cleanpyc|help}"
+	RETVAL=1
+esac
+
+exit $RETVAL

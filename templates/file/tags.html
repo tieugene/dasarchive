@@ -1,0 +1,13 @@
+{% extends "file/base.html" %}
+{% load node_tree %}
+{% block csslink %}
+<link type="text/css" href="{{ STATIC_URL }}css/nodetree.css" rel="stylesheet">
+{% endblock %}
+{% block body_main %}
+<p> File: <a href="{% url da.views.file_read object.pk %}"> {{ object.name }} </a>: </p>
+<ul class="nodetree">
+    {% for node in root.children.all %}
+	{% tags_tree node object %}
+    {% endfor %}
+</ul>
+{% endblock %}

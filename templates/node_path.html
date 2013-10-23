@@ -1,0 +1,8 @@
+{% extends "node_base.html" %}
+{% block node_draw %}
+<ul>
+{% for child in object.children.all %}
+ <li> <a href="{% url da.views.node_read child.pk %}"> {{ child.name }} </a> </li>
+{% endfor %}
+</ul>
+{% endblock %}
