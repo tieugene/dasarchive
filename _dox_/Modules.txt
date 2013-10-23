@@ -1,12 +1,12 @@
 = Что =
 == Objects =
-* tags
-* files
+* nodes->tags,facets
+* entries->files
 
 == Actions
 * tags (CRUD)
-* filter (== retrieve; +/- tag)
-* file (+/- tag)
+* filter (retrieve) (+/- tag)
+* file (CRUD, +/- tag)
 
 == Modules =
 * UI (view)
@@ -72,3 +72,15 @@ TODO: [+]/[-]
 
 === Delete tag ===
 === Delete facet ===
+
+----
+= Tags/facets =
+UI:
+*
+Actions:
+* Tag.create_sub_tag
+* Tag.creaet_sub_facet
+* Facet.create_sub_tag
+* Facet/Tag.rename
+* Facet/Tag.delete
+
